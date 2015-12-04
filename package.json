@@ -1,6 +1,6 @@
 {
     "name": "extenso",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "description": "Escrever um número por extenso. ",
     "main": "index.js",
     "repository": {
