@@ -103,10 +103,18 @@ function f(numero, sigular, plural, fun) {
 
             n2 = num % numero;
 
-            if (n2 % 100 === 0 || n2 < 100) {
-                return 'um ' + sigular + ' e ' + fun(n2);
+            if (num < 1e6) {
+                if (n2 % 100 === 0 || n2 < 100) {
+                    return sigular + ' e ' + fun(n2);
+                } else {
+                    return sigular + ' ' + fun(n2);
+                }
             } else {
-                return 'um ' + sigular + ' ' + fun(n2);
+                if (n2 % 100 === 0 || n2 < 100) {
+                    return 'um ' + sigular + ' e ' + fun(n2);
+                } else {
+                    return 'um ' + sigular + ' ' + fun(n2);
+                }
             }
         } else {
             if (num % numero === 0) {
