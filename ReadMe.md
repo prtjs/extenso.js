@@ -29,7 +29,7 @@ extenso(64); //=> 'sessenta e quatro'
 extenso(128); //=> 'cento e vinte e oito'
 extenso(256); //=> 'duzentos e cinquenta e seis'
 extenso(512); //=> 'quinhentos e doze'
-extenso(1024); //=> 'um mil e vinte e quatro'
+extenso(1024); //=> 'mil e vinte e quatro'
 ```
 
 ## Licença
