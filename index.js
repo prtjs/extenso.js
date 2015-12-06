@@ -86,7 +86,7 @@ function cem(num) {
     }
 }
 
-function f(numero, sigular, plural, fun) {
+function f(numero, singular, plural, fun) {
     return function (num) {
         if (num === 1e3) {
             return 'mil';
@@ -98,22 +98,22 @@ function f(numero, sigular, plural, fun) {
             return fun(num);
         } else if (n === 1) {
             if (num === numero) {
-                return 'um ' + sigular;
+                return 'um ' + singular;
             }
 
             n2 = num % numero;
 
             if (num < 1e6) {
                 if (n2 % 100 === 0 || n2 < 100) {
-                    return sigular + ' e ' + fun(n2);
+                    return singular + ' e ' + fun(n2);
                 } else {
-                    return sigular + ' ' + fun(n2);
+                    return singular + ' ' + fun(n2);
                 }
             } else {
                 if (n2 % 100 === 0 || n2 < 100) {
-                    return 'um ' + sigular + ' e ' + fun(n2);
+                    return 'um ' + singular + ' e ' + fun(n2);
                 } else {
-                    return 'um ' + sigular + ' ' + fun(n2);
+                    return 'um ' + singular + ' ' + fun(n2);
                 }
             }
         } else {
