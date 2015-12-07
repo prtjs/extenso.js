@@ -147,7 +147,7 @@ var mil = f(1e+3, 'mil', 'mil', cem),
 
 module.exports = function (num) {
     if (typeof num === 'number' && !(num % 1) && num >= 0 && num < 1e+36) {
-        return nonilhao(num);
+        return decilhao(num);
     } else if (num) {
         return new Error('Número inválido.');
     } else {
