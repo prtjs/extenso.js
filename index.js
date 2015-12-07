@@ -49,7 +49,7 @@ function dez(num) {
         var n1 = numeros[(num - num % 10) / 10 + 8],
             n2 = num % 10;
 
-        if (num % 10 === 0) {
+        if (!(num % 10)) {
             return n1;
         } else {
             return n1 + ' e ' + um(n2);
@@ -78,7 +78,7 @@ function cem(num) {
         var n1 = numeros[(num - num % 100) / 100 - 1],
             n2 = num % 100;
 
-        if (num % 100 === 0) {
+        if (!(num % 100)) {
             return n1;
         } else {
             return n1 + ' e ' + dez(n2);
@@ -104,26 +104,26 @@ function f(numero, singular, plural, fun) {
             n2 = num % numero;
 
             if (num < 1e6) {
-                if (n2 % 100 === 0 || n2 < 100) {
+                if (!(n2 % 100) || n2 < 100) {
                     return singular + ' e ' + fun(n2);
                 } else {
                     return singular + ' ' + fun(n2);
                 }
             } else {
-                if (n2 % 100 === 0 || n2 < 100) {
+                if (!(n2 % 100) || n2 < 100) {
                     return 'um ' + singular + ' e ' + fun(n2);
                 } else {
                     return 'um ' + singular + ' ' + fun(n2);
                 }
             }
         } else {
-            if (num % numero === 0) {
+            if (!(num % numero)) {
                 return fun(n) + ' ' + plural;
             } else {
                 var n1 = n;
                 n2 = num % numero;
 
-                if (n2 % 100 === 0 || n2 < 100) {
+                if (!(n2 % 100) || n2 < 100) {
                     return fun(n1) + ' ' + plural + ' e ' + fun(n2);
                 } else {
                     return fun(n1) + ' ' + plural + ' ' + fun(n2);
