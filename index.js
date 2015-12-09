@@ -136,20 +136,13 @@ function f(numero, singular, plural, fun) {
 var mil = f(1e+3, 'mil', 'mil', cem),
     milhao = f(1e+6, 'milhão', 'milhões', mil),
     bilhao = f(1e+9, 'bilhão', 'bilhões', milhao),
-    trilhao = f(1e+12, 'trilhão', 'trilhões', bilhao),
-    quadrilhao = f(1e+15, 'quadrilhão', 'quadrilhões', trilhao),
-    quintilhao = f(1e+18, 'quintilhão', 'quintilhões', quadrilhao),
-    sextilhao = f(1e+21, 'sextilhão', 'sextilhões', quintilhao),
-    septilhao = f(1e+24, 'septilhão', 'septilhões', sextilhao),
-    octilhao = f(1e+27, 'octilhão', 'octilhões', septilhao),
-    nonilhao = f(1e+30, 'nonilhão', 'nonilhões', octilhao),
-    decilhao = f(1e+33, 'decilhão', 'decilhões', nonilhao);
+    trilhao = f(1e+12, 'trilhão', 'trilhões', bilhao);
 
-module.exports = function (num) {
-    if (typeof num === 'number' && !(num % 1) && num >= 0 && num < 1e+36) {
-        return decilhao(num);
+var extenso = function (num) {
+    if (typeof num === 'number' && !(num % 1) && num >= 0 && num < 1e+15) {
+        return trilhao(num);
     } else if (num) {
-        return new Error('Número inválido.');
+        return new Error('Número inválido');
     } else {
         return undefined;
     }
