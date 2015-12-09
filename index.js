@@ -138,7 +138,7 @@ var mil = f(1e+3, 'mil', 'mil', cem),
     bilhao = f(1e+9, 'bilhão', 'bilhões', milhao),
     trilhao = f(1e+12, 'trilhão', 'trilhões', bilhao);
 
-var extenso = function (num) {
+module.exports = function (num) {
     if (typeof num === 'number' && !(num % 1) && num >= 0 && num < 1e+15) {
         return trilhao(num);
     } else if (num) {
