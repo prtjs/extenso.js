@@ -142,7 +142,7 @@ module.exports = function (num) {
     if (typeof num === 'number' && !(num % 1) && num >= 0 && num < 1e+15) {
         return trilhao(num);
     } else if (num) {
-        return new Error('Número inválido');
+        throw new TypeError('Número inválido');
     } else {
         return undefined;
     }
