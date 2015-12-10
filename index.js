@@ -88,7 +88,7 @@ function cem(num) {
 
 function f(numero, singular, plural, fun) {
     return function (num) {
-        if (num === 1e3) {
+        if (num === 1e+3) {
             return 'mil';
         }
 
@@ -103,7 +103,7 @@ function f(numero, singular, plural, fun) {
 
             n2 = num % numero;
 
-            if (num < 1e6) {
+            if (num < 1e+6) {
                 if (!(n2 % 100) || n2 < 100) {
                     return singular + ' e ' + fun(n2);
                 } else {
