@@ -104,10 +104,6 @@ function separar(numero) {
     return a.join('.');
 }
 
-function decimal(str) {
-    
-}
-
 module.exports = function (numero) {
     if (isNaN(numero)) {
         return NaN;
