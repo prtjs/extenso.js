@@ -1,149 +1,202 @@
 'use strict';
 
-function um(num) {
-    var numeros = [
-        'zero',
-        'um',
-        'dois',
-        'três',
-        'quatro',
-        'cinco',
-        'seis',
-        'sete',
-        'oito',
-        'nove'
-    ];
+function um(numero) {
+    var numeros = {
+        '0': 'zero',
+        '1': 'um',
+        '2': 'dois',
+        '3': 'três',
+        '4': 'quatro',
+        '5': 'cinco',
+        '6': 'seis',
+        '7': 'sete',
+        '8': 'oito',
+        '9': 'nove'
+    };
 
-    return numeros[num];
+    return numeros[numero];
 }
 
-function dez(num) {
-    if (num < 10) {
-        return um(num);
+function dez(numero) {
+    if (numero < 10) {
+        return um(numero);
     }
 
-    var numeros = [
-        'dez',
-        'onze',
-        'doze',
-        'treze',
-        'quatorze',
-        'quinze',
-        'dezesseis',
-        'dezessete',
-        'dezoito',
-        'dezenove',
-        'vinte',
-        'trinta',
-        'quarenta',
-        'cinquenta',
-        'sessenta',
-        'setenta',
-        'oitenta',
-        'noventa'
-    ];
+    var numeros = {
+        '10': 'dez',
+        '11': 'onze',
+        '12': 'doze',
+        '13': 'treze',
+        '14': 'quatorze',
+        '15': 'quinze',
+        '16': 'dezesseis',
+        '17': 'dezessete',
+        '18': 'dezoito',
+        '19': 'dezenove',
+        '20': 'vinte',
+        '30': 'trinta',
+        '40': 'quarenta',
+        '50': 'cinquenta',
+        '60': 'sessenta',
+        '70': 'setenta',
+        '80': 'oitenta',
+        '90': 'noventa'
+    };
 
-    if (num < 20) {
-        return numeros[num - 10];
+    var inicio = numero - numero % 10,
+        fim = numero % 10;
+
+    if (numero < 20) {
+        return numeros[numero];
     } else {
-        var n1 = numeros[(num - num % 10) / 10 + 8],
-            n2 = num % 10;
-
-        if (!(num % 10)) {
-            return n1;
+        if (numero % 10 === 0) {
+            return numeros[numero];
         } else {
-            return n1 + ' e ' + um(n2);
+            return numeros[inicio] + ' e ' + um(fim);
         }
     }
 }
 
-function cem(num) {
-    if (num < 100) {
-        return dez(num);
-    } else if (num === 100) {
+function cem(numero) {
+    if (numero < 100) {
+        return dez(numero);
+    } else if (numero === 100) {
         return 'cem';
     } else {
-        var numeros = [
-            'cento',
-            'duzentos',
-            'trezentos',
-            'quatrocentos',
-            'quinhentos',
-            'seissentos',
-            'setecentos',
-            'oitocentos',
-            'novecentos'
-        ];
+        var numeros = {
+            '100': 'cento',
+            '200': 'duzentos',
+            '300': 'trezentos',
+            '400': 'quatrocentos',
+            '500': 'quinhentos',
+            '600': 'seissentos',
+            '700': 'setecentos',
+            '800': 'oitocentos',
+            '900': 'novecentos'
+        };
 
-        var n1 = numeros[(num - num % 100) / 100 - 1],
-            n2 = num % 100;
+        var inicio = numero - numero % 100,
+            fim = numero % 100;
 
-        if (!(num % 100)) {
-            return n1;
+        if (numero % 100 === 0) {
+            return numeros[numero];
         } else {
-            return n1 + ' e ' + dez(n2);
+            return numeros[inicio] + ' e ' + dez(fim);
         }
     }
 }
 
-function f(numero, singular, plural, fun) {
-    return function (num) {
-        if (num === 1e+3) {
-            return 'mil';
-        }
+function separar(numero) {
+    function reverse(str) {
+        str = str.toString();
+        return str.split('').reverse().join('');
+    }
 
-        var n = (num - num % numero) / numero, n2;
+    var rev = reverse(numero).match(/.?.?.?/g);
+    rev = rev.slice(0, rev.length - 1).reverse();
 
-        if (num < numero) {
-            return fun(num);
-        } else if (n === 1) {
-            if (num === numero) {
-                return 'um ' + singular;
-            }
+    var a = [];
 
-            n2 = num % numero;
+    rev.forEach(function (i) {
+        a.push(reverse(i));
+    });
 
-            if (num < 1e+6) {
-                if (!(n2 % 100) || n2 < 100) {
-                    return singular + ' e ' + fun(n2);
-                } else {
-                    return singular + ' ' + fun(n2);
-                }
-            } else {
-                if (!(n2 % 100) || n2 < 100) {
-                    return 'um ' + singular + ' e ' + fun(n2);
-                } else {
-                    return 'um ' + singular + ' ' + fun(n2);
-                }
-            }
-        } else {
-            if (!(num % numero)) {
-                return fun(n) + ' ' + plural;
-            } else {
-                var n1 = n;
-                n2 = num % numero;
-
-                if (!(n2 % 100) || n2 < 100) {
-                    return fun(n1) + ' ' + plural + ' e ' + fun(n2);
-                } else {
-                    return fun(n1) + ' ' + plural + ' ' + fun(n2);
-                }
-            }
-        }
-    };
+    return a.join('.');
 }
 
-var mil = f(1e+3, 'mil', 'mil', cem),
-    milhao = f(1e+6, 'milhão', 'milhões', mil),
-    bilhao = f(1e+9, 'bilhão', 'bilhões', milhao),
-    trilhao = f(1e+12, 'trilhão', 'trilhões', bilhao);
+function decimal(str) {
+    
+}
 
-module.exports = function (num) {
-    if (typeof num === 'number' && !(num % 1) && num >= 0 && num < 1e+15) {
-        return trilhao(num);
-    } else if (num) {
-        throw new TypeError('Número inválido');
-    } else {
+var ext = function (numero) {
+    if (isNaN(numero)) {
+        return NaN;
+    }
+
+    var positivo = numero,
+        negativo = false;
+
+    if (numero < 0) {
+        positivo = -numero;
+        negativo = true;
+    }
+
+    if (numero % 1 || numero > 1e+42 || numero < -1e+42) {
         return undefined;
+    } else if (positivo < 1e+3) {
+        if (negativo) {
+            return 'menos ' + cem(parseInt(positivo));
+        } else {
+            return cem(parseInt(numero));
+        }
+    } else if (numero === 1e+3) {
+        return 'mil';
+    } else {
+        var str = typeof numero !== 'string';
+
+        if ((numero > 1e+15 || numero < -1e+15) && str) {
+            return undefined;
+        }
+
+        var numeros = [
+            'mil',
+            'milhões',
+            'bilhões',
+            'trilhões',
+            'quatrilhões',
+            'quintilhões',
+            'sextilhões',
+            'septilhões',
+            'octilhões',
+            'nonilhões',
+            'decilhões',
+            'undecilhões',
+            'duodecilhões'
+        ];
+
+        var ext = separar(numero.toString());
+
+        if (negativo) {
+            ext = ext.substring(1, ext.length);
+        }
+
+        var num = numeros.slice(0, ext.match(/\./g).length)
+            .reverse();
+
+        num.forEach(function (i) {
+            ext = ext.replace(/\./, ' ' + i + ' ');
+        });
+
+        ext = ext.replace(/(\b1\s.*)ões/g, '$1ão')
+            .replace(/000\s.[^\s]*|\b0+|\s000$/g, '')
+            .replace(/\s\s+/g, ' ')
+            .replace(/\s$/, '')
+            .replace(/\b(\d(00|\d?))$/g, 'e $1')
+            .replace(/\s(\d+\s[\wõã]+)$/g, ' e $1')
+            .replace(/\b1\smil\b/g, 'mil');
+
+        var lista = [];
+
+        ext.match(/\d+/g).forEach(function (i) {
+            if (/^0+$/.test(i)) {
+                lista.push(undefined);
+            } else {
+                lista.push(i);
+            }
+        });
+
+        lista.forEach(function (i) {
+            if (i) {
+                ext = ext.replace(i, cem(parseInt(i)));
+            } else {
+                ext = ext.replace(/0+/, '');
+            }
+        });
+
+        if (negativo) {
+            return 'menos ' + ext;
+        } else {
+            return ext;
+        }
     }
 };
