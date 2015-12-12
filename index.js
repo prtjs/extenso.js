@@ -108,7 +108,7 @@ function decimal(str) {
     
 }
 
-var ext = function (numero) {
+module.exports = function (numero) {
     if (isNaN(numero)) {
         return NaN;
     }
