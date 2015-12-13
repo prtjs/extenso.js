@@ -105,6 +105,13 @@ function separar(numero) {
 }
 
 module.exports = function (numero) {
+    var separado;
+
+    if (/^\d?\d?\d?(\.\d{3})+$/.test(numero)) {
+        separado = numero;
+        numero = numero.replace(/\./g, '');
+    }
+
     if (isNaN(numero)) {
         return NaN;
     }
@@ -125,7 +132,7 @@ module.exports = function (numero) {
         } else {
             return cem(parseInt(numero));
         }
-    } else if (numero === 1e+3) {
+    } else if (parseInt(numero) === 1e+3) {
         return 'mil';
     } else {
         var str = typeof numero !== 'string';
@@ -150,7 +157,13 @@ module.exports = function (numero) {
             'duodecilhões'
         ];
 
-        var ext = separar(numero.toString());
+        var ext;
+
+        if (separado) {
+            ext = separado;
+        } else {
+            ext = separar(numero.toString());
+        }
 
         if (negativo) {
             ext = ext.substring(1, ext.length);
