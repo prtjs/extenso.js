@@ -28,7 +28,7 @@ extenso(-1234); // menos mil duzentos e trinta e quatro
 extenso(-4321); // menos quatro mil trezentos e vinte e um
 ```
 
-Números com mais de 15 dígitos devem ser passados como uma *string*.
+Números com mais de 15 dígitos devem ser passados como *string*.
 
 ```js
 extenso('10000000000000001'); // dez quatrilhões e um
