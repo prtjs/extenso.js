@@ -1,4 +1,4 @@
-# [`extenso`](https://npmjs.com/extenso)
+# Extenso
 
 > Escrever um número por extenso.
 
@@ -18,18 +18,25 @@ var extenso = require('extenso');
 
 **Exemplos:**
 
+Escreve números de `-1e+42` a `1e+42`.
+
 ```js
-extenso(1); //=> 'um'
-extenso(2); //=> 'dois'
-extenso(4); //=> 'quatro'
-extenso(8); //=> 'oito'
-extenso(16); //=> 'dezesseis'
-extenso(32); //=> 'trinta e dois'
-extenso(64); //=> 'sessenta e quatro'
-extenso(128); //=> 'cento e vinte e oito'
-extenso(256); //=> 'duzentos e cinquenta e seis'
-extenso(512); //=> 'quinhentos e doze'
+extenso(1234); //=> 'mil duzentos e trinta e quatro'
 extenso(1024); //=> 'mil e vinte e quatro'
+```
+
+Use `string` números maiores que 999 trilhôes.
+
+```js
+extenso('4000000000000000'); //=> 'quatro quatrilhões'
+extenso('8000000000000000'); //=> 'oito quatrilhões'
+```
+
+Números negativos.
+
+```js
+extenso(-123); //=> 'menos cento e vinte e três'
+extenso(-256); //=> 'menos duzentos e cinquenta e seis'
 ```
 
 ## Licença
