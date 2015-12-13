@@ -163,7 +163,7 @@ module.exports = function (numero) {
             ext = ext.replace(/\./, ' ' + i + ' ');
         });
 
-        ext = ext.replace(/(\b1\s.*)ões/g, '$1ão')
+        ext = ext.replace(/(\b(0+)?1\s.[^\s]*)ões/g, '$1ão')
             .replace(/000\s.[^\s]*|\b0+|\s000$/g, '')
             .replace(/\s\s+/g, ' ')
             .replace(/\s$/, '')
