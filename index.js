@@ -105,9 +105,9 @@ function separar(numero) {
 }
 
 function extenso(numero) {
-    if (/\./.test(numero)) {
-        var separado;
+    var separado;
 
+    if (/\./.test(numero)) {
         if (/^\d?\d?\d?(\.\d{3})+$/.test(numero)) {
             separado = numero;
             numero = numero.replace(/\./g, '');
@@ -231,11 +231,12 @@ function decimal(numero) {
         '39': 'duodecilionésimo'
     };
 
-    var inteiro = parseInt(numero);
+    var inteiro = parseInt(numero),
+        len,
+        n;
 
     if (numero.length < 4) {
-        var len = numero.length,
-            n;
+        len = numero.length;
 
         if (len === 1) {
             n = cem(inteiro) + ' décimo';
@@ -251,10 +252,10 @@ function decimal(numero) {
             return n + 's';
         }
     } else {
-        var len = numero.length,
-            tipo = len % 3,
-            ext = extenso(inteiro),
-            n;
+        len = numero.length;
+
+        var tipo = len % 3,
+            ext = extenso(inteiro);
 
         if (tipo === 0) {
             n = numeros[len];
