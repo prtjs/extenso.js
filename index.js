@@ -293,7 +293,9 @@ module.exports = function (numero) {
         var inte = extenso(s[0]),
             nint = decimal(s[1]);
 
-        if (numero === 0) {
+        if (/^0+$/.test(s[1])) {
+            return inte;
+        } else if (inte === 'zero') {
             return nint;
         } else {
             if (inte === 'um') {
