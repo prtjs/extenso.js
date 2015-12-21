@@ -19,19 +19,24 @@ var extenso = require('extenso');
 **Exemplos:**
 
 ```js
-extenso(1234); // mil duzentos e trinta e quatro
-extenso(4321); // quatro mil trezentos e vinte e um
+extenso(123); //=> 'cento e vinte e três'
+extenso(-123); //=> 'menos cento e vinte e três'
 ```
 
 ```js
-extenso(-1234); // menos mil duzentos e trinta e quatro
-extenso(-4321); // menos quatro mil trezentos e vinte e um
+extenso('1.000.000'); //=> 'um milhâo'
 ```
 
-Números com mais de 15 dígitos devem ser passados como *string*.
+```js
+extenso('1,0'); //=> 'um'
+extenso('0,5'); //=> 'cinco décimos'
+extenso('1,5'); //=> 'um inteiro e cinco décimos'
+```
+
+Números com mais de 15 dígitos **devem** ser passados como *string*:
 
 ```js
-extenso('10000000000000001'); // dez quatrilhões e um
+extenso('10000000000000001'); //=> 'dez quatrilhões e um'
 ```
 
 ## Licença
