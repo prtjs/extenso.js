@@ -104,12 +104,16 @@ function separar(numero) {
     return a.join('.');
 }
 
-module.exports = function (numero) {
-    var separado;
+function extenso(numero) {
+    if (/\./.test(numero)) {
+        var separado;
 
-    if (/^\d?\d?\d?(\.\d{3})+$/.test(numero)) {
-        separado = numero;
-        numero = numero.replace(/\./g, '');
+        if (/^\d?\d?\d?(\.\d{3})+$/.test(numero)) {
+            separado = numero;
+            numero = numero.replace(/\./g, '');
+        } else {
+            return undefined;
+        }
     }
 
     if (isNaN(numero)) {
@@ -207,5 +211,97 @@ module.exports = function (numero) {
         } else {
             return ext;
         }
+    }
+}
+
+function decimal(numero) {
+    var numeros = {
+        '3': 'milésimo',
+        '6': 'milionésimo',
+        '9': 'bilionésimo',
+        '12': 'trilionésimo',
+        '15': 'quatrilionésimo',
+        '18': 'quintilionésimo',
+        '21': 'sextilionésimo',
+        '24': 'septilionésimo',
+        '27': 'octilionésimo',
+        '30': 'nonilionésimo',
+        '33': 'decilionésimo',
+        '36': 'undecilionésimo',
+        '39': 'duodecilionésimo'
+    };
+
+    var inteiro = parseInt(numero);
+
+    if (numero.length < 4) {
+        var len = numero.length,
+            n;
+
+        if (len === 1) {
+            n = cem(inteiro) + ' décimo';
+        } else if (len === 2) {
+            n = cem(inteiro) + ' centésimo';
+        } else {
+            n = cem(inteiro) + ' milésimo';
+        }
+
+        if (inteiro === 1) {
+            return n;
+        } else {
+            return n + 's';
+        }
+    } else {
+        var len = numero.length,
+            tipo = len % 3,
+            ext = extenso(inteiro),
+            n;
+
+        if (tipo === 0) {
+            n = numeros[len];
+
+            if (inteiro === 1) {
+                return ext + ' ' + n;
+            } else {
+                return ext + ' ' + n + 's';
+            }
+        } else if (tipo === 1) {
+            n = numeros[len - 1];
+
+            if (inteiro === 1) {
+                return ext + ' décimo de ' + n;
+            } else {
+                return ext + ' décimos de ' + n + 's';
+            }
+        } else {
+            n = numeros[len - 2];
+
+            if (inteiro === 1) {
+                return ext + ' centésimo de ' + n;
+            } else {
+                return ext + ' centésimos de ' + n + 's';
+            }
+        }
+    }
+}
+
+module.exports = function (numero) {
+    if (/^[\d\.]+,\d+$/.test(numero)) {
+        var s = numero.toString()
+            .split(',');
+
+        var inte = extenso(s[0]),
+            nint = decimal(s[1]);
+
+        if (numero === 0) {
+            return nint;
+        } else {
+            if (inte === 'um') {
+                return 'um inteiro e ' + nint;
+            } else {
+                return inte + ' inteiros e ' + nint;
+            }
+        }
+    } else {
+        return extenso(numero);
     }
 };
