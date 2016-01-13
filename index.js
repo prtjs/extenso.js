@@ -286,6 +286,14 @@ function decimal(numero) {
 }
 
 module.exports = function (numero) {
+    if (typeof numero === 'string' && !isNaN(numero)) {
+        numero = numero.trim();
+
+        if (/^\d+e(\-|\+)?\d+$/i.test(numero)) {
+            numero = eval(numero);
+        }
+    }
+
     if (/^[\d\.]+,\d+$/.test(numero)) {
         var s = numero.toString()
             .split(',');
