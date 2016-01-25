@@ -296,6 +296,10 @@ module.exports = function (numero) {
                 numero = parseFloat(numero);
             }
         }
+
+        if (/^0x[\dA-F]+$/i.test(numero)) {
+            numero = parseInt(numero);
+        }
     }
 
     if (/^[\d\.]+,\d+$/.test(numero)) {
