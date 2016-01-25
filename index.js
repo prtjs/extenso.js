@@ -290,7 +290,11 @@ module.exports = function (numero) {
         numero = numero.trim();
 
         if (/^\d+(\.\d+)?e(\-|\+)?\d+$/i.test(numero)) {
-            numero = eval(numero);
+            if (numero % 1 === 0) {
+                numero = parseFloat(numero);
+            } else {
+                numero = parseFloat(numero);
+            }
         }
     }
 
