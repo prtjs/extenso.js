@@ -289,7 +289,7 @@ module.exports = function (numero) {
     if (typeof numero === 'string' && !isNaN(numero)) {
         numero = numero.trim();
 
-        if (/^\d+(\.\d+)?e(\-|\+)?\d+$/i.test(numero)) {
+        if (/^\d+(\.\d+)?e(-|\+)?\d+$/i.test(numero)) {
             if (numero % 1 === 0) {
                 numero = parseFloat(numero);
             } else {
