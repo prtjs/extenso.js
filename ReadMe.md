@@ -39,7 +39,7 @@ extenso(1, {feminino: true}); //=> 'uma'
 extenso(2, {feminino: true}); //=> 'duas'
 ```
 
-Números com mais de 15 dígitos **devem** ser passados como *string*:
+Números com mais de 15 dígitos devem ser passados como *string*:
 
 ```js
 extenso('10000000000000001'); //=> 'dez quatrilhões e um'
