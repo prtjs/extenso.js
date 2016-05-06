@@ -1,4 +1,4 @@
-# [`extenso`](https://npmjs.com/extenso)
+# extenso
 
 > Escrever um número por extenso.
 
@@ -7,7 +7,7 @@
 Com [NPM](https://github.com/npm/npm):
 
 ```
-$ npm install extenso
+$ npm i --save extenso
 ```
 
 ## Uso
@@ -16,7 +16,7 @@ $ npm install extenso
 var extenso = require('extenso');
 ```
 
-**Exemplos:**
+Veja alguns exemplos:
 
 ```js
 extenso(123); //=> 'cento e vinte e três'
