@@ -1,6 +1,6 @@
 'use strict';
 
-function um(numero) {
+function um(numero, fem) {
     var numeros = {
         '0': 'zero',
         '1': 'um',
@@ -14,12 +14,18 @@ function um(numero) {
         '9': 'nove'
     };
 
+    if (fem) {
+        numeros[1] = 'uma';
+    } else if (fem) {
+        numeros[2] = 'duas';
+    }
+
     return numeros[numero];
 }
 
-function dez(numero) {
+function dez(numero, fem) {
     if (numero < 10) {
-        return um(numero);
+        return um(numero, fem);
     }
 
     var numeros = {
@@ -52,14 +58,14 @@ function dez(numero) {
         if (numero % 10 === 0) {
             return numeros[numero];
         } else {
-            return numeros[inicio] + ' e ' + um(fim);
+            return numeros[inicio] + ' e ' + um(fim, fem);
         }
     }
 }
 
-function cem(numero) {
+function cem(numero, fem) {
     if (numero < 100) {
-        return dez(numero);
+        return dez(numero, fem);
     } else if (numero === 100) {
         return 'cem';
     } else {
@@ -81,7 +87,7 @@ function cem(numero) {
         if (numero % 100 === 0) {
             return numeros[numero];
         } else {
-            return numeros[inicio] + ' e ' + dez(fim);
+            return numeros[inicio] + ' e ' + dez(fim, fem);
         }
     }
 }
@@ -104,7 +110,7 @@ function separar(numero) {
     return a.join('.');
 }
 
-function extenso(numero) {
+function extenso(numero, fem) {
     var separado;
 
     if (/\./.test(numero)) {
@@ -132,9 +138,9 @@ function extenso(numero) {
         return undefined;
     } else if (positivo < 1e+3) {
         if (negativo) {
-            return 'menos ' + cem(parseInt(positivo));
+            return 'menos ' + cem(parseInt(positivo), fem);
         } else {
-            return cem(parseInt(numero));
+            return cem(parseInt(numero), fem);
         }
     } else if (parseInt(numero) === 1e+3) {
         return 'mil';
@@ -285,15 +291,36 @@ function decimal(numero) {
     }
 }
 
-module.exports = function (numero) {
+module.exports = function (numero, opcoes) {
+    if (isNaN(numero)) {
+        if (!/\d+,\d+/.test(numero)) {
+            return NaN;
+        }
+    }
+
+    opcoes = opcoes || {};
+
+    var fem;
+
+    if (opcoes.feminino) {
+        fem = true;
+    }
+
     if (typeof numero === 'string' && !isNaN(numero)) {
         numero = numero.trim();
 
-        if (/^\d+(\.\d+)?e(-|\+)?\d+$/i.test(numero)) {
+        var re = /^\d+(\.\d+)?e(-|\+)?\d+$/i;
+
+        if (re.test(numero)) {
+            if (numero > 1e+15 || numero < 1e-15) {
+                return undefined;
+            }
+
             if (numero % 1 === 0) {
-                numero = parseFloat(numero);
+                numero = parseInt(new Number(numero))
+                    .toString();
             } else {
-                numero = parseFloat(numero);
+                return undefined;
             }
         }
 
@@ -321,6 +348,6 @@ module.exports = function (numero) {
             }
         }
     } else {
-        return extenso(numero);
+        return extenso(numero, fem);
     }
 };
