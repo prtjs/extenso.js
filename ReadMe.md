@@ -1,4 +1,4 @@
-# extenso
+# extenso [![Build Status](https://travis-ci.org/theuves/extenso.svg?branch=master)](https://travis-ci.org/theuves/extenso)
 
 > Escrever um número por extenso.
 
