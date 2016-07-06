@@ -3,8 +3,8 @@
 function um(numero, fem) {
     var numeros = {
         '0': 'zero',
-        '1': 'um',
-        '2': 'dois',
+        '1': !fem ? 'um' : 'uma',
+        '2': !fem ? 'dois' : 'duas',
         '3': 'três',
         '4': 'quatro',
         '5': 'cinco',
@@ -13,12 +13,6 @@ function um(numero, fem) {
         '8': 'oito',
         '9': 'nove'
     };
-
-    if (fem) {
-        numeros[1] = 'uma';
-    } else if (fem) {
-        numeros[2] = 'duas';
-    }
 
     return numeros[numero];
 }
