@@ -7,6 +7,12 @@
         "type": "git",
         "url": "git://github.com/theuves/extenso.git"
     },
+    "devDependencies": {
+      "ava": "^0.15.2"
+    },
+    "scripts": {
+      "test": "ava"
+    },
     "author": "Matheus Alves",
     "license": "MIT"
 }
