@@ -292,7 +292,7 @@ function decimal(numero) {
 }
 
 module.exports = function (numero, opcoes) {
-    if (isNaN(numero)) {
+    if (isNaN(numero) && !/^\d+((\.\d+)+)?$/.test(numero)) {
         if (!/\d+,\d+/.test(numero)) {
             return NaN;
         }
