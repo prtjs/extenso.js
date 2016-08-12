@@ -4,7 +4,7 @@
 
 ## Instalação
 
-Com [NPM](https://github.com/npm/npm):
+Com [`npm`](https://github.com/npm/npm) faça:
 
 ```
 $ npm i --save extenso
