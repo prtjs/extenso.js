@@ -1,14 +1,13 @@
-# extenso [![Build Status](https://travis-ci.org/theuves/extenso.svg?branch=master)](https://travis-ci.org/theuves/extenso)
+# extenso
 
 > Escrever um número por extenso.
 
-## Instalação
+Instale-o com `npm install --save extenso`.
 
-Com [`npm`](https://github.com/npm/npm) faça:
+## Caracteristicas
 
-```
-$ npm i --save extenso
-```
+ - aceita número de até 42 digitos
+ - aceita números negativos e decimais
 
 ## Uso
 
@@ -16,7 +15,18 @@ $ npm i --save extenso
 var extenso = require('extenso');
 ```
 
-Veja alguns exemplos:
+### extenso(*número*[, *opções*])
+
+Onde `número` deve ser um número válido (*number* ou *string*).
+
+E `opções` pode ser:
+
+* `digitos` - para retornar uma *array* com a escrita de cada dígito
+* `feminino` - para retornar números escritos no feminino
+
+## Exemplos
+
+Veja alguns exemplos abaixo:
 
 ```js
 extenso(123); //=> 'cento e vinte e três'
@@ -39,11 +49,15 @@ extenso(1, {feminino: true}); //=> 'uma'
 extenso(2, {feminino: true}); //=> 'duas'
 ```
 
-Números com mais de 15 dígitos devem ser passados como *string*:
+Números com mais de 15 dígitos devem ser passados como uma *string*:
 
 ```js
 extenso('10000000000000001'); //=> 'dez quatrilhões e um'
 ```
+
+## Observações
+
+Use `,` para separar decimais e `.` para separar milhares.
 
 ## Licença
 
