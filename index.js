@@ -129,7 +129,7 @@ function extenso(numero, fem) {
         negativo = true;
     }
 
-    if (numero % 1 || numero > 1e+42 || numero < -1e+42) {
+    if (numero % 1 || numero > 1e+66 || numero < -1e+66) {
         return undefined;
     } else if (positivo < 1e+3) {
         if (negativo) {
@@ -159,7 +159,15 @@ function extenso(numero, fem) {
             'nonilhões',
             'decilhões',
             'undecilhões',
-            'duodecilhões'
+            'duodecilhões',
+            'tredecilhões',
+            'quattuordecilhões',
+            'quindecilhões',
+            'sexdecilhões',
+            'septendecilhões',
+            'octodecilhões',
+            'novendecilhões',
+            'vigintilhões'
         ];
 
         var ext;
@@ -229,7 +237,15 @@ function decimal(numero) {
         '30': 'nonilionésimo',
         '33': 'decilionésimo',
         '36': 'undecilionésimo',
-        '39': 'duodecilionésimo'
+        '39': 'duodecilionésimo',
+        '42': 'tredecilionésimo',
+        '45': 'quattuordecilionésimo',
+        '48': 'quindecilionésimo',
+        '51': 'sexdecilionésimo',
+        '54': 'septendecilionésimo',
+        '57': 'octodecilionésimo',
+        '60': 'novendecilionésimo',
+        '63': 'vigintilionésimo'
     };
 
     var inteiro = parseInt(numero),
@@ -286,7 +302,8 @@ function decimal(numero) {
     }
 }
 
-module.exports = function (numero, opcoes) {
+// module.exports = function (numero, opcoes) {
+var ext = function (numero, opcoes) {
     if (isNaN(numero) && !/^\d+((\.\d+)+)?$/.test(numero)) {
         if (!/\d+,\d+/.test(numero)) {
             return NaN;
