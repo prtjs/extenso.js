@@ -9,8 +9,8 @@ Instale-o com `npm install --save extenso`.
 
 ## Caracteristicas
 
- - aceita número de até 42 digitos
- - aceita números negativos e decimais
+* aceita número de até 66 digitos
+* aceita números negativos e decimais
 
 ## Uso
 
