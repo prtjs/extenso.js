@@ -1,11 +1,11 @@
-# extenso.js
+# Extenso.js
 
 ![Build Status](https://api.travis-ci.org/theuves/extenso.svg)
 ![NPM version](https://badge.fury.io/js/extenso.svg)
 
 > Escrever um número por extenso.
 
-Instale-o com `npm i extenso` ou `bower i extenso`.
+Instale-o com `npm i extenso` ou `bower i extenso.js`.
 
 ## Caracteristicas
 
