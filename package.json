@@ -5,7 +5,7 @@
   "main": "src/extenso.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/theuves/extenso.git"
+    "url": "git://github.com/theuves/extenso.js.git"
   },
   "devDependencies": {
     "ava": "^0.15.2",
