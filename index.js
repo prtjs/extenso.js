@@ -3,8 +3,8 @@
 function um(numero, fem) {
     var numeros = {
         '0': 'zero',
-        '1': !fem ? 'um' : 'uma',
-        '2': !fem ? 'dois' : 'duas',
+        '1': (!fem ? 'um' : 'uma'),
+        '2': (!fem ? 'dois' : 'duas'),
         '3': 'três',
         '4': 'quatro',
         '5': 'cinco',
@@ -86,12 +86,13 @@ function cem(numero, fem) {
     }
 }
 
-function separar(numero) {
-    function reverse(str) {
-        str = str.toString();
-        return str.split('').reverse().join('');
-    }
+function reverse(str) {
+    str = str.toString();
 
+    return str.split('').reverse().join('');
+}
+
+function separar(numero) {
     var rev = reverse(numero).match(/.?.?.?/g);
     rev = rev.slice(0, rev.length - 1).reverse();
 
@@ -311,8 +312,7 @@ module.exports = function (numero, opcoes) {
             }
 
             if (numero % 1 === 0) {
-                numero = parseInt(new Number(numero))
-                    .toString();
+                numero = parseInt(numero).toString();
             } else {
                 return undefined;
             }
