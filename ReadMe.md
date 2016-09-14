@@ -21,8 +21,8 @@ Onde `número` deve ser um número válido (*number* ou *string*).
 
 E `opções` pode ser:
 
-* `digitos` - para retornar uma *array* com a escrita de cada dígito
 * `feminino` - para retornar números escritos no feminino
+ * Para *um* (*uma*) e *dois* (*duas*).
 
 ## Exemplos
 
