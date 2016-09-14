@@ -1,18 +1,20 @@
 {
-    "name": "extenso",
-    "version": "0.4.1",
-    "description": "Escrever um número por extenso.",
-    "main": "index.js",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/theuves/extenso.git"
-    },
-    "devDependencies": {
-      "ava": "^0.15.2"
-    },
-    "scripts": {
-      "test": "ava"
-    },
-    "author": "Matheus Alves",
-    "license": "MIT"
+  "name": "extenso",
+  "version": "0.4.1",
+  "description": "Escrever um número por extenso.",
+  "main": "src/extenso.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/theuves/extenso.git"
+  },
+  "devDependencies": {
+    "ava": "^0.15.2",
+    "browserify": "^13.0.1"
+  },
+  "scripts": {
+    "test": "ava",
+    "build": "browserify src/extenso.js -s extenso -o dist/extenso.js"
+  },
+  "author": "Matheus Alves",
+  "license": "MIT"
 }
