@@ -1,4 +1,4 @@
-# extenso
+# extenso.js
 
 ![Build Status](https://api.travis-ci.org/theuves/extenso.svg)
 ![NPM version](https://badge.fury.io/js/extenso.svg)
