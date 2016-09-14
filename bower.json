@@ -1,0 +1,24 @@
+{
+  "name": "extenso",
+  "version": "0.4.1",
+  "description": "Escrever um número por extenso.",
+  "main": "dist/extenso.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/theuves/extenso.git"
+  },
+  "ignore": [
+    "src/extenso.js",
+    ".editorconfig",
+    ".gitignore",
+    ".npmignore",
+    ".travis.yml"
+    "package.json",
+    "test.js",
+  ],
+  "authors": [{
+    "name": "Matheus Alves",
+    "email": "theuves@gmail.com"
+  }],
+  "license": "MIT"
+}
