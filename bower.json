@@ -1,5 +1,5 @@
 {
-  "name": "extenso",
+  "name": "extenso.js",
   "version": "0.4.1",
   "description": "Escrever um número por extenso.",
   "main": "dist/extenso.js",
