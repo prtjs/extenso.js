@@ -302,8 +302,7 @@ function decimal(numero) {
     }
 }
 
-// module.exports = function (numero, opcoes) {
-var ext = function (numero, opcoes) {
+module.exports = function (numero, opcoes) {
     if (isNaN(numero) && !/^\d+((\.\d+)+)?$/.test(numero)) {
         if (!/\d+,\d+/.test(numero)) {
             return NaN;
