@@ -4,6 +4,7 @@ import extenso from './';
 test('extenso', t => {
     t.is(extenso(123), 'cento e vinte e três');
     t.is(extenso(-123), 'menos cento e vinte e três');
+    t.is(extenso(1000000), 'um milhão');
     t.is(extenso('1000000'), 'um milhão');
     t.is(extenso('1.000.000'), 'um milhão');
     t.is(extenso('1,0'), 'um');
