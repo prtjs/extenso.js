@@ -12,9 +12,9 @@
     ".editorconfig",
     ".gitignore",
     ".npmignore",
-    ".travis.yml"
+    ".travis.yml",
     "package.json",
-    "test.js",
+    "test.js"
   ],
   "authors": [{
     "name": "Matheus Alves",
