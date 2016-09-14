@@ -1,5 +1,8 @@
 # extenso
 
+![Build Status](https://api.travis-ci.org/theuves/extenso.svg)
+![NPM version](https://badge.fury.io/js/extenso.svg)
+
 > Escrever um número por extenso.
 
 Instale-o com `npm install --save extenso`.
@@ -10,6 +13,8 @@ Instale-o com `npm install --save extenso`.
  - aceita números negativos e decimais
 
 ## Uso
+
+Exija a dependência com:
 
 ```js
 var extenso = require('extenso');
@@ -22,7 +27,7 @@ Onde `número` deve ser um número válido (*number* ou *string*).
 E `opções` pode ser:
 
 * `feminino` - para retornar números escritos no feminino
- * Para *um* (*uma*) e *dois* (*duas*).
+ * para *um* (*uma*) e *dois* (*duas*).
 
 ## Exemplos
 
@@ -49,7 +54,7 @@ extenso(1, {feminino: true}); //=> 'uma'
 extenso(2, {feminino: true}); //=> 'duas'
 ```
 
-Números com mais de 15 dígitos DEVEM ser passados como uma *string*:
+Números com mais de 15 dígitos **devem** ser passados como *string*:
 
 ```js
 extenso('10000000000000001'); //=> 'dez quatrilhões e um'
@@ -61,4 +66,4 @@ Use `,` para separar decimais e `.` para separar milhares.
 
 ## Licença
 
-[MIT](http://theuves.mit-license.org/)
+MIT ([veja o conteúdo](https://git.io/extenso))
