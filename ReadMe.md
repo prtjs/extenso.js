@@ -5,7 +5,7 @@
 
 > Escrever um número por extenso.
 
-Instale-o com `npm install --save extenso`.
+Instale-o com `npm i extenso` ou `bower i extenso`.
 
 ## Caracteristicas
 
@@ -39,6 +39,7 @@ extenso(-123); //=> 'menos cento e vinte e três'
 ```
 
 ```js
+extenso(1000000); //=> 'um milhâo'
 extenso('1000000'); //=> 'um milhâo'
 extenso('1.000.000'); //=> 'um milhâo'
 ```
