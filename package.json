@@ -1,7 +1,7 @@
 {
   "name": "extenso",
   "version": "0.4.3",
-  "description": "Escrever um número por extenso.",
+  "description": "Escrever números por extenso.",
   "main": "src/extenso.js",
   "repository": {
     "type": "git",
