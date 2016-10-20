@@ -9,7 +9,7 @@ Instale-o com `npm i extenso` ou `bower i extenso.js`.
 
 ## Caracteristicas
 
-* aceita número de até 66 digitos
+* aceita número de até **66** digitos
 * aceita números negativos e decimais
 
 ## Uso
