@@ -272,7 +272,7 @@ function decimal(numero) {
         len = numero.length;
 
         var tipo = len % 3,
-            ext = extenso(inteiro);
+            ext = extenso(numero);
 
         if (tipo === 0) {
             n = numeros[len];
