@@ -69,7 +69,7 @@ function cem(numero, fem) {
             '300': 'trezentos',
             '400': 'quatrocentos',
             '500': 'quinhentos',
-            '600': 'seissentos',
+            '600': 'seiscentos',
             '700': 'setecentos',
             '800': 'oitocentos',
             '900': 'novecentos'
