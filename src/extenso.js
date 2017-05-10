@@ -105,15 +105,15 @@ function escreverInteiro(numero, feminino) {
   if (/\./.test(numero)) {
 
     // Se a sua formatação for válida.
-    if (/^\d{1,3}(\.\d{3})+$/.test(numero)) {
+    if (/^\-?\d{1,3}(\.\d{3})+$/.test(numero)) {
       formatado = numero;
-
-      // Desformata o número.
-      numero = numero.replace(/\./g, "");
     } else {
       return undefined;
     }
   }
+
+  // Desformata o número.
+  numero = numero.replace(/\./g, "");
 
   // Se não for um número válido.
   if (isNaN(numero)) {
@@ -121,29 +121,24 @@ function escreverInteiro(numero, feminino) {
   }
 
   // Se for negativo.
-  var ehNegativo = numero < 0;
+  var ehNegativo = numero < 0
+
+  // Transforma-o em positivo.
+  numero = numero.replace(/^\-/, "")
 
   // Se não for inteiro ou ultrapassar
   // o valor máximo exigido (de até 66 dígitos).
-  if (numero % 1 || numero > 1e+66 || numero < -1e+66) {
+  if (numero % 1 || numero > 1e+66) {
     return undefined;
   } else if (numero < 1000) { // Se for menor que mil.
+    numero = ateh999(parseInt(numero), feminino);
 
-    // (Força-o a ser positivo e inteiro.)
-    return ateh999(Math.abs(parseInt(numero)), feminino);
+    return ehNegativo
+      ? $("menos %s", numero) // Negativo.
+      : numero; // Positivo
   } else if (parseInt(numero) === 1000) {
     return "mil";
   } else {
-
-    // Se tiver mais de 15 dígitos e
-    // for uma string.
-    if (
-      numero > 1e+15
-      || numero < -1e+15
-      && typeof numero !== "string"
-    ) {
-      return undefined;
-    }
 
     // Informações da escrita dos
     // números obtidas em
@@ -315,6 +310,9 @@ function escreverDecimal(numero) {
 
 module.exports = function (numero, opcoes) {
 
+  // Sempre string.
+  numero = numero.toString();
+
   // Se nenhum número for informado.
   if (!numero) {
     return undefined;
@@ -341,12 +339,18 @@ module.exports = function (numero, opcoes) {
 
   // Escreve por extenso a parte inteira
   // e decimal do número.
-  var int = escreverInteiro(separado[0], feminino);
+  var int = escreverInteiro(separado[0]);
   var dec = escreverDecimal(separado[1]);
 
-  // Se o número inteiro for igual a zero,
-  // então retorna somente decimal.
-  if (int === "zero") {
+  // Se o número decimal informado for igual
+  // a zero, retorna somente o número inteiro, e
+  // caso o inteiro seja igual a zero retorna
+  // somente o decimal.
+  if (/^0+$/.test(separado[1])) {
+    return feminino
+      ? escreverInteiro(separado[0], true)
+      : int;
+  } else if (int === "zero") {
     return dec;
   }
 
