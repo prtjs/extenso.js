@@ -1,365 +1,364 @@
-'use strict';
+"use strict";
 
-function um(numero, fem) {
-    var numeros = {
-        '0': 'zero',
-        '1': (!fem ? 'um' : 'uma'),
-        '2': (!fem ? 'dois' : 'duas'),
-        '3': 'três',
-        '4': 'quatro',
-        '5': 'cinco',
-        '6': 'seis',
-        '7': 'sete',
-        '8': 'oito',
-        '9': 'nove'
-    };
+// Todos os comentários,
+// nome de variáveis e funções devem
+// estar na língua portuguesa.
 
-    return numeros[numero];
+var $ = require("s");
+var formatar = require("comman-number");
+
+// Escreve números de 0 a 9.
+function ateh9(numero, feminino) {
+  var porExtenso = {
+    "0": "zero",
+    "1": (!feminino ? "um" : "uma"),
+    "2": (!feminino ? "dois" : "duas"),
+    "3": "três",
+    "4": "quatro",
+    "5": "cinco",
+    "6": "seis",
+    "7": "sete",
+    "8": "oito",
+    "9": "nove"
+  };
+
+  return porExtenso[numero];
 }
 
-function dez(numero, fem) {
-    if (numero < 10) {
-        return um(numero, fem);
-    }
+// Escreve números de 0 a 99.
+function ateh99(numero, feminino) {
+  if (numero < 10) {
+    return ateh9(numero, feminino);
+  }
 
-    var numeros = {
-        '10': 'dez',
-        '11': 'onze',
-        '12': 'doze',
-        '13': 'treze',
-        '14': 'quatorze',
-        '15': 'quinze',
-        '16': 'dezesseis',
-        '17': 'dezessete',
-        '18': 'dezoito',
-        '19': 'dezenove',
-        '20': 'vinte',
-        '30': 'trinta',
-        '40': 'quarenta',
-        '50': 'cinquenta',
-        '60': 'sessenta',
-        '70': 'setenta',
-        '80': 'oitenta',
-        '90': 'noventa'
-    };
+  var porExtenso = {
+    "10": "dez",
+    "11": "onze",
+    "12": "doze",
+    "13": "treze",
+    "14": "quatorze",
+    "15": "quinze",
+    "16": "dezesseis",
+    "17": "dezessete",
+    "18": "dezoito",
+    "19": "dezenove",
+    "20": "vinte",
+    "30": "trinta",
+    "40": "quarenta",
+    "50": "cinquenta",
+    "60": "sessenta",
+    "70": "setenta",
+    "80": "oitenta",
+    "90": "noventa"
+  };
 
-    var inicio = numero - numero % 10,
-        fim = numero % 10;
+  if (numero < 20) {
+    return porExtenso[numero];
+  } else if (!(numero % 10)) {
+    return porExtenso[numero];
+  } else {
+    var dezenas = porExtenso[numero - numero % 10];
+    var unidades = ateh9(numero % 10, feminino);
 
-    if (numero < 20) {
-        return numeros[numero];
+    return $("%s e %s", dezenas, unidades);
+  }
+}
+
+// Escreve números de 0 a 999.
+function ateh999(numero, feminino) {
+  if (numero < 100) {
+    return ateh99(numero, feminino);
+  } else if (numero === 100) {
+    return "cem";
+  }
+
+  var porExtenso = {
+    "100": "cento",
+    "200": "duzentos",
+    "300": "trezentos",
+    "400": "quatrocentos",
+    "500": "quinhentos",
+    "600": "seiscentos",
+    "700": "setecentos",
+    "800": "oitocentos",
+    "900": "novecentos"
+  };
+
+  if (!(numero % 100)) {
+    return porExtenso[numero];
+  } else {
+    var dezenas = porExtenso[numero - numero % 100];
+    var unidades = ateh99(numero % 100, feminino);
+
+    return $("%s e %s", dezenas, unidades);
+  }
+}
+
+// Escreve números inteiros e negativos
+// por extenso.
+function escreverInteiro(numero, feminino) {
+
+  // Futuramente vai armazenar o número formatado.
+  var formatado;
+
+  // Se o número já estiver formatado.
+  if (/\./.test(numero)) {
+
+    // Se a sua formatação for válida.
+    if (/^\d{1,3}(\.\d{3})+$/.test(numero)) {
+      formatado = numero;
+
+      // Desformata o número.
+      numero = numero.replace(/\./g, "");
     } else {
-        if (numero % 10 === 0) {
-            return numeros[numero];
-        } else {
-            return numeros[inicio] + ' e ' + um(fim, fem);
-        }
+      return undefined;
     }
-}
+  }
 
-function cem(numero, fem) {
-    if (numero < 100) {
-        return dez(numero, fem);
-    } else if (numero === 100) {
-        return 'cem';
-    } else {
-        var numeros = {
-            '100': 'cento',
-            '200': 'duzentos',
-            '300': 'trezentos',
-            '400': 'quatrocentos',
-            '500': 'quinhentos',
-            '600': 'seiscentos',
-            '700': 'setecentos',
-            '800': 'oitocentos',
-            '900': 'novecentos'
-        };
+  // Se não for um número válido.
+  if (isNaN(numero)) {
+    return NaN;
+  }
 
-        var inicio = numero - numero % 100,
-            fim = numero % 100;
+  // Se for negativo.
+  var ehNegativo = numero < 0;
 
-        if (numero % 100 === 0) {
-            return numeros[numero];
-        } else {
-            return numeros[inicio] + ' e ' + dez(fim, fem);
-        }
+  // Se não for inteiro ou ultrapassar
+  // o valor máximo exigido (de até 66 dígitos).
+  if (numero % 1 || numero > 1e+66 || numero < -1e+66) {
+    return undefined;
+  } else if (numero < 1000) { // Se for menor que mil.
+
+    // (Força-o a ser positivo e inteiro.)
+    return ateh999(Math.abs(parseInt(numero)), feminino);
+  } else if (parseInt(numero) === 1000) {
+    return "mil";
+  } else {
+
+    // Se tiver mais de 15 dígitos e
+    // for uma string.
+    if (
+      numero > 1e+15
+      || numero < -1e+15
+      && typeof numero !== "string"
+    ) {
+      return undefined;
     }
-}
 
-function reverse(str) {
-    str = str.toString();
+    // Informações da escrita dos
+    // números obtidas em
+    // <https://goo.gl/f4HrRW>.
+    var milhares = [
+      "mil",
+      "milhões",
+      "bilhões",
+      "trilhões",
+      "quatrilhões",
+      "quintilhões",
+      "sextilhões",
+      "septilhões",
+      "octilhões",
+      "nonilhões",
+      "decilhões",
+      "undecilhões",
+      "duodecilhões",
+      "tredecilhões",
+      "quattuordecilhões",
+      "quindecilhões",
+      "sexdecilhões",
+      "septendecilhões",
+      "octodecilhões",
+      "novendecilhões",
+      "vigintilhões"
+    ];
 
-    return str.split('').reverse().join('');
-}
+    // Formatar.
+    numero = formatado
+      ? formatado
+      : formatar(numero.toString(), ".");
 
-function separar(numero) {
-    var rev = reverse(numero).match(/.?.?.?/g);
-    rev = rev.slice(0, rev.length - 1).reverse();
+    // Deixa-o positivo.
+    numero = numero.replace(/^-?/, "");
 
-    var a = [];
+    //
+    // Separa milhares do número.
+    //
+    // Exemplos:
+    //  - "1.000" => ["mil"]
+    //  - "1.234.567" => ["milhões", "mil"]
+    //
+    milhares = milhares
+      .slice(0, numero.split(".").length - 1)
+      .reverse();
 
-    rev.forEach(function (i) {
-        a.push(reverse(i));
+    //
+    // Adiciona milhares no número.
+    //
+    // Exemplos:
+    //  - "1.000" => "1 mil 000"
+    //  - "123.456.789" => "123 milhões 456 mil 789"
+    //
+    numero = numero.split(".").map(function (inteiro, indice) {
+      return milhares[indice]
+        ? $("%s %s", inteiro, milhares[indice])
+        : inteiro;
+    }).join(" ");
+
+    // Singulariza. Por exemplo, em
+    // "1 milhões 000 mil 000", o "1 milhões"
+    // será substituído por "1 milhão".
+    numero = numero.replace(/(\b0*?1\s.[^\s]*)ões/g, "$1ão");
+
+    // Remove os zeros e as casas que não são
+    // escritas. Por exemplo,
+    // "1 bilhão 000 milhões 000 mil 001", será
+    // substituído por "1 bilhão 1".
+    numero = numero.replace(/\s?000(.[^\s]*)?|\b0+/g, "");
+
+    //
+    // Adiciona conjunção "e" entre a última casa
+    // e o último número.
+    //
+    // É adicionado somente se o último número for:
+    //  - Menor que 100.
+    //  - Maior que 100 e divisível por 10.
+    //
+    numero = numero.replace(/\b(\d(\d|00)?)$/g, "e $1");
+
+    //
+    // Adiciona conjunção "e".
+    //
+    // Por exemplo:
+    //  - "3 milhões 14 mil" => "3 milhões e 14 mil"
+    //  - "1 milhão" (Aqui não muda nada.)
+    //
+    numero = numero.replace(/\s(\d+\s[\wõã]+)$/g, " e $1");
+
+    // Subistitui "1 mil" por "mil" em todos os casos.
+    numero = numero.replace(/\b1\smil\b/g, "mil");
+
+    // Escreve os números.
+    numero = numero.replace(/\d+/g, function (inteiro) {
+      return ateh999(parseInt(inteiro));
     });
 
-    return a.join('.');
+    return ehNegativo
+      ? $("menos %s", numero)
+      : numero;
+  }
 }
 
-function extenso(numero, fem) {
-    var separado;
+// Função para escrever parte decimal.
+// Construído com base nas informações obtidas
+// em <https://goo.gl/E09Y5a>.
+function escreverDecimal(numero) {
+  var decimais = {
+    "3": "milésimo",
+    "6": "milionésimo",
+    "9": "bilionésimo",
+    "12": "trilionésimo",
+    "15": "quatrilionésimo",
+    "18": "quintilionésimo",
+    "21": "sextilionésimo",
+    "24": "septilionésimo",
+    "27": "octilionésimo",
+    "30": "nonilionésimo",
+    "33": "decilionésimo",
+    "36": "undecilionésimo",
+    "39": "duodecilionésimo",
+    "42": "tredecilionésimo",
+    "45": "quattuordecilionésimo",
+    "48": "quindecilionésimo",
+    "51": "sexdecilionésimo",
+    "54": "septendecilionésimo",
+    "57": "octodecilionésimo",
+    "60": "novendecilionésimo",
+    "63": "vigintilionésimo"
+  };
 
-    if (/\./.test(numero)) {
-        if (/^\d?\d?\d?(\.\d{3})+$/.test(numero)) {
-            separado = numero;
-            numero = numero.replace(/\./g, '');
-        } else {
-            return undefined;
-        }
+  var porExtenso = escreverInteiro(numero);
+  var leitura;
+
+  if (numero.length < 3) {
+    leitura = numero.length === 1
+      ? "décimo"
+      : "centésimo";
+  } else {
+    var de = decimais[numero.length - numero.length % 3];
+
+    switch (numero.length % 3) {
+      case 0:
+        leitura = "";
+        break;
+      case 1:
+        leitura = "décimo";
+        break;
+      case 2:
+        leitura = "centésimo";
+        break;
     }
 
-    if (isNaN(numero)) {
-        return NaN;
-    }
+    leitura = leitura
+      ? $("%s de %s", leitura, de)
+      : de;
+  }
 
-    var positivo = numero,
-        negativo = false;
+  porExtenso = $("%s %s", porExtenso, leitura);
 
-    if (numero < 0) {
-        positivo = -numero;
-        negativo = true;
-    }
+  // Pluraliza.
+  if (parseInt(numero) !== 1) {
+    porExtenso = porExtenso.replace(/(é[cs]imo)/g, "$1s");
+  }
 
-    if (numero % 1 || numero > 1e+66 || numero < -1e+66) {
-        return undefined;
-    } else if (positivo < 1e+3) {
-        if (negativo) {
-            return 'menos ' + cem(parseInt(positivo), fem);
-        } else {
-            return cem(parseInt(numero), fem);
-        }
-    } else if (parseInt(numero) === 1e+3) {
-        return 'mil';
-    } else {
-        var str = typeof numero !== 'string';
-
-        if ((numero > 1e+15 || numero < -1e+15) && str) {
-            return undefined;
-        }
-
-        var numeros = [
-            'mil',
-            'milhões',
-            'bilhões',
-            'trilhões',
-            'quatrilhões',
-            'quintilhões',
-            'sextilhões',
-            'septilhões',
-            'octilhões',
-            'nonilhões',
-            'decilhões',
-            'undecilhões',
-            'duodecilhões',
-            'tredecilhões',
-            'quattuordecilhões',
-            'quindecilhões',
-            'sexdecilhões',
-            'septendecilhões',
-            'octodecilhões',
-            'novendecilhões',
-            'vigintilhões'
-        ];
-
-        var ext;
-
-        if (separado) {
-            ext = separado;
-        } else {
-            ext = separar(numero.toString());
-        }
-
-        if (negativo) {
-            ext = ext.substring(1, ext.length);
-        }
-
-        var num = numeros.slice(0, ext.match(/\./g).length)
-            .reverse();
-
-        num.forEach(function (i) {
-            ext = ext.replace(/\./, ' ' + i + ' ');
-        });
-
-        ext = ext.replace(/(\b(0+)?1\s.[^\s]*)ões/g, '$1ão')
-            .replace(/000\s.[^\s]*|\b0+|\s000$/g, '')
-            .replace(/\s\s+/g, ' ')
-            .replace(/\s$/, '')
-            .replace(/\b(\d(00|\d?))$/g, 'e $1')
-            .replace(/\s(\d+\s[\wõã]+)$/g, ' e $1')
-            .replace(/\b1\smil\b/g, 'mil');
-
-        var lista = [];
-
-        ext.match(/\d+/g).forEach(function (i) {
-            if (/^0+$/.test(i)) {
-                lista.push(undefined);
-            } else {
-                lista.push(i);
-            }
-        });
-
-        lista.forEach(function (i) {
-            if (i) {
-                ext = ext.replace(i, cem(parseInt(i)));
-            } else {
-                ext = ext.replace(/0+/, '');
-            }
-        });
-
-        if (negativo) {
-            return 'menos ' + ext;
-        } else {
-            return ext;
-        }
-    }
-}
-
-function decimal(numero) {
-    var numeros = {
-        '3': 'milésimo',
-        '6': 'milionésimo',
-        '9': 'bilionésimo',
-        '12': 'trilionésimo',
-        '15': 'quatrilionésimo',
-        '18': 'quintilionésimo',
-        '21': 'sextilionésimo',
-        '24': 'septilionésimo',
-        '27': 'octilionésimo',
-        '30': 'nonilionésimo',
-        '33': 'decilionésimo',
-        '36': 'undecilionésimo',
-        '39': 'duodecilionésimo',
-        '42': 'tredecilionésimo',
-        '45': 'quattuordecilionésimo',
-        '48': 'quindecilionésimo',
-        '51': 'sexdecilionésimo',
-        '54': 'septendecilionésimo',
-        '57': 'octodecilionésimo',
-        '60': 'novendecilionésimo',
-        '63': 'vigintilionésimo'
-    };
-
-    var inteiro = parseInt(numero),
-        len,
-        n;
-
-    if (numero.length < 4) {
-        len = numero.length;
-
-        if (len === 1) {
-            n = cem(inteiro) + ' décimo';
-        } else if (len === 2) {
-            n = cem(inteiro) + ' centésimo';
-        } else {
-            n = cem(inteiro) + ' milésimo';
-        }
-
-        if (inteiro === 1) {
-            return n;
-        } else {
-            return n + 's';
-        }
-    } else {
-        len = numero.length;
-
-        var tipo = len % 3,
-            ext = extenso(numero);
-
-        if (tipo === 0) {
-            n = numeros[len];
-
-            if (inteiro === 1) {
-                return ext + ' ' + n;
-            } else {
-                return ext + ' ' + n + 's';
-            }
-        } else if (tipo === 1) {
-            n = numeros[len - 1];
-
-            if (inteiro === 1) {
-                return ext + ' décimo de ' + n;
-            } else {
-                return ext + ' décimos de ' + n + 's';
-            }
-        } else {
-            n = numeros[len - 2];
-
-            if (inteiro === 1) {
-                return ext + ' centésimo de ' + n;
-            } else {
-                return ext + ' centésimos de ' + n + 's';
-            }
-        }
-    }
+  return porExtenso;
 }
 
 module.exports = function (numero, opcoes) {
-    if (!numero) return NaN;
 
-    if (isNaN(numero) && !(/^\d+((\.\d+)+)?$/).test(numero)) {
-        if (!(/\d+,\d+/).test(numero)) {
-            return NaN;
-        }
-    }
+  // Se nenhum número for informado.
+  if (!numero) {
+    return undefined;
+  }
 
-    opcoes = opcoes || {};
+  // Se for um número inválido.
+  if (!(/^-?(\d{0,3}(\.\d{3})+?|\d+)(,\d+)?$/.test(numero))) {
+    return NaN;
+  }
 
-    var fem;
+  // Cria objeto para opções caso
+  // não exista.
+  opcoes = opcoes || {};
 
-    if (opcoes.feminino) {
-        fem = true;
-    }
+  var feminino = opcoes.feminino;
 
-    if (typeof numero === 'string' && !isNaN(numero)) {
-        numero = numero.trim();
+  // Se não for um número com virgula.
+  if (!/,/.test(numero)) {
+    return escreverInteiro(numero, feminino);
+  }
 
-        var re = /^\d+(\.\d+)?e(-|\+)?\d+$/i;
+  // Separa inteiro e decimal.
+  var separado = numero.split(",");
 
-        if (re.test(numero)) {
-            if (numero > 1e+15 || numero < 1e-15) {
-                return undefined;
-            }
+  // Escreve por extenso a parte inteira
+  // e decimal do número.
+  var int = escreverInteiro(separado[0], feminino);
+  var dec = escreverDecimal(separado[1]);
 
-            if (numero % 1 === 0) {
-                numero = parseInt(numero).toString();
-            } else {
-                return undefined;
-            }
-        }
+  // Se o número inteiro for igual a zero,
+  // então retorna somente decimal.
+  if (int === "zero") {
+    return dec;
+  }
 
-        if (/^0x[\dA-F]+$/i.test(numero)) {
-            numero = parseInt(numero);
-        }
-    }
+  // Escreve o número por extenso.
+  var porExtenso = $("%s inteiros e %s", int, dec);
 
-    if (/^[\d\.]+,\d+$/.test(numero)) {
-        var s = numero.toString()
-            .split(',');
+  // Caso a parte inteira seja "um".
+  if (int === "um") {
 
-        var inte = extenso(s[0]),
-            nint = decimal(s[1]);
-
-        if (/^0+$/.test(s[1])) {
-            return inte;
-        } else if (inte === 'zero') {
-            return nint;
-        } else {
-            if (inte === 'um') {
-                return 'um inteiro e ' + nint;
-            } else {
-                return inte + ' inteiros e ' + nint;
-            }
-        }
-    } else {
-        return extenso(numero, fem);
-    }
+    // Singulariza "inteiros".
+    return porExtenso.replace(/(inteiro)s/, "$1");
+  } else {
+    return porExtenso;
+  }
 };
