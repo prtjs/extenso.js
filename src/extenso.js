@@ -5,7 +5,7 @@
 // estar na língua portuguesa.
 
 var $ = require("s");
-var formatar = require("comman-number");
+var formatar = require("comma-number");
 
 // Escreve números de 0 a 9.
 function ateh9(numero, feminino) {
