@@ -7,6 +7,10 @@
     "type": "git",
     "url": "git://github.com/theuves/extenso.js.git"
   },
+  "dependencies": {
+    "comma-number": "^2.0.0",
+    "s": "^0.1.1"
+  },
   "devDependencies": {
     "ava": "^0.15.2",
     "browserify": "^13.0.1"
