@@ -13,11 +13,13 @@
   },
   "devDependencies": {
     "ava": "^0.15.2",
-    "browserify": "^13.0.1"
+    "browserify": "^13.0.1",
+    "uglifyjs": "^2.4.10"
   },
   "scripts": {
     "test": "ava",
-    "build": "browserify src/extenso.js -s extenso -o dist/extenso.js"
+    "build-min": "uglifyjs dist/extenso.js -o dist/extenso.min.js",
+    "build": "browserify src/extenso.js -s extenso -o dist/extenso.js && npm run build-min"
   },
   "author": "Matheus Alves",
   "license": "MIT"
