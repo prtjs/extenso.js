@@ -14,5 +14,6 @@ test("extenso", function (t) {
   t.is(extenso("1,5"), "um inteiro e cinco décimos");
   t.is(extenso(1, {feminino: true}), "uma");
   t.is(extenso(2, {feminino: true}), "duas");
+  t.is(extenso(10000000000000001), undefined);
   t.is(extenso("10000000000000001"), "dez quatrilhões e um");
 });
