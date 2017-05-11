@@ -2,6 +2,8 @@
 
 > Escrever números por extenso.
 
+![](https://travis-ci.org/theuves/extenso.js.svg?branch=master)
+
 Instale-o com `npm i extenso` ou `bower i extenso.js`.
 
 ```js
