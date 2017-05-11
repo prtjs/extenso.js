@@ -460,13 +460,23 @@ function escreverDecimal(numero) {
 
 module.exports = function (numero, opcoes) {
 
-  // Sempre string.
-  numero = numero.toString();
-
   // Se nenhum número for informado.
   if (!numero) {
     return undefined;
   }
+
+  // Se for number e tiver mais de
+  // 15 dígitos.
+  if (
+    typeof numero === "number"
+    && (numero <= -1e+15
+    || numero >= 1e+15)
+  ) {
+    return undefined;
+  }
+
+  // Sempre string.
+  numero = numero.toString();
 
   // Se for um número inválido.
   if (!(/^-?(\d{0,3}(\.\d{3})+?|\d+)(,\d+)?$/.test(numero))) {
