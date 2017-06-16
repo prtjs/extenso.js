@@ -4,12 +4,12 @@
 // nome de variáveis e funções devem
 // estar na língua portuguesa.
 
-var $ = require("s");
-var formatar = require("comma-number");
+const $ = require("s");
+const formatar = require("comma-number");
 
 // Escreve números de 0 a 9.
 function ateh9(numero, feminino) {
-  var porExtenso = {
+  const porExtenso = {
     "0": "zero",
     "1": (!feminino ? "um" : "uma"),
     "2": (!feminino ? "dois" : "duas"),
@@ -31,7 +31,7 @@ function ateh99(numero, feminino) {
     return ateh9(numero, feminino);
   }
 
-  var porExtenso = {
+  const porExtenso = {
     "10": "dez",
     "11": "onze",
     "12": "doze",
@@ -57,8 +57,8 @@ function ateh99(numero, feminino) {
   } else if (!(numero % 10)) {
     return porExtenso[numero];
   } else {
-    var dezenas = porExtenso[numero - numero % 10];
-    var unidades = ateh9(numero % 10, feminino);
+    const dezenas = porExtenso[numero - numero % 10];
+    const unidades = ateh9(numero % 10, feminino);
 
     return $("%s e %s", dezenas, unidades);
   }
@@ -72,7 +72,7 @@ function ateh999(numero, feminino) {
     return "cem";
   }
 
-  var porExtenso = {
+  const porExtenso = {
     "100": "cento",
     "200": "duzentos",
     "300": "trezentos",
@@ -87,8 +87,8 @@ function ateh999(numero, feminino) {
   if (!(numero % 100)) {
     return porExtenso[numero];
   } else {
-    var dezenas = porExtenso[numero - numero % 100];
-    var unidades = ateh99(numero % 100, feminino);
+    const dezenas = porExtenso[numero - numero % 100];
+    const unidades = ateh99(numero % 100, feminino);
 
     return $("%s e %s", dezenas, unidades);
   }
@@ -99,7 +99,7 @@ function ateh999(numero, feminino) {
 function escreverInteiro(numero, feminino) {
 
   // Futuramente vai armazenar o número formatado.
-  var formatado;
+  let formatado;
 
   // Se o número já estiver formatado.
   if (/\./.test(numero)) {
@@ -121,7 +121,7 @@ function escreverInteiro(numero, feminino) {
   }
 
   // Se for negativo.
-  var ehNegativo = numero < 0
+  const ehNegativo = numero < 0;
 
   // Transforma-o em positivo.
   numero = numero.replace(/^\-/, "")
@@ -143,7 +143,7 @@ function escreverInteiro(numero, feminino) {
     // Informações da escrita dos
     // números obtidas em
     // <https://goo.gl/f4HrRW>.
-    var milhares = [
+    let milhares = [
       "mil",
       "milhões",
       "bilhões",
@@ -193,11 +193,9 @@ function escreverInteiro(numero, feminino) {
     //  - "1.000" => "1 mil 000"
     //  - "123.456.789" => "123 milhões 456 mil 789"
     //
-    numero = numero.split(".").map(function (inteiro, indice) {
-      return milhares[indice]
-        ? $("%s %s", inteiro, milhares[indice])
-        : inteiro;
-    }).join(" ");
+    numero = numero.split(".").map((inteiro, indice) => milhares[indice]
+      ? $("%s %s", inteiro, milhares[indice])
+      : inteiro).join(" ");
 
     // Singulariza. Por exemplo, em
     // "1 milhões 000 mil 000", o "1 milhões"
@@ -233,9 +231,7 @@ function escreverInteiro(numero, feminino) {
     numero = numero.replace(/\b1\smil\b/g, "mil");
 
     // Escreve os números.
-    numero = numero.replace(/\d+/g, function (inteiro) {
-      return ateh999(parseInt(inteiro));
-    });
+    numero = numero.replace(/\d+/g, inteiro => ateh999(parseInt(inteiro)));
 
     return ehNegativo
       ? $("menos %s", numero)
@@ -247,7 +243,7 @@ function escreverInteiro(numero, feminino) {
 // Construído com base nas informações obtidas
 // em <https://goo.gl/E09Y5a>.
 function escreverDecimal(numero) {
-  var decimais = {
+  const decimais = {
     "3": "milésimo",
     "6": "milionésimo",
     "9": "bilionésimo",
@@ -271,15 +267,15 @@ function escreverDecimal(numero) {
     "63": "vigintilionésimo"
   };
 
-  var porExtenso = escreverInteiro(numero);
-  var leitura;
+  let porExtenso = escreverInteiro(numero);
+  let leitura;
 
   if (numero.length < 3) {
     leitura = numero.length === 1
       ? "décimo"
       : "centésimo";
   } else {
-    var de = decimais[numero.length - numero.length % 3];
+    const de = decimais[numero.length - numero.length % 3];
 
     switch (numero.length % 3) {
       case 0:
@@ -309,7 +305,6 @@ function escreverDecimal(numero) {
 }
 
 module.exports = function (numero, opcoes) {
-
   // Se nenhum número for informado.
   if (!numero) {
     return undefined;
@@ -337,7 +332,7 @@ module.exports = function (numero, opcoes) {
   // não exista.
   opcoes = opcoes || {};
 
-  var feminino = opcoes.feminino;
+  const feminino = opcoes.feminino;
 
   // Se não for um número com virgula.
   if (!/,/.test(numero)) {
@@ -345,12 +340,12 @@ module.exports = function (numero, opcoes) {
   }
 
   // Separa inteiro e decimal.
-  var separado = numero.split(",");
+  const separado = numero.split(",");
 
   // Escreve por extenso a parte inteira
   // e decimal do número.
-  var int = escreverInteiro(separado[0]);
-  var dec = escreverDecimal(separado[1]);
+  const int = escreverInteiro(separado[0]);
+  const dec = escreverDecimal(separado[1]);
 
   // Se o número decimal informado for igual
   // a zero, retorna somente o número inteiro, e
@@ -365,7 +360,7 @@ module.exports = function (numero, opcoes) {
   }
 
   // Escreve o número por extenso.
-  var porExtenso = $("%s inteiros e %s", int, dec);
+  const porExtenso = $("%s inteiros e %s", int, dec);
 
   // Caso a parte inteira seja "um".
   if (int === "um") {
