@@ -1,6 +1,0 @@
-dist/
-.editorconfig
-.gitignore
-.travis.yml
-bower.json
-test.js
