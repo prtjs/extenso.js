@@ -1,0 +1,24 @@
+{
+  "name": "extenso.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "extenso_original.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theuves/extenso.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theuves/extenso.js/issues"
+  },
+  "homepage": "https://github.com/theuves/extenso.js#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
