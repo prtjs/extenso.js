@@ -1,4 +1,4 @@
-const centenas = require("./numeros/centenas.json");
+const centenas = require("./classes/primeira/centenas.json");
 const a99 = require("./a99.js");
 
 function a999(numero) {

@@ -1,4 +1,4 @@
-const dezenas = require("./numeros/dezenas.json");
+const dezenas = require("./classes/primeira/dezenas.json");
 const a9 = require("./a9.js");
 
 function a99(numero) {

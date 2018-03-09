@@ -1,4 +1,4 @@
-const unidades = require("./numeros/unidades.json");
+const unidades = require("./classes/primeira/unidades.json");
 
 function a9(numero) {
   return unidades[numero];
