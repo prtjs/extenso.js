@@ -1,12 +1,13 @@
 const a999 = require("./a999.js");
+const eValido = require("./utils/eValido.js");
+const normalizar = require("./utils/normalizar.js");
 const separarClasses = require("./utils/separarClasses.js");
 const classesRestantes = require("./classes/restantes.json");
 
 function acimaMil(numero) {
-  numero = numero.toString();
-  ///////////////////////////
+  if (!eValido(numero)) return NaN;
+  numero = normalizar(numero);
 
-  if (isNaN(numero)) return NaN;
   if (numero < 1000) return a999(numero);
 
   const separados = separarClasses(numero);
@@ -39,7 +40,7 @@ function acimaMil(numero) {
       return valor;
     })
     .map(valor =>
-      valor.replace(/^\d+/, algarismos =>
+      valor.replace(/\d+/, algarismos =>
         a999(algarismos)));
 
   return porExtenso.join(" ");
