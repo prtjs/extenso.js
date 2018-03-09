@@ -3,6 +3,10 @@ const separarClasses = require("./utils/separarClasses.js");
 const classesRestantes = require("./classes/restantes.json");
 
 function acimaMil(numero) {
+  numero = numero.toString();
+  ///////////////////////////
+
+  if (isNaN(numero)) return NaN;
   if (numero < 1000) return a999(numero);
 
   const separados = separarClasses(numero);
@@ -17,7 +21,9 @@ function acimaMil(numero) {
     .map(valor =>
       valor.replace(/^0+/, ""))
     .map(valor =>
-      valor.replace(/^(1\s.*)ões$/, "$1ão"));
+      valor.replace(/^(1\s.*)ões$/, "$1ão"))
+    .map(valor =>
+      valor.replace(/^1\smil\b/, "mil"));
 
   const porExtenso = preExtenso
     .map((valor, indice, array) => {
