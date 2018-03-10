@@ -4,11 +4,11 @@ const normalizar = require("./utils/normalizar.js");
 const separarClasses = require("./utils/separarClasses.js");
 const classesRestantes = require("./classes/restantes.json");
 
-function acimaMil(numero) {
+function acimaMil(numero, eFeminino) {
   if (!eValido(numero)) return NaN;
   numero = normalizar(numero);
 
-  if (numero < 1000) return a999(numero);
+  if (numero < 1000) return a999(numero, eFeminino);
 
   const separados = separarClasses(numero);
   const quantiaDeClasses = separados.length - 1;
@@ -41,7 +41,7 @@ function acimaMil(numero) {
     })
     .map(valor =>
       valor.replace(/\d+/, algarismos =>
-        a999(algarismos)));
+        a999(algarismos, eFeminino)));
 
   return porExtenso.join(" ");
 }

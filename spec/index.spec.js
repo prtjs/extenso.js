@@ -10,5 +10,7 @@ describe("extenso", () => {
     expect(extenso("3.001,1")).toBe("três mil e um inteiros e um décimo");
     expect(extenso("3.001,10")).toBe("três mil e um inteiros e dez centésimos");
     expect(extenso("3,14")).toBe("três inteiros e quatorze centésimos");
+    expect(extenso("1,0")).toBe("um");
+    expect(extenso("1,000")).toBe("um");
   });
 });
