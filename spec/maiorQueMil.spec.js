@@ -1,4 +1,4 @@
-const maiorQueMil = require("../src/maiorQueMil.js");
+const maiorQueMil = require("../src/maiorQueMil");
 
 describe("maiorQueMil", () => {
   it("deve escrever números até 9", () => {

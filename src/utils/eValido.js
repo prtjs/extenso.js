@@ -1,11 +1,13 @@
 const eInteiroValido = require("./eInteiroValido.js");
 const analizarDecimal = require("./analizarDecimal.js");
 
-function eDecimalValido(numero) {
+function eValido(numero) {
   const partes = analizarDecimal(numero);
   const [parteInteira, parteDecimal] = partes;
 
-  return eInteiroValido(parteInteira) && /^\d+$/.test(parteDecimal);
+  return partes.length === 1
+    ? eInteiroValido(parteInteira)
+    : eInteiroValido(parteInteira) && /^\d+$/.test(parteDecimal);
 }
 
-module.exports = eDecimalValido;
+module.exports = eValido;

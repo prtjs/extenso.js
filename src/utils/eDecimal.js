@@ -1,5 +1,7 @@
+const analizarDecimal = require("./analizarDecimal");
+
 function eDecimal(numero) {
-  return numero.split(",").length === 2;
+  return analizarDecimal(numero).length === 2;
 }
 
 module.exports = eDecimal;

@@ -10,8 +10,7 @@ function extenso(numero, opcoes) {
   numero = numero.toString();
   opcoes = opcoes || {};
 
-  if (eDecimal(numero) && !eValido(numero)) return NaN;
-  if (!eDecimal(numero) && !eInteiroValido(numero)) return NaN;
+  if (!eValido(numero)) return NaN;
 
   const eFeminino = Boolean(opcoes.feminino);
   const eReal = Boolean(opcoes.real);

@@ -1,4 +1,4 @@
-const decimal = require("../src/decimal.js");
+const decimal = require("../src/decimal");
 
 describe("decimal", () => {
   it("deve escrever números decimais", () => {

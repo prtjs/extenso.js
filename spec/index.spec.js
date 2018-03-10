@@ -1,4 +1,4 @@
-const extenso = require("../src/index.js");
+const extenso = require("../src/index");
 
 describe("extenso", () => {
   it("deve escrever qualquer número simples", () => {

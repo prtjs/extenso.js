@@ -1,4 +1,4 @@
-const a999 = require("../src/a999.js");
+const a999 = require("../src/a999");
 
 describe("a999", () => {
   it("deve escrever números até 9", () => {
