@@ -1,28 +1,22 @@
 {
-  "name": "extenso.js",
-  "version": "1.0.0",
-  "description": "",
-  "main": "extenso_original.js",
+  "name": "extenso",
+  "version": "0.4.6",
+  "description": "Escrever números por extenso.",
+  "main": "dist/extenso.min.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "build": "webpack"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/theuves/extenso.js.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/theuves/extenso.js/issues"
-  },
+  "repository": "theuves/extenso.js",
+  "author": "Matheus Alves",
   "homepage": "https://github.com/theuves/extenso.js#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "jasmine": "^2.8.0",
     "uglifyjs-webpack-plugin": "^1.2.2",
     "webpack": "^3.11.0"
-  }
+  },
+  "license": "MIT"
 }
