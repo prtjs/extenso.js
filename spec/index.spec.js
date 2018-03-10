@@ -12,5 +12,7 @@ describe("extenso", () => {
     expect(extenso("3,14")).toBe("três inteiros e quatorze centésimos");
     expect(extenso("1,0")).toBe("um");
     expect(extenso("1,000")).toBe("um");
+    expect(extenso("1", {feminino: true})).toBe("uma");
+    expect(extenso("2", {feminino: true})).toBe("duas");
   });
 });
