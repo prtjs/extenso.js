@@ -1,9 +1,11 @@
 function normalizar(numero) {
-  return numero
+  const normal = numero
     .toString()
     .trim()
-    .replace(/^0+/, "")
     .replace(/\./g, "");
+
+  if (/^0+$/.test(normal)) return "0";
+  return normal.replace(/^0+/, "");
 }
 
 module.exports = normalizar;

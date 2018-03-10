@@ -1,11 +1,11 @@
 const a999 = require("./a999.js");
-const eValido = require("./utils/eValido.js");
+const eInteiroValido = require("./utils/eInteiroValido.js");
 const normalizar = require("./utils/normalizar.js");
 const separarClasses = require("./utils/separarClasses.js");
 const classesRestantes = require("./classes/restantes.json");
 
 function acimaMil(numero, eFeminino) {
-  if (!eValido(numero)) return NaN;
+  if (!eInteiroValido(numero)) return NaN;
   numero = normalizar(numero);
 
   if (numero < 1000) return a999(numero, eFeminino);

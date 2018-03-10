@@ -1,9 +1,9 @@
 const unidades = require("./classes/primeira/unidades.json");
-const eValido = require("./utils/eValido.js");
+const eInteiroValido = require("./utils/eInteiroValido.js");
 const normalizar = require("./utils/normalizar.js");
 
 function a9(numero, eFeminino) {
-  if (!eValido(numero)) return NaN;
+  if (!eInteiroValido(numero)) return NaN;
   numero = normalizar(numero);
 
   const porExtenso = unidades[numero];

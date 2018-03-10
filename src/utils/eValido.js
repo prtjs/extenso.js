@@ -1,7 +1,11 @@
-function ehValido(numero) {
-  const re =/^(((\d|\d{2}|\d{3}))((.\d{3})+)?|\d+)$/;
+const eInteiroValido = require("./eInteiroValido.js");
+const analizarDecimal = require("./analizarDecimal.js");
 
-  return re.test(numero.toString().trim());
+function eDecimalValido(numero) {
+  const partes = analizarDecimal(numero);
+  const [parteInteira, parteDecimal] = partes;
+
+  return eInteiroValido(parteInteira) && /^\d+$/.test(parteDecimal);
 }
 
-module.exports = ehValido;
+module.exports = eDecimalValido;
