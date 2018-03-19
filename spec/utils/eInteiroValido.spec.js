@@ -6,6 +6,7 @@ describe("utils/eInteiroValido", () => {
     expect(eInteiroValido("1.000.000")).toBeTruthy();
     expect(eInteiroValido("12.000.000")).toBeTruthy();
     expect(eInteiroValido("123.000.000")).toBeTruthy();
+    expect(eInteiroValido("-123")).toBeTruthy();
     expect(eInteiroValido(42.1)).toBeFalsy();
   });
 });

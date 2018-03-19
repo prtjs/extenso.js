@@ -18,7 +18,6 @@ describe("maiorQueMil", () => {
   it("deve escrever número negativos", () => {
     expect(maiorQueMil(-100)).toBe("menos cem");
     expect(maiorQueMil("-100")).toBe("menos cem");
-    expect(maiorQueMil("-3,14")).toBe("menos três inteiros e quatorze décimos");
   });
   it("deve escrever números maiores que 1000", () => {
     expect(maiorQueMil(1000)).toBe("mil");

@@ -1,16 +1,23 @@
-const a999 = require("./a999.js");
-const eInteiroValido = require("./utils/eInteiroValido.js");
-const normalizar = require("./utils/normalizar.js");
-const separarClasses = require("./utils/separarClasses.js");
+const a999 = require("./a999");
+const eInteiroValido = require("./utils/eInteiroValido");
+const eNegativo = require("./utils/eNegativo");
+const normalizar = require("./utils/normalizar");
+const separarClasses = require("./utils/separarClasses");
 const classesRestantes = require("./classes/restantes.json");
 
 function acimaMil(numero, eFeminino) {
   if (!eInteiroValido(numero)) return NaN;
-  numero = normalizar(numero);
+  const normalizado = normalizar(numero);
 
-  if (numero < 1000) return a999(numero, eFeminino);
+  if (normalizado < 1000) {
+    const porExtenso = a999(normalizado, eFeminino);
 
-  const separados = separarClasses(numero);
+    return eNegativo(numero)
+      ? `menos ${porExtenso}`
+      : porExtenso;
+  }
+
+  const separados = separarClasses(normalizado);
   const quantiaDeClasses = separados.length - 1;
   const classes = classesRestantes.slice(0, quantiaDeClasses).reverse();
 
@@ -41,9 +48,12 @@ function acimaMil(numero, eFeminino) {
     })
     .map(valor =>
       valor.replace(/\d+/, algarismos =>
-        a999(algarismos, eFeminino)));
+        a999(algarismos, eFeminino)))
+    .join(" ");
 
-  return porExtenso.join(" ");
+  return eNegativo(numero)
+    ? `menos ${porExtenso}`
+    : porExtenso;
 }
 
 module.exports = acimaMil;

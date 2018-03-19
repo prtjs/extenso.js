@@ -19,6 +19,15 @@ describe("extenso", () => {
     expect(extenso("1,0")).toBe("um");
     expect(extenso("1,000")).toBe("um");
   });
+  it("deve escrever valores negativos", () => {
+    expect(extenso("-3,1")).toBe("menos três inteiros e um décimo");
+    expect(extenso("-3.000,1")).toBe("menos três mil inteiros e um décimo");
+    expect(extenso("-3.001,1")).toBe("menos três mil e um inteiros e um décimo");
+    expect(extenso("-3.001,10")).toBe("menos três mil e um inteiros e dez centésimos");
+    expect(extenso("-3,14")).toBe("menos três inteiros e quatorze centésimos");
+    expect(extenso("-1,0")).toBe("menos um");
+    expect(extenso("-1,000")).toBe("menos um");
+  });
   it("deve escrever os valores em reais", () => {
     expect(extenso("0", {real: true})).toBe("zero real");
     expect(extenso("1", {real: true})).toBe("um real");

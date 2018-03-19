@@ -4,7 +4,7 @@
   "description": "Escrever números por extenso.",
   "main": "dist/extenso.min.js",
   "scripts": {
-    "test": "jasmine",
+    "test": "jasmine --stop-on-failure=true",
     "build": "webpack"
   },
   "repository": "theuves/extenso.js",
