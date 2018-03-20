@@ -1,10 +1,8 @@
 const centenas = require("./classes/primeira/centenas.json");
-const eInteiroValido = require("./utils/eInteiroValido.js");
-const normalizar = require("./utils/normalizar.js");
-const a99 = require("./a99.js");
+const normalizar = require("./utils/normalizar");
+const a99 = require("./a99");
 
 function a999(numero, eFeminino) {
-  if (!eInteiroValido(numero)) return NaN;
   numero = normalizar(numero);
 
   if (numero < 99) return a99(numero, eFeminino);

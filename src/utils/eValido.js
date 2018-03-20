@@ -1,13 +1,16 @@
-const eInteiroValido = require("./eInteiroValido.js");
-const analizarDecimal = require("./analizarDecimal.js");
+const eInteiro = require("./eInteiro");
+const separarDecimal = require("./separarDecimal");
 
 function eValido(numero) {
-  const partes = analizarDecimal(numero);
+  const partes = separarDecimal(numero);
   const [parteInteira, parteDecimal] = partes;
 
-  return partes.length === 1
-    ? eInteiroValido(parteInteira)
-    : eInteiroValido(parteInteira) && /^\d+$/.test(parteDecimal);
+  if (partes.length === 1)
+      return eInteiro(parteInteira);
+
+  return partes.length === 2
+    ? eInteiro(parteInteira) && /^\d+$/.test(parteDecimal)
+    : false;
 }
 
 module.exports = eValido;

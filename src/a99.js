@@ -1,10 +1,8 @@
 const dezenas = require("./classes/primeira/dezenas.json");
-const eInteiroValido = require("./utils/eInteiroValido.js");
-const normalizar = require("./utils/normalizar.js");
-const a9 = require("./a9.js");
+const normalizar = require("./utils/normalizar");
+const a9 = require("./a9");
 
 function a99(numero, eFeminino) {
-  if (!eInteiroValido(numero)) return NaN;
   numero = normalizar(numero);
 
   if (numero < 10) return a9(numero, eFeminino);
