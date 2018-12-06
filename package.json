@@ -1,12 +1,15 @@
 {
   "name": "extenso",
-  "version": "0.4.6",
+  "version": "1.0.0",
   "description": "Escrever números por extenso.",
   "main": "dist/extenso.min.js",
   "scripts": {
     "test": "jasmine --stop-on-failure=true",
     "build": "webpack"
   },
+  "files": [
+    "dist"
+  ],
   "repository": "theuves/extenso.js",
   "author": "Matheus Alves",
   "homepage": "https://github.com/theuves/extenso.js#readme",
