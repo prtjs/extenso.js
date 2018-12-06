@@ -1,6 +1,6 @@
 {
   "name": "extenso",
-  "version": "0.4.6",
+  "version": "1.0.0",
   "description": "Escrever números por extenso.",
   "main": "dist/extenso.min.js",
   "scripts": {
