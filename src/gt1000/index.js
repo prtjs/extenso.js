@@ -2,7 +2,7 @@ import split from './split'
 import name from './name'
 import clear from './clear'
 import singularize from './singularize'
-import normalizeExceptions from './normalizeExceptions'
+import normalize from './normalize'
 import addComma from './addComma'
 import writeNumbers from './writeNumbers'
 
