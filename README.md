@@ -1,0 +1,1 @@
+> Viu qualquer erro ou qualquer coisa que pode ser melhorada? Abra uma *Issue*, envie um *Pull Request* ou comente no trecho do código que você acredita que pode melhorar.
