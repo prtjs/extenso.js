@@ -1,5 +1,5 @@
 import reverse from 'reverse-string'
-import { gt1000 as list } from './list'
+import { gt1000 as list } from '../../list'
 
 const name = arr => {
   return reverse(reverse(arr).map((curr, i) => {

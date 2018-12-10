@@ -1,19 +1,20 @@
-import { lt100 as list } from './list'
+import { lt1000 as list } from '../list'
+import lt100 from '../lt100'
 
 const lt1000 = val => {
-  if (val < 1000) {
+  if (val < 100) {
     return lt100(val)
   } else if (val === 100) {
     return 'cem'
   } else {
     const hundredInt = val - val % 100
     const restInt = val % 100
-    const hundred = list[hundredInt - 10]
+    const hundred = list[hundredInt / 100 - 1]
     const rest = lt100(restInt)
 
-    return lt100(rest) === 'zero'
-      ? hundred
-      : `${hundred} e ${rest}`
+    return Boolean(restInt)
+      ? `${hundred} e ${rest}`
+      : hundred
   }
 }
 

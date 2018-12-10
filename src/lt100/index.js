@@ -1,5 +1,5 @@
-import { lt100 as list } from './list'
-import lt10 from './lt10'
+import { lt100 as list } from '../list'
+import lt10 from '../lt10'
 
 const lt100 = val => {
   if (val < 10) {

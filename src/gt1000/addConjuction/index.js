@@ -1,4 +1,4 @@
-import getLastNum from './getLastNum'
+import getLastNum from '../getLastNum'
 
 const addConjunction = (arr, int) => {
   let lastNum = getLastNum(int)
