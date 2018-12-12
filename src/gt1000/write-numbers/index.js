@@ -1,9 +1,9 @@
-import lt100 from '../lt100'
+import lt1000 from '../../lt1000'
 
 const writeNumbers = arr => {
   return arr.map(val => {
     return val.replace(/^(\d+)/, digit => {
-      return lt100(digit)
+      return lt1000(digit)
     })
   })
 }
