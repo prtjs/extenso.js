@@ -2,7 +2,6 @@ import test from 'ava'
 import fn from './'
 
 test('should write numbers less than 100', t => {
-
   // < 10
   t.is(fn(0), 'zero')
   t.is(fn(9), 'nove')

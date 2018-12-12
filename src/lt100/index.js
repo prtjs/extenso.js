@@ -9,13 +9,13 @@ const lt100 = val => {
   } else {
     const unit = lt10(val % 10)
     const ten = list[(val - val % 10) / 10 + 8]
-    
+
     if (unit === 'zero') {
       return ten
     } else {
       return `${ten} e ${unit}`
     }
-  } 
+  }
 }
 
 export default lt100

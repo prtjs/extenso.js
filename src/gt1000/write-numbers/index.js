@@ -1,4 +1,4 @@
-import lt100 from './lt100'
+import lt100 from '../lt100'
 
 const writeNumbers = arr => {
   return arr.map(val => {

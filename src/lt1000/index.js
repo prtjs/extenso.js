@@ -12,7 +12,7 @@ const lt1000 = val => {
     const hundred = list[hundredInt / 100 - 1]
     const rest = lt100(restInt)
 
-    return Boolean(restInt)
+    return restInt
       ? `${hundred} e ${rest}`
       : hundred
   }
