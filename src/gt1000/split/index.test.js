@@ -1,7 +1,7 @@
 import test from 'ava'
 import fn from './'
 
-test('should split numbers', t => {
+test('Deve separar as partes de um número', t => {
   t.deepEqual(fn('1'), [ '1' ])
   t.deepEqual(fn('10'), [ '10' ])
   t.deepEqual(fn('100'), [ '100' ])

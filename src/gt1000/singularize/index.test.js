@@ -1,7 +1,9 @@
 import test from 'ava'
 import fn from './'
 
-test('should singularize some parts', t => {
+test('Deve singularizar algumas partes', t => {
   t.deepEqual(fn([ '1 milhões' ]), [ '1 milhão' ])
-  t.deepEqual(fn([ '100 milhões' ]), [ '100 milhões' ])
+  t.deepEqual(fn([ '1 bilhões' ]), [ '1 bilhão' ])
+  t.deepEqual(fn([ '2 milhões' ]), [ '2 milhões' ])
+  t.deepEqual(fn([ '2 bilhões' ]), [ '2 bilhões' ])
 })
