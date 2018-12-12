@@ -17,6 +17,8 @@ Tendo em vista a participação de falantes da língua portuguesa, escreva:
 3. Comentários no código em *português*.
 4. *Issues*, *Pull Requests* e comentários em **português**.
 5. Descrição dos testes em **português**.
+5.1. Começar com *Deve + verbo + descrição*.
+5.2. Não usa ponto final.
 6. Commits em **português**.
 6.1. Inicie-os sempre em caixa alta.
 
