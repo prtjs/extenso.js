@@ -18,7 +18,7 @@ Tendo em vista a participação de falantes da língua portuguesa, escreva:
 4. *Issues*, *Pull Requests* e comentários em **português**.
 5. Descrição dos testes em **português**.
 6. Commits em **português**.
-6.1 Inicie-os sempre em caixa alta.
+6.1. Inicie-os sempre em caixa alta.
 
 ## *TODO*
 
