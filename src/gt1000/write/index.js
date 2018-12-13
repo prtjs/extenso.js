@@ -1,7 +1,7 @@
 import is from 'is'
 import lt1000 from '../../lt1000'
 
-const writeNumbers = parts => {
+const write = parts => {
   if (!is.array(parts)) {
     throw new TypeError('Must be an array')
   }
@@ -18,4 +18,4 @@ const writeNumbers = parts => {
   })
 }
 
-export default writeNumbers
+export default write
