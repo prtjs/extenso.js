@@ -4,7 +4,8 @@
   "description": "Escrever números por extenso.",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava",
+    "standard": "standard --fix"
   },
   "repository": "theuves/extenso.js",
   "devDependencies": {
