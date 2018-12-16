@@ -6,6 +6,10 @@ const name = parts => {
   return reverse(reverse(parts).map((part, i) => {
     let name = list[i - 1]
 
+    if (is.undef(name)) {
+      throw new Error('Unsupported number')
+    }
+
     return is.gt(i, 0)
       ? `${part} ${name}`
       : part
