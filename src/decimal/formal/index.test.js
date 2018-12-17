@@ -1,7 +1,7 @@
 import test from 'ava'
 import fn from './'
 
-test('Deve escrever a parte decimal', t => {
+test('Deve escrever a parte decimal de modo formal', t => {
   t.is(fn('1'), 'um décimo')
   t.is(fn('01'), 'um centésimo')
   t.is(fn('001'), 'um milésimo')
