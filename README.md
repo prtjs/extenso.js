@@ -14,13 +14,13 @@ Tendo em vista a participação de falantes da língua portuguesa, escreva:
 
 - Nome de váriaveis, funções e outras coisas do tipo em **inglês**.
 - Nome dos arquivos e diretórios em **inglês**.
-- Comentários no código em *português*.
 - *Issues*, *Pull Requests* e comentários em **português**.
 - Descrição dos testes em **português**.
-  - Começar com *Deve(m) + verbo + descrição*.
-  - Não usa ponto final.
+  - Devem ter o formato: *Deve(m) + verbo + descrição*.
+  - Nunca use ponto final na descrição.
 - Commits em **português**.
   - Inicie-os sempre em caixa alta.
+  - Nunca use ponto final na descrição.
 
 ## *TODO*
 
