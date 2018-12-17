@@ -1,16 +1,16 @@
 import is from 'is'
 import reverse from '@arr/reverse'
-import { gt1000 as list } from '../../list'
+import list from '../list'
 
 const name = parts => {
+  if (is.gt(parts.length, 14)) {
+    throw new Error('Unsupported number')
+  }
+
   return reverse(reverse(parts).map((part, i) => {
     let name = list[i - 1]
 
-    if (is.undef(name)) {
-      throw new Error('Unsupported number')
-    }
-
-    return is.gt(i, 0)
+    return name
       ? `${part} ${name}`
       : part
   }))

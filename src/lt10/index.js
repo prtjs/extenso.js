@@ -1,5 +1,5 @@
 import is from 'is'
-import { lt10 as list } from '../list'
+import list from './list'
 
 const lt10 = int => {
   if (!is.integer(int)) {

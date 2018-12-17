@@ -1,5 +1,5 @@
 import is from 'is'
-import { lt1000 as list } from '../list'
+import list from './list'
 import lt100 from '../lt100'
 
 const lt1000 = int => {
