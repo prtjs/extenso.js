@@ -10,8 +10,8 @@ const pluralize = (string, count) => {
   if (!is.number(count)) {
     throw new TypeError('Must be a number')
   }
-  if (is.lt(count, 1)) {
-    throw new TypeError('Can not be than 1')
+  if (is.lt(count, 0)) {
+    throw new TypeError('Must be a positive number')
   }
 
   return is.gt(count, 1)
