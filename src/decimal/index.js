@@ -1,7 +1,7 @@
 import is from 'is'
 import list from './list'
 import getType from './get-type'
-import pluralize from './pluralize'
+import pluralize from '../pluralize'
 import writeInt from '../write-int'
 
 const decimal = int => {
