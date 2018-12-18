@@ -1,6 +1,6 @@
 import is from 'is'
 
-const negative = (str, mode) => {
+const toNegative = (str, mode) => {
   if (!is.string(str)) {
     throw new TypeError('Must be a string')
   }
@@ -16,4 +16,4 @@ const negative = (str, mode) => {
     : `${str} negativo`
 }
 
-export default negative
+export default toNegative

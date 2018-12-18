@@ -2,7 +2,7 @@ import is from 'is'
 import writeCents from './write-cents'
 import writeInt from '../write-int'
 
-const real = (val, cents) => {
+const brl = (val, cents) => {
   if (!is.string(val)) {
     throw new TypeError('Must be a string')
   }
@@ -25,4 +25,4 @@ const real = (val, cents) => {
   return `${valText} ${valName} e ${centsText}`
 }
 
-export default real
+export default brl

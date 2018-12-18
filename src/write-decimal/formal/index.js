@@ -13,7 +13,7 @@ const formal = int => {
   }
 
   let len = int.length
-  let intNum = parseInt(int) // Inseguro!
+  let intNum = parseInt(int)
   let intNormalized = int.replace(/^0+/, '')
   let intText = writeInt(intNormalized)
   let intType = pluralize(getType(len), intNum)
