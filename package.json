@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "ava",
-    "standard": "standard --fix"
+    "standard": "standard --fix",
+    "docs": "jsdocs -r src -t node_modules/docdash"
   },
   "repository": "theuves/extenso.js",
   "devDependencies": {
