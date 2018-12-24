@@ -7,10 +7,8 @@ import { name, clear, singularize, addConjunction, addComma, write } from './par
  * @param {string} int Um número inteiro maior que mil.
  * @returns {number} Retorna o valor por extenso.
  */
-const gt1000 = (int) => {
+export default gt1000 = (int) => {
   let number = write(addComma(addConjunction(singularize(clear(name(split(int)))), int)))
 
   return number.join(' ')
 }
-
-export default gt1000
