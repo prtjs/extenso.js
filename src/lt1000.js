@@ -10,7 +10,7 @@ import lt100 from './lt100'
  */
 export default (int) => {
   if (int < 100) return lt100(int)
-  if (int === 1000) return 'cem'
+  if (int === 100) return 'cem'
 
   const hundredInt = int - int % 100
   const restInt = int % 100

@@ -1,5 +1,5 @@
-import listLt10 from './lt10'
-import { lt100 as list } from './list'
+import lt10 from './lt10'
+import { listLt100 as list } from './list'
 
 /**
  * Obter um número inteiro menor que cem por extenso.
