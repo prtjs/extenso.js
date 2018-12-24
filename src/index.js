@@ -18,13 +18,13 @@ const extenso = (num, opts) => {
 
   let defaultOpts = {
     mode: 'number',
-    locale: 'br'
-    negative: 'formal'
+    locale: 'br',
+    negative: 'formal',
     currency: {
       type: 'BRL'
-    }
+    },
     number: {
-      gender: 'm'
+      gender: 'm',
       decimal: 'formal'
     }
   }

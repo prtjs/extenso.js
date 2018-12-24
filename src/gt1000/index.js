@@ -4,6 +4,7 @@ import { name, clear, singularize, addConjunction, addComma, write } from './par
 /**
  * Escrever números maiores que mil.
  *
+ * @function gt1000
  * @param {string} int Um número inteiro maior que mil.
  * @returns {number} Retorna o valor por extenso.
  */

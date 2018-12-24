@@ -4,6 +4,7 @@ import { lt100 as list } from './list'
 /**
  * Obter um número inteiro menor que cem por extenso.
  *
+ * @function lt100
  * @param {number} int Um número inteiro menor que cem.
  * @returns {string} O número escrito por extenso.
  */
