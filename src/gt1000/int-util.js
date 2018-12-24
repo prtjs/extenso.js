@@ -7,9 +7,9 @@ import formatNumber from 'format-number'
  * @returns {Array} Uma array com as partes do número.
  */
 export const split = (int) => {
-  let format = formatNumber()
-  let formatted = format(int)
-  let splitted = formatted.split(',')
+  const format = formatNumber()
+  const formatted = format(int)
+  const splitted = formatted.split(',')
 
   return splitted
 }
@@ -21,9 +21,9 @@ export const split = (int) => {
  * @returns {number} A última parte do número.
  */
 export const getLastNumber = (int) => {
-  let splitted = split(int)
-  let last = splitted[splitted.length - 1]
-  let integer = parseInt(last)
+  const splitted = split(int)
+  const last = splitted[splitted.length - 1]
+  const integer = parseInt(last)
 
   return integer
 }

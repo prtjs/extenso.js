@@ -8,7 +8,7 @@ import { name, clear, singularize, addConjunction, addComma, write } from './par
  * @returns {number} Retorna o valor por extenso.
  */
 export default gt1000 = (int) => {
-  let number = write(addComma(addConjunction(singularize(clear(name(split(int)))), int)))
+  const number = write(addComma(addConjunction(singularize(clear(name(split(int)))), int)))
 
   return number.join(' ')
 }

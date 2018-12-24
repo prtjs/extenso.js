@@ -32,7 +32,7 @@ export const addComma = (parts) => {
  * @returns {Array} Partes com a conjução "e" caso tenha sido necessário.
  */
 export const addConjunction = (parts, int) => {
-  let lastNum = getLastNumber(int)
+  const lastNum = getLastNumber(int)
 
   if (lastNum < 100 || lastNum % 100 === 0) {
     return parts.map((part, index, array) => {
@@ -72,7 +72,7 @@ export const clear = (parts) => {
  */
 export const name = (parts) => {
   return reverse(reverse(parts).map((part, i) => {
-    let numberName = list[i - 1]
+    const numberName = list[i - 1]
 
     return numberName
       ? `${part} ${numberName}`
@@ -87,8 +87,8 @@ export const name = (parts) => {
  * @returns {string} Número com as partes singularizadas.
  */
 export const singularize = (parts) => {
-  let regex = /^(1\s.*)ões/
-  let replacer = (str) => str.replace(regex, '$1ão')
+  const regex = /^(1\s.*)ões/
+  const replacer = (str) => str.replace(regex, '$1ão')
 
   return parts.map(replacer)
 }
@@ -102,7 +102,7 @@ export const singularize = (parts) => {
 export const write = (parts) => {
   return parts.map(part => {
     return part.replace(/^(\d+)/, digit => {
-      let int = parseInt(digit)
+      const int = parseInt(digit)
 
       return lt1000(int)
     })
