@@ -1,5 +1,5 @@
-import { split } from './int-util.js'
-import { name, clear, singularize, addConjunction, addComma, write } from './parts-util.js'
+import { split } from './int-util'
+import { name, clear, singularize, addConjunction, addComma, write } from './parts-util'
 
 /**
  * Escrever números maiores que mil.
