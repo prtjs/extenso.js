@@ -6,6 +6,6 @@ import { lt10 as list } from './list'
  * @param {number} int Um número inteiro menor que dez.
  * @returns {string} O número por extenso.
  */
-export default lt10 = (int) => {
+export default (int) => {
   return list[int]
 }

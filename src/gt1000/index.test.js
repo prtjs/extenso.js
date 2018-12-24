@@ -1,7 +1,7 @@
 import test from 'ava'
 import gt1000 from './'
 
-test('Deve escrever números maiores que 1000', (t) => {
+test('Deve escrever números maiores que mil', (t) => {
   t.is(gt1000('1001'),    'mil e um')
   t.is(gt1000('1100'),    'mil e cem')
   t.is(gt1000('1101'),    'mil cento e um')
