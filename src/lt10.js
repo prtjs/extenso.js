@@ -1,4 +1,4 @@
-import { lt10 as list } from './list'
+import { listLt10 as list } from './list'
 
 /**
  * Obter um número inteiro menor que dez por extenso.

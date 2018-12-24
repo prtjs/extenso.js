@@ -1,6 +1,6 @@
 import reverse from '@arr/reverse'
 import { getLastNumber } from './int-util'
-import { gt1000 as list } from '../list'
+import { listGt1000 as list } from '../list'
 import lt1000 from '../lt1000'
 
 /**

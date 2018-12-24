@@ -1,4 +1,4 @@
-import lt10 from './lt10'
+import listLt10 from './lt10'
 import { lt100 as list } from './list'
 
 /**

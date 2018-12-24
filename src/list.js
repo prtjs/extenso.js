@@ -4,7 +4,7 @@
  * @readonly
  * @enum {string}
  */
-export const lt10 = [
+export const listLt10 = [
   'zero',
   'um',
   'dois',
@@ -23,7 +23,7 @@ export const lt10 = [
  * @readonly
  * @enum {string}
  */
-export const lt100 = [
+export const listLt100 = [
   'dez',
   'onze',
   'doze',
@@ -50,7 +50,7 @@ export const lt100 = [
  * @readonly
  * @enum {string}
  */
-export const lt1000 = [
+export const listLt1000 = [
   'cento',
   'duzentos',
   'trezentos',
@@ -68,7 +68,7 @@ export const lt1000 = [
  * @readonly
  * @enum {string}
  */
-export const gt1000 = [
+export const listGt1000 = [
   'mil',
   'milhões',
   'bilhões',
@@ -90,7 +90,7 @@ export const gt1000 = [
  * @readonly
  * @enum {string}
  */
-export const decimals = [
+export const listDecimals = [
   'milésimo',
   'milionésimo',
   'bilionésimo',
