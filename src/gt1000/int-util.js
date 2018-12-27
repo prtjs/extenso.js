@@ -4,8 +4,8 @@ import formatNumber from 'format-number'
  * Separar um inteiro em uma array com base na formatação de um número.
  *
  * @method split
- * @param {string} int Um número inteiro.
- * @returns {Array} Uma array com as partes do número.
+ * @param {string} int Número inteiro.
+ * @returns {Array} Array com as partes do número.
  */
 export const split = (int) => {
   const format = formatNumber()
@@ -19,8 +19,8 @@ export const split = (int) => {
  * Obter a última parte de um número.
  *
  * @method getLastNumber
- * @param {string} int Um número inteiro.
- * @returns {number} A última parte do número.
+ * @param {string} int Número inteiro.
+ * @returns {number} Última parte do número.
  */
 export const getLastNumber = (int) => {
   const splitted = split(int)

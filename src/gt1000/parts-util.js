@@ -7,7 +7,7 @@ import lt1000 from '../lt1000'
  * Adicionar vírgula entre algumas partes.
  *
  * @method addComma
- * @param {Array} parts Uma array com as partes.
+ * @param {Array} parts Array com as partes.
  * @returns {Array} Partes com a vírgula caso tenho sido necessário.
  */
 export const addComma = (parts) => {
@@ -24,8 +24,8 @@ export const addComma = (parts) => {
  * Adicionar conjunção "e" em determinadas partes.
  *
  * @method addConjunction
- * @param {Array} parts As partes do número que está sendo processado.
- * @param {string} int O número inteiro que está sendo processado.
+ * @param {Array} parts Partes do número que está sendo processado.
+ * @param {string} int Número inteiro que está sendo processado.
  * @returns {Array} Partes com a conjução "e" caso tenha sido necessário.
  */
 export const addConjunction = (parts, int) => {
@@ -69,7 +69,7 @@ export const clear = (parts) => {
  *
  * @method name
  * @param {Array} parts Partes do número que está sendo processado.
- * @returns {Array} Retorna as partes com os inteiros escritos por extenso.
+ * @returns {Array} Partes com os inteiros escritos por extenso.
  */
 export const name = (parts) => {
   return reverse(reverse(parts).map((part, i) => {
