@@ -1,0 +1,18 @@
+{
+  "BRL": {
+    "singular": "real",
+    "plural": "reais",
+    "subunit": {
+      "singular": "centavo",
+      "plural": "centavos"
+    }
+  },
+  "EUR": {
+    "singular": "euro",
+    "plural": "euros",
+    "subunit": {
+      "singular": "cêntimo",
+      "plural": "cêntimos"
+    }
+  }
+}
