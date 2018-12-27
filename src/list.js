@@ -1,5 +1,5 @@
 /**
- * Números menores que dez.
+ * Lista de números menores que dez.
  *
  * @readonly
  * @enum {string}
@@ -18,7 +18,7 @@ export const listLt10 = [
 ]
 
 /**
- * Números menores que cem.
+ * Lista de números menores que cem.
  *
  * @readonly
  * @enum {string}
@@ -45,7 +45,7 @@ export const listLt100 = [
 ]
 
 /**
- * Números menores que mil.
+ * Lista de números menores que mil.
  *
  * @readonly
  * @enum {string}
@@ -63,7 +63,7 @@ export const listLt1000 = [
 ]
 
 /**
- * Números maiores que mil.
+ * Lista de números maiores que mil.
  *
  * @readonly
  * @enum {string}
@@ -85,7 +85,7 @@ export const listGt1000 = [
 ]
 
 /**
- * Números decimais.
+ * Lista de números decimais.
  *
  * @readonly
  * @enum {string}
