@@ -1,5 +1,7 @@
 # Extenso.js
 
+![](https://travis-ci.org/theuves/extenso.js.svg?branch=master)
+
 > Biblioteca completa para escrever números por extenso.
 
 ## Características
