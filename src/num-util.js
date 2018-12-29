@@ -9,10 +9,10 @@ export const isValidNumber = (val) => {
 
   // Verifica se é um número
   if (
-       /^\d{1,3}\d?((\.\d{3})+)?$/.test(val) // ...formatado
-    || /^\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val) // ...decimal formatado
-    || /^\d+$/.test(val) // ...não formatado
-    || /^\d+,\d+/.test(val) // ...decimal não formatado
+       /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val) // ...formatado
+    || /^-?\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val) // ...decimal formatado
+    || /^-?\d+$/.test(val) // ...não formatado
+    || /^-?\d+,\d+/.test(val) // ...decimal não formatado
   ) {
     return true
   }
