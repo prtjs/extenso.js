@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeAll from './'
+import writeAll from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll('1'), 'um')
