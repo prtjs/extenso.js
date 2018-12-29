@@ -1,15 +1,43 @@
-import is from 'is'
-import writeInt from './write-int'
+import { isValidNumber, parseNumber } from './num-util'
+import writeCurrency from './write-currency'
 import writeDecimal from './write-decimal'
-import toFemale from './to-female'
-import toNegative from './to-negative'
-import currency from './currency'
-import pluralize from './pluralize'
-import parseNum from './parse-num'
-import isValidNum from './is-valid-num'
+import writeInt from './write-int'
 
-const extenso = (num, opts) => {
-  if (!is.string(num) && !is.number(num)) {
+/**
+ * Verificar se uma opção é válida.
+ *
+ * @method isValidOpt
+ * @param {string} val Valor da opção.
+ * @param {Array} vals Valores para checagem.
+ * @returns {boolean} Informação da validade da opção.
+ */
+export const isValidOpt = (val, vals) => {
+  return vals.includes(val)
+}
+
+/**
+ * Passar um número escrito por extenso para o modo negativo.
+ *
+ * @method toNegative
+ * @param {string} num Valor escrito por extenso.
+ * @param {string} [opt='formal'] Opção sobre o modo a ser escrito.
+ * @returns {string} Valor como negativo.
+ */
+export const toNegative = (num = 'formal') => {
+  return num && num === 'formal'
+    ? `${num} negativo`
+    : `menos ${num}`
+}
+
+/**
+ * Escrever números por extenso.
+ *
+ * @param {string|number} num 
+ * @param {object} opts
+ * @returns {string} 
+ */
+export default (num, opts) => {
+  if (typeof num !== 'string' && typeof num !== 'number') {
     throw new TypeError('Must be a string or a number')
   }
   if (!isValidNum(num)) {
@@ -32,44 +60,50 @@ const extenso = (num, opts) => {
   opts = Object.assign(defaultOpts, opts)
 
   if (
-       !/^(number|currency)$/.test(opts.mode)
-    || !/^(pt|br)$/.test(opts.locale)
-    || !/^(formal|informal)$/.test(opts.negative)
-    || !/^(BRL)$/.test(opts.currency.type)
-    || !/^(m|f)/.test(opts.number.gender)
-    || !/^formal|informal)/.test(opts.number.decimal)
+       isValidOpt(opts.mode, [ 'number', 'currency' ])
+    || isValidOpt(opts.locale, [ 'pt', 'br' ])
+    || isValidOpt(opts.negative, [ 'formal', 'informal' ])
+    || isValidOpt(opts.currency.type, [ 'BRL', 'EUR' ])
+    || isValidOpt(opts.number.gender, [ 'm', 'f' ])
+    || isValidOpt(opts.number.decimal, [ 'formal', 'informal' ])
   ) {
     throw new Error('Invalid option')
   }
 
-  let strNum = num.toString()
-  let { isNegative, integer, decimal } = parsedNum(strNum)
+  const numString = num.toString()
+  const { isNegative, integer, decimal } = parseNumber(numString)
 
   if (opts.mode === 'currency') {
-    switch (opts.currency.type) {
-      case 'BRL':
-        return isNegative
-          ? toNegative(currency.BRL(integer, decimal), opts.negative)
-          : currency.BRL(integer, decimal)
-        break
-    }
-  }
-  if (opts.mode === 'number') {
-    let textInteger = writeInt(integer, opts.number.gender)
-    let textDecimal = writeDecimal(decimal, opts.number.decimal)
-    let partial = opts.number.decimal === 'informal'
-      ? `${pluralize(opts.number.gender === 'f' ? 'inteira' : 'inteiro', parseInt(integer))} e`
-      : `vírgula`
-
-    if (!is.equal(integer, '0') && is.equal(decimal, '0')) {
-      return textInteger
-    }
-    if (!is.equal(decimal, '0') && is.equal(integer, '0')) {
-      return textDecimal
-    }
+    const numText = writeCurrency(opts.currency.type, integer, decimal)
 
     return isNegative
-      ? toNegative(`${textInteger} ${partial} ${textDecimal}`, opts.negative)
-      : `${textInteger} ${partial} ${textDecimal}`
+      ? toNegative(numText, opts.negative)
+      : numText
+  }
+
+  if (opts.mode === 'number') {
+    const intName = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
+    const intNamePlural = parseInt(integer) === 1 ? intName : `${intName}s`
+    const intText = writeInt(integer)
+    const decText = writeDecimal(decimal, opts.number.decimal)
+
+    // Se tem a parte inteira e não tem a parte decimal
+    if (integer !== '0' && decimal === '0') {
+      return intText
+    }
+
+    // Se não tem a parte inteira e tem a parte decimal
+    if (integer === '0' && decimal !== '0') {
+      return decText
+    }
+
+    // Se tem a parte inteira e a parte decimal
+    if (integer !== '0' && decimal !== '0') {
+      const numText = `${intText} ${intName} ${decText}`
+
+      return isNegative
+        ? toNegative(numText)
+        : decText
+    }
   }
 }
