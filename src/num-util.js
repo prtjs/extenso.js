@@ -6,6 +6,9 @@
  * @returns {boolean} Verificação do valor.
  */
 export const isValidNumber = (val) => {
+  if (typeof val === 'number' && !Number.isSafeInteger(val)) {
+    return false
+  }
 
   // Verifica se é um número
   if (
