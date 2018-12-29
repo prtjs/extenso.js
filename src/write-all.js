@@ -21,13 +21,13 @@ export const isValidOpt = (val, vals) => {
  *
  * @method toNegative
  * @param {string} num Valor escrito por extenso.
- * @param {string} [opt='formal'] Opção sobre o modo a ser escrito.
+ * @param {string} [mode='formal'] Opção sobre o modo a ser escrito.
  * @returns {string} Valor como negativo.
  */
-export const toNegative = (num = 'formal') => {
-  return num && num === 'formal'
-    ? `${num} negativo`
-    : `menos ${num}`
+export const toNegative = (num, mode = 'formal') => {
+  return mode === 'informal'
+    ? `menos ${num}`
+    : `${num} negativo`
 }
 
 /**
@@ -81,7 +81,9 @@ export default (num, opts) => {
   const { isNegative, integer, decimal } = parseNumber(numString)
 
   if (opts.mode === 'currency') {
-    const numText = writeCurrency(opts.currency.type, integer, decimal)
+    const iso = opts.currency.type
+    const locale = opts.locale
+    const numText = writeCurrency(iso, locale, integer, decimal)
 
     return isNegative
       ? toNegative(numText, opts.negative)
@@ -91,17 +93,25 @@ export default (num, opts) => {
   if (opts.mode === 'number') {
     const intNameSingular = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
     const intName = parseInt(integer) === 1 ? intNameSingular : `${intNameSingular}s`
-    const intText = writeInt(integer, opts.number.gender)
-    const decText = writeDecimal(decimal, opts.number.decimal)
+    const intText = writeInt(integer, opts.locale, opts.number.gender)
+    const decText = writeDecimal(decimal, opts.locale, opts.number.decimal)
 
     // Se tem a parte inteira e não tem a parte decimal
     if (integer !== '0' && decimal === '0') {
-      return intText
+      return isNegative
+        ? toNegative(intText, opts.negative)
+        : intText
     }
 
     // Se não tem a parte inteira e tem a parte decimal
     if (integer === '0' && decimal !== '0') {
-      return decText
+      let number = opts.number.decimal === 'informal'
+        ? `zero ${decText}`
+        : decText
+
+      return isNegative
+        ? toNegative(number, opts.negative)
+        : number      
     }
 
     // Se tem a parte inteira e a parte decimal
@@ -113,7 +123,7 @@ export default (num, opts) => {
       const numText = `${intText} ${intName} e ${decText}`
 
       return isNegative
-        ? toNegative(numText)
+        ? toNegative(numText, opts.negative)
         : numText
     }
   }

@@ -5,8 +5,8 @@ var BannerPlugin = require('webpack').BannerPlugin
 
 module.exports = {
   entry: {
-    'extenso': 'src/index.js',
-    'extenso.min': 'src/index.js'
+    'extenso': './index.js',
+    'extenso.min': './index.js'
   },
   output: {
     filename: '[name].js',
@@ -17,9 +17,7 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/i,
-      use: [{
-        loader: 'babel-loader'
-      }]
+      use: 'babel-loader'
     }]
   },
   plugins: [
