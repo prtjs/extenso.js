@@ -37,14 +37,14 @@ extenso(number, [options])
 - **Tipo**: `string` ou `number`
 - **Uso**: OBRIGATÓRIO
 
-**Obs.**: Pontos flutuantes não são aceitos.
+O valor numérico que deverá ser escrito por extenso.
 
-O valore numérico que deverá ser escrito por extenso.
-
-É altamente recomendado que os números sejam passados dentro de *strings*
-devido ao fato que, no JavaScript, números (do tipo `number`) maiores que 9
-quatrilhões perdem valores, ou seja, são imprecisos (leia [este artigo no
-Tableless para mais informações](https://bit.ly/2BLo6aP)).
+Se valor for do tipo `number`, então ele deve ser um número inteiro seguro,
+ou seja ele deve ser válido com `Number.isSafeInteger()`. É altamente
+recomendado que os números sejam passados dentro de *strings* devido ao fato
+que, no JavaScript, números (do tipo `number`) maiores que 9 quatrilhões
+perdem valores, ou seja, são imprecisos (leia [este artigo no Tableless para
+mais informações](https://bit.ly/2BLo6aP)).
 
 Números envolvidos em *strings* deverão seguir o formato natural de escrita
 de números na língua portuguesa. Você pode usar `-` no início do número para
