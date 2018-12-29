@@ -32,8 +32,9 @@ test('Deve trechos em partes que não são lidos', (t) => {
  * Função: name
  */
 test('Deve adicionar o nome de cada parte', (t) => {
-  t.deepEqual(name([ '1', '000', '000' ]), [ '1 milhões', '000 mil', '000' ])
-  t.deepEqual(name([ '1', '000' ]),        [ '1 mil', '000' ])
+  t.deepEqual(name([ '1', '000', '000' ], 'br'),        [ '1 milhões', '000 mil', '000' ])
+  t.deepEqual(name([ '1', '000' ], 'br'),               [ '1 mil', '000' ])
+  t.deepEqual(name([ '1', '000', '000', '000' ], 'pt'), [ '1 biliões', '000 milhões', '000 mil', '000' ])
 })
 
 /**
@@ -50,8 +51,9 @@ test('Deve singularizar algumas partes', (t) => {
  * Função: write
  */
 test('Deve escrever o restante dos números', (t) => {
-  t.deepEqual(write([ '3 mil,', '140' ]), [ 'três mil,', 'cento e quarenta' ])
-  t.deepEqual(write([ '3 mil e', '14' ]), [ 'três mil e', 'quatorze' ])
-  t.deepEqual(write([ '3 mil e', '1' ]),  [ 'três mil e', 'um' ])
-  t.deepEqual(write([ 'mil e', '1' ]),    [ 'mil e', 'um' ])
+  t.deepEqual(write([ '3 mil,', '140' ], 'br'), [ 'três mil,', 'cento e quarenta' ])
+  t.deepEqual(write([ '3 mil e', '14' ], 'br'), [ 'três mil e', 'quatorze' ])
+  t.deepEqual(write([ '3 mil e', '14' ], 'pt'), [ 'três mil e', 'catorze' ])
+  t.deepEqual(write([ '3 mil e', '1' ], 'br'),  [ 'três mil e', 'um' ])
+  t.deepEqual(write([ 'mil e', '1' ], 'br'),    [ 'mil e', 'um' ])
 })

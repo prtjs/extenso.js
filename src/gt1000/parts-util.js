@@ -1,6 +1,6 @@
 import reverse from '@arr/reverse'
 import { getLastNumber } from './int-util'
-import { listGt1000 as list } from '../list'
+import { listGt1000 as getList } from '../get-list'
 import lt1000 from '../lt1000'
 
 /**
@@ -69,11 +69,12 @@ export const clear = (parts) => {
  *
  * @method name
  * @param {Array} parts Partes do número que está sendo processado.
+ * @param {string} locale Código do país para escrever o número.
  * @returns {Array} Partes com os inteiros escritos por extenso.
  */
-export const name = (parts) => {
+export const name = (parts, locale) => {
   return reverse(reverse(parts).map((part, i) => {
-    const numberName = list[i - 1]
+    const numberName = getList(locale)[i - 1]
 
     return numberName
       ? `${part} ${numberName}`
@@ -100,14 +101,15 @@ export const singularize = (parts) => {
  *
  * @method write
  * @param {Array} parts Partes do número que está sendo processado.
+ * @param {string} locale Código do país para escrever o número.
  * @returns {string} Número como todas as partes escritas por extenso.
  */
-export const write = (parts) => {
+export const write = (parts, locale) => {
   return parts.map(part => {
     return part.replace(/^(\d+)/, digit => {
       const int = parseInt(digit)
 
-      return lt1000(int)
+      return lt1000(int, locale)
     })
   })
 }

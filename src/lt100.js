@@ -10,10 +10,10 @@ import { listLt100 as getList } from './get-list'
  * @returns {string} O número escrito por extenso.
  */
 export default (int, locale) => {
-  if (int < 10) return lt10(int)
+  if (int < 10) return lt10(int, locale)
   if (int < 20) return getList(locale)[int - 10]
 
-  const unit = lt10(int % 10)
+  const unit = lt10(int % 10, locale)
   const ten = getList(locale)[(int - int % 10) / 10 + 8]
 
   return unit !== 'zero'
