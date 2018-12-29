@@ -1,3 +1,4 @@
+import assignDeep from 'assign-deep'
 import { isValidNumber, parseNumber } from './num-util'
 import writeCurrency from './write-currency'
 import writeDecimal from './write-decimal'
@@ -32,15 +33,19 @@ export const toNegative = (num = 'formal') => {
 /**
  * Escrever números por extenso.
  *
- * @param {string|number} num 
- * @param {object} opts
- * @returns {string} 
+ * @param {string|number} num Número para ser escrito por extenso.
+ * @param {object} opts Opções para configurar modo de escrita.
+ * @returns {string} Número escrito por extenso.
  */
 export default (num, opts) => {
+
   if (typeof num !== 'string' && typeof num !== 'number') {
     throw new TypeError('Must be a string or a number')
   }
-  if (!isValidNum(num)) {
+
+  const numString = num.toString()
+
+  if (!isValidNumber(numString)) {
     throw new Error('Invalid number')
   }
 
@@ -57,20 +62,22 @@ export default (num, opts) => {
     }
   }
 
-  opts = Object.assign(defaultOpts, opts)
+  // Usando o pacote 'assign-deep' no lugar de Object.assign(),
+  // pois esse último substitui completamente todas as propriedades
+  // de um objeto que está dentro de outro objeto.
+  opts = assignDeep(defaultOpts, opts)
 
   if (
-       isValidOpt(opts.mode, [ 'number', 'currency' ])
-    || isValidOpt(opts.locale, [ 'pt', 'br' ])
-    || isValidOpt(opts.negative, [ 'formal', 'informal' ])
-    || isValidOpt(opts.currency.type, [ 'BRL', 'EUR' ])
-    || isValidOpt(opts.number.gender, [ 'm', 'f' ])
-    || isValidOpt(opts.number.decimal, [ 'formal', 'informal' ])
+       !isValidOpt(opts.mode, [ 'number', 'currency' ])
+    || !isValidOpt(opts.locale, [ 'pt', 'br' ])
+    || !isValidOpt(opts.negative, [ 'formal', 'informal' ])
+    || !isValidOpt(opts.currency.type, [ 'BRL', 'EUR' ])
+    || !isValidOpt(opts.number.gender, [ 'm', 'f' ])
+    || !isValidOpt(opts.number.decimal, [ 'formal', 'informal' ])
   ) {
     throw new Error('Invalid option')
   }
 
-  const numString = num.toString()
   const { isNegative, integer, decimal } = parseNumber(numString)
 
   if (opts.mode === 'currency') {
@@ -82,9 +89,9 @@ export default (num, opts) => {
   }
 
   if (opts.mode === 'number') {
-    const intName = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
-    const intNamePlural = parseInt(integer) === 1 ? intName : `${intName}s`
-    const intText = writeInt(integer)
+    const intNameSingular = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
+    const intName = parseInt(integer) === 1 ? intNameSingular : `${intNameSingular}s`
+    const intText = writeInt(integer, opts.number.gender)
     const decText = writeDecimal(decimal, opts.number.decimal)
 
     // Se tem a parte inteira e não tem a parte decimal
@@ -99,11 +106,15 @@ export default (num, opts) => {
 
     // Se tem a parte inteira e a parte decimal
     if (integer !== '0' && decimal !== '0') {
-      const numText = `${intText} ${intName} ${decText}`
+      if (opts.number.decimal === 'informal') {
+        return `${intText} ${decText}`
+      }
+
+      const numText = `${intText} ${intName} e ${decText}`
 
       return isNegative
         ? toNegative(numText)
-        : decText
+        : numText
     }
   }
 }
