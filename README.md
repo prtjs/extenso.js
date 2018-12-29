@@ -16,11 +16,11 @@ Tendo em vista a participação de falantes da língua portuguesa, escreva:
 - Nome dos arquivos e diretórios em **inglês**.
 - *Issues*, *Pull Requests* e comentários em **português**.
 - Descrição dos testes em **português**.
-  - Devem ter o formato: *Deve(m) + verbo + descrição*.
-  - Nunca use ponto final na descrição.
+  - **REGRA 1**: Deve ter o formato: *Deve(m) + verbo + descrição*.
+  - **REGRA 2**: Nunca use ponto final na descrição.
 - Commits em **português**.
-  - Inicie-os sempre em caixa alta.
-  - Nunca use ponto final na descrição.
+  - **REGRA 1**: Inicie-os sempre em caixa alta.
+  - **REGRA 2**: Nunca use ponto final na descrição.
 
 ## *TODO*
 
