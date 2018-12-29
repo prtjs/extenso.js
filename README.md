@@ -2,7 +2,7 @@
 
 > Biblioteca completa para escrever números por extenso.
 
-## Característica
+## Características
 
 - [x] Aceita números até duodecilhões.
 - [x] Aceita números negativos.
@@ -20,7 +20,7 @@ Instale-o com **npm** ou **yarn**:
 
 ## Uso
 
-```
+```js
 var extenso = require('extenso')
 ```
 
