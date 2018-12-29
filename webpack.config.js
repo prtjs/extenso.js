@@ -1,40 +1,33 @@
-const path = require("path");
-const webpack = require("webpack");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
-const pkg = require("./package.json");
-const name = "Extenso.js";
-const version = `v${pkg.version}`;
-const license = pkg.license;
-const currentYear = (new Date()).getFullYear();
-const banner1 = `${name} ${version}`
-const banner2 = `(c) 2015-${currentYear} Matheus Alves`;
-const banner3 = `License: ${license}`;
-const banner = banner1 + "\n" + banner2 + "\n" + banner3;
+var path = require('path')
+var pkg = require('./package.json')
+var UglifyjsPlugin = require('uglifyjs-webpack-plugin')
+var BannerPlugin = require('webpack').BannerPlugin
 
 module.exports = {
   entry: {
-    extenso: "./src/index.js",
-    "extenso.min": "./src/index.js"
+    'extenso': './index.js',
+    'extenso.min': './index.js'
   },
   output: {
-    filename: "[name].js",
-    path: path.resolve(__dirname, "dist"),
-    library: "extenso",
-    libraryTarget: "umd"
+    filename: '[name].js',
+    path: path.resolve(__dirname, 'dist'),
+    library: 'extenso',
+    libraryTarget: 'umd'
   },
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        use: "babel-loader"
-      }
-    ]
+    rules: [{
+      test: /\.js$/i,
+      use: 'babel-loader'
+    }]
   },
   plugins: [
-    new UglifyJsPlugin({
+    new UglifyjsPlugin({
       include: /\.min\.js$/
     }),
-    new webpack.BannerPlugin(banner)
+    new BannerPlugin([
+      'Extenso.js ' + pkg.version,
+      '© 2015-' + (new Date()).getFullYear() + ' ' + pkg.author,
+      'License: ' + pkg.license
+    ].join('\n'))
   ]
-};
-
+}

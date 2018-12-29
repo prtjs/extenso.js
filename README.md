@@ -1,43 +1,30 @@
-# Extenso.js
+## Contribuição
 
-> Escrever número por extenso.
+Viu algum erro ou qualquer coisa que pode ser melhorada?
 
-![Status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)
+Você pode, portanto:
 
-![NPM](https://nodei.co/npm/piii.png?mini=true)
+- Abrir uma *Issue*.
+- Enviar um *Pull Request*.
+- Comentar no trecho do código que você acredita que pode melhorar.
 
-Escreve números:
+### Regras
 
-- [x] Em [Real](https://goo.gl/wgoGxV).
-- [x] Negativos e decimais.
-- [x] Com até 42 algarismos.
+Tendo em vista a participação de falantes da língua portuguesa, escreva:
 
-## Instalação
+- Nome de váriaveis, funções e outras coisas do tipo em **inglês**.
+- Nome dos arquivos e diretórios em **inglês**.
+- *Issues*, *Pull Requests* e comentários em **português**.
+- Descrição dos testes em **português**.
+  - Devem ter o formato: *Deve(m) + verbo + descrição*.
+  - Nunca use ponto final na descrição.
+- Commits em **português**.
+  - Inicie-os sempre em caixa alta.
+  - Nunca use ponto final na descrição.
 
-Com [*npm*](https://npmjs.com/):
+## *TODO*
 
-```
-npm install --save extenso
-```
-
-Ou importe-o de [*unpkg.com*](https://unpkg.com/extenso).
-
-## Exemplos
-
-```js
-extenso(1); // "um"
-extenso(42); // "quarenta e dois"
-extenso(42, {feminino: true}); // "quarenta e duas"
-extenso(-42); // "menos quarenta e dois"
-extenso(128); // "cento e vinte e oito"
-extenso(1000); // "mil"
-extenso("1000"); // "mil"
-extenso("1.000"); // "mil"
-extenso("1.000,00"); // "mil"
-extenso("3,14"); // "tres inteiros e quatorze décimos"
-extenso(1, {real: true}); // "um real"
-extenso("1.5"); // "um real e cinquenta centavos"
-```
+- [ ] Traduzir o `README.md` em inglês (`README-en.md`).
 
 ## Licença
 
