@@ -22,18 +22,19 @@ export const toFemale = (num) => {
  *
  * @method writeInt
  * @param {string} int Um número para ser escrito.
- * @param {string} [option='m'] A opção do gênero do número.
+ * @param {string} locale Código do país para escrever o número.
+ * @param {string} [gender='m'] A opção do gênero do número.
  * @returns {string} O número escrito.
  */
-export default (int, option = 'm') => {
+export default (int, locale, gender = 'm') => {
   const intNum = parseInt(int)
   let num
 
-  if (intNum < 1000) num = lt1000(intNum)
+  if (intNum < 1000) num = lt1000(intNum, locale)
   if (intNum === 1000) num = 'mil'
-  if (intNum > 1000) num = gt1000(int)
+  if (intNum > 1000) num = gt1000(int, locale)
 
-  return option === 'f'
+  return gender === 'f'
     ? toFemale(num)
     : num
 }
