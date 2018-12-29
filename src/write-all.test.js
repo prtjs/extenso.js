@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeAll from './write-all'
+import writeAll, { isValidOpt, toNegative } from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll('1'), 'um')
@@ -39,4 +39,15 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeAll('1', { mode: 'currency', currency: { type: 'EUR' } }), 'um euro')
   t.is(writeAll('1,50', { mode: 'currency', currency: { type: 'EUR' } }), 'um euro e cinquenta cêntimos')
   t.is(writeAll('100', { mode: 'currency', currency: { type: 'EUR' } }), 'cem euros')
+})
+
+test('Deve verificar se uma opção é válida', (t) => {
+  t.true(isValidOpt('foo', [ 'foo', 'bar', 'baz' ]))
+  t.false(isValidOpt('bar', [ 'foo', 'baz' ]))
+})
+
+test('Deve passar para o negativo um número escrito por extenso', (t) => {
+  t.is(toNegative('um'), 'um negativo')
+  t.is(toNegative('um', 'formal'), 'um negativo')
+  t.is(toNegative('um', 'informal'), 'menos um')
 })

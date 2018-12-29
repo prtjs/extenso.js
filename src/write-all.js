@@ -38,7 +38,6 @@ export const toNegative = (num, mode = 'formal') => {
  * @returns {string} Número escrito por extenso.
  */
 export default (num, opts) => {
-
   if (typeof num !== 'string' && typeof num !== 'number') {
     throw new TypeError('Must be a string or a number')
   }
