@@ -2,7 +2,10 @@
   "name": "extenso.js",
   "version": "1.0.0",
   "description": "Escrever números por extenso.",
-  "main": "index.js",
+  "main": "dist/extenso.min.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "ava",
     "standard": "standard --fix",
