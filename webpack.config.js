@@ -22,7 +22,12 @@ module.exports = {
   },
   plugins: [
     new UglifyjsPlugin({
-      include: /\.min\.js$/
+      include: /\.min\.js$/,
+      uglifyOptions: {
+        output: {
+          comments: false,
+        },
+      },
     }),
     new BannerPlugin([
       'Extenso.js ' + pkg.version,
