@@ -1,3 +1,9 @@
+# Diretórios
+
 node_modules/
 dist/
 out/
+
+# Arquivos
+
+extenso-*.tgz
