@@ -6,6 +6,8 @@
   "scripts": {
     "test": "ava",
     "standard": "standard --fix",
+    "build": "webpack --mode development",
+    "build:dev": "webpack --mode production",
     "docs": "jsdoc -r src -t node_modules/docdash"
   },
   "repository": "theuves/extenso.js",
