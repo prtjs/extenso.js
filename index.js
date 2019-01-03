@@ -1,3 +1,1 @@
-var writeAll = require('./src/write-all')
-
-module.exports = writeAll.default
+module.exports = require('./src/write-all').default
