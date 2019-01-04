@@ -25,9 +25,9 @@ module.exports = {
       include: /\.min\.js$/,
       uglifyOptions: {
         output: {
-          comments: false,
-        },
-      },
+          comments: false
+        }
+      }
     }),
     new BannerPlugin([
       'Extenso.js ' + pkg.version,
