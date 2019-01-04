@@ -1,7 +1,10 @@
-var path = require('path')
-var pkg = require('./package.json')
-var UglifyjsPlugin = require('uglifyjs-webpack-plugin')
-var BannerPlugin = require('webpack').BannerPlugin
+const path = require('path')
+const pkg = require('./package.json')
+const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
+const { BannerPlugin } = require('webpack')
+const { version, license, author } = require('./package')
+
+const banner = `Extenso.js v${version} | ${license} (c) 2015-${(new Date()).getFullYear()} by ${author}`
 
 module.exports = {
   entry: {
@@ -14,7 +17,7 @@ module.exports = {
     library: 'extenso',
     libraryTarget: 'umd',
 
-    // To solve a problem with Webpack 4 (webpack#6522).
+    // Para resolver um problema com o Webpack 4 (webpack#6522).
     globalObject: `typeof self !== 'undefined' ? self : this`
   },
   module: {
@@ -22,6 +25,9 @@ module.exports = {
       test: /\.js$/i,
       use: 'babel-loader'
     }]
+  },
+  optimization: {
+    minimize: false
   },
   plugins: [
     new UglifyjsPlugin({
@@ -32,10 +38,6 @@ module.exports = {
         }
       }
     }),
-    new BannerPlugin([
-      'Extenso.js ' + pkg.version,
-      '© 2015-' + (new Date()).getFullYear() + ' ' + pkg.author,
-      'License: ' + pkg.license
-    ].join('\n'))
+    new BannerPlugin(banner)
   ]
 }
