@@ -12,7 +12,10 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     library: 'extenso',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
+
+    // To solve a problem with Webpack 4 (webpack#6522).
+    globalObject: `typeof self !== 'undefined' ? self : this`
   },
   module: {
     rules: [{
