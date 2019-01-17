@@ -1,4 +1,4 @@
-{
+﻿{
   "BRL": {
     "singular": "real",
     "plural": "reais",
@@ -10,6 +10,14 @@
   "EUR": {
     "singular": "euro",
     "plural": "euros",
+    "subunit": {
+      "singular": "cêntimo",
+      "plural": "cêntimos"
+    }
+  },
+  "ECV": {
+    "singular": "escudo",
+    "plural": "escudos",
     "subunit": {
       "singular": "cêntimo",
       "plural": "cêntimos"

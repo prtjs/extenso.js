@@ -1,4 +1,4 @@
-# Extenso.js
+﻿# Extenso.js
 
 <!-- Imagem com o status do teste. -->
 ![Status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)
@@ -135,6 +135,7 @@ ser escrito.
 
 - `BRL` (*valor padrão*) - Para escrever números simples.
 - `EUR` - Para escrever valores monetários.
+- `ECV` - Para escrever valores monetários.
 
 ##### Exemplo
 
@@ -142,6 +143,7 @@ ser escrito.
 extenso('42', { mode: 'currency' }) // 'quarenta e dois reais'
 extenso('42', { mode: 'currency', currency: { type: 'BRL' } }) // 'quarenta e dois reais'
 extenso('42', { mode: 'currency', currency: { type: 'EUR' } }) // 'quarenta e dois euros'
+extenso('42', { mode: 'currency', currency: { type: 'ECV' } }) // 'quarenta e dois escudos'
 ```
 
 #### `number.gender`
