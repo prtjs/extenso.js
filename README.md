@@ -35,7 +35,7 @@ extenso(number, [options])
 
 ### `number`
 
-**Obs.**: Existência obrigatório.
+**Obs.**: Existência obrigatória.
 
 - **Tipo**: `string` ou `number`
 
