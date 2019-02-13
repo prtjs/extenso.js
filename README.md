@@ -1,7 +1,8 @@
 ﻿# Extenso.js
 
-<!-- Imagem com o status do teste. -->
-![Status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)
+<!-- Todos os badges. -->
+[![Status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)](https://travis-ci.org/theuves/extenso.js)
+[![Doar](https://img.shields.io/badge/paypal-doar-179bd7.svg?logo=paypal&style=flat&logoColor=blue)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3WZ447WCJ54XG&source=url)
 
 > Biblioteca completa para escrever números por extenso.
 
@@ -212,6 +213,14 @@ Tendo em vista a participação de falantes da língua portuguesa, escreva:
 ## *TODO*
 
 - [ ] Traduzir o `README.md` em inglês (`README-en.md`).
+
+## Ajuda-me
+
+Usa ou gosta desse e outros projetos mantindos por mim?
+
+Você pode me ajudar com uma doação.
+
+[![Link para doar](https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3WZ447WCJ54XG&source=url)
 
 ## Licença
 
