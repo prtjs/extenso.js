@@ -115,7 +115,7 @@ extenso('42', { negative: 'informal' }) // 'menos quarenta e dois'
 
 A escrita de alguns números pode váriar de país para país (e talvez até de
 região para região), por exemplo, o número 16 é escrito *dezesseis* no Brasil,
-enquanto que em Portugal é escrito *dezassete*. A configuração dessas
+enquanto que em Portugal é escrito *dezasseis*. A configuração dessas
 diferenças é feita aqui.
 
 - `br` (*valor padrão*) - Para escrever no dialeto do Brasil.
