@@ -23,7 +23,13 @@ module.exports = {
   module: {
     rules: [{
       test: /\.js$/i,
-      use: 'babel-loader'
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: ['@babel/preset-env']
+        }
+      }]
+      
     }]
   },
   optimization: {
