@@ -54,6 +54,10 @@ export default (iso, locale, unit = '0', subunit = '0') => {
     throw new Error('Invalid ISO code')
   }
 
+  if (subunit.length === 1) {
+    subunit = subunit + '0'
+  }
+
   const opts = allCurrencies[iso]
   const unitText = write(unit, locale, opts)
   const subunitText = writeSubunit(subunit, locale, opts)
