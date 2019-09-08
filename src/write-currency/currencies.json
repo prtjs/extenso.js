@@ -22,5 +22,13 @@
       "singular": "cêntimo",
       "plural": "cêntimos"
     }
+  },
+  "MZN": {
+    "singular": "metical",
+    "plural": "meticais",
+    "subunit": {
+      "singular": "centavos",
+      "plural": "centavos"
+    }
   }
 }
