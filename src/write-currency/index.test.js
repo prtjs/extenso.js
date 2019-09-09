@@ -18,6 +18,20 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeCurrency('BRL', 'br', '1000000'),       'um milhão de reais')
   t.is(writeCurrency('BRL', 'br', '2000000', '50'), 'dois milhões de reais e cinquenta centavos')
 
+  // Testes com o ESCUDO
+  t.is(writeCurrency('ECV', 'pt', '1'),             'um escudo')
+  t.is(writeCurrency('ECV', 'pt', '2'),             'dois escudos')
+  t.is(writeCurrency('ECV', 'br', '14', '50'),      'quatorze escudos e cinquenta cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '14', '50'),      'catorze escudos e cinquenta cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '1', '50'),       'um escudo e cinquenta cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '2', '5'),        'dois escudos e cinquenta cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '0', '1'),        'dez cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '0', '5'),        'cinquenta cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '0', '05'),       'cinco cêntimos')
+  t.is(writeCurrency('ECV', 'pt', undefined, '25'), 'vinte e cinco cêntimos')
+  t.is(writeCurrency('ECV', 'pt', '1000000'),       'um milhão de escudos')
+  t.is(writeCurrency('ECV', 'pt', '2000000', '50'), 'dois milhões de escudos e cinquenta cêntimos')
+
   // Testes com o EURO
   t.is(writeCurrency('EUR', 'pt', '1'),             'um euro')
   t.is(writeCurrency('EUR', 'pt', '2'),             'dois euros')
@@ -32,19 +46,19 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeCurrency('EUR', 'pt', '1000000'),       'um milhão de euros')
   t.is(writeCurrency('EUR', 'pt', '2000000', '50'), 'dois milhões de euros e cinquenta cêntimos')
 
-  // Testes com o ESCUDO
-  t.is(writeCurrency('ECV', 'pt', '1'),             'um escudo')
-  t.is(writeCurrency('ECV', 'pt', '2'),             'dois escudos')
-  t.is(writeCurrency('ECV', 'br', '14', '50'),      'quatorze escudos e cinquenta cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '14', '50'),      'catorze escudos e cinquenta cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '1', '50'),       'um escudo e cinquenta cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '2', '5'),        'dois escudos e cinquenta cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '0', '1'),        'dez cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '0', '5'),        'cinquenta cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '0', '05'),       'cinco cêntimos')
-  t.is(writeCurrency('ECV', 'pt', undefined, '25'), 'vinte e cinco cêntimos')
-  t.is(writeCurrency('ECV', 'pt', '1000000'),       'um milhão de escudos')
-  t.is(writeCurrency('ECV', 'pt', '2000000', '50'), 'dois milhões de escudos e cinquenta cêntimos')
+  // Testes com o METICAL
+  t.is(writeCurrency('MZN', 'pt', '1'),             'um metical')
+  t.is(writeCurrency('MZN', 'pt', '2'),             'dois meticais')
+  t.is(writeCurrency('MZN', 'br', '14', '50'),      'quatorze meticais e cinquenta centavos')
+  t.is(writeCurrency('MZN', 'pt', '14', '50'),      'catorze meticais e cinquenta centavos')
+  t.is(writeCurrency('MZN', 'pt', '1', '50'),       'um metical e cinquenta centavos')
+  t.is(writeCurrency('MZN', 'pt', '2', '5'),        'dois meticais e cinquenta centavos')
+  t.is(writeCurrency('MZN', 'pt', '0', '1'),        'dez centavos')
+  t.is(writeCurrency('MZN', 'pt', '0', '5'),        'cinquenta centavos')
+  t.is(writeCurrency('MZN', 'pt', '0', '05'),       'cinco centavos')
+  t.is(writeCurrency('MZN', 'pt', undefined, '25'), 'vinte e cinco centavos')
+  t.is(writeCurrency('MZN', 'pt', '1000000'),       'um milhão de meticais')
+  t.is(writeCurrency('MZN', 'pt', '2000000', '50'), 'dois milhões de meticais e cinquenta centavos')
 })
 
 /**
