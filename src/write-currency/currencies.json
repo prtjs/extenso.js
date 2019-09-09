@@ -7,17 +7,17 @@
       "plural": "centavos"
     }
   },
-  "EUR": {
-    "singular": "euro",
-    "plural": "euros",
+  "ECV": {
+    "singular": "escudo",
+    "plural": "escudos",
     "subunit": {
       "singular": "cêntimo",
       "plural": "cêntimos"
     }
   },
-  "ECV": {
-    "singular": "escudo",
-    "plural": "escudos",
+  "EUR": {
+    "singular": "euro",
+    "plural": "euros",
     "subunit": {
       "singular": "cêntimo",
       "plural": "cêntimos"
