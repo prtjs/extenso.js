@@ -4,13 +4,20 @@ import { split, getLastNumber } from './int-util'
 /**
  * Função: split
  */
-test('Deve separar as partes de um número', (t) => {
-  t.deepEqual(split('1'),       [ '1' ])
-  t.deepEqual(split('10'),      [ '10' ])
-  t.deepEqual(split('100'),     [ '100' ])
-  t.deepEqual(split('1000'),    [ '1', '000' ])
-  t.deepEqual(split('1000000'), [ '1', '000', '000' ])
-})
+test('Deve separar as partes de um número', t => {
+  t.deepEqual(split(10 ** 0),          ['1']);
+  t.deepEqual(split(10 ** 1),          ['10']);
+  t.deepEqual(split(10 ** 2),          ['100']);
+  t.deepEqual(split(10 ** 3),          ['1', '000']);
+  t.deepEqual(split(10 ** 6),          ['1', '000', '000']);
+  t.deepEqual(split(10 ** 6, 'long'),  ['1', '000', '000']);
+
+  t.deepEqual(split(10 ** 9, 'long'),        ['1000', '000', '000']);
+  t.deepEqual(split(10 ** 9, 'long', true),  ['1 000', '000', '000']);
+  t.deepEqual(split(10 ** 10, 'long', true), ['10 000', '000', '000']);
+  t.deepEqual(split(10 ** 11, 'long', true), ['100 000', '000', '000']);
+  t.deepEqual(split(10 ** 12, 'long', true), ['1', '000 000', '000', '000']);
+});
 
 /**
  * Função: getLastNumber
