@@ -1,7 +1,8 @@
 import reverse from '@arr/reverse'
-import { getLastNumber } from './int-util'
+import { getLastNumber, split } from './int-util'
 import { listGt1000 as getList } from '../get-list'
 import lt1000 from '../lt1000'
+import gt1000 from '.'
 
 /**
  * Adicionar vírgula entre algumas partes.
@@ -36,9 +37,9 @@ export const addConjunction = (parts, int) => {
   // - Caso 2: A parte é um inteiro divisível por cem.
   if (lastNum < 100 || lastNum % 100 === 0) {
     return parts.map((part, index, array) => {
-      return index === array.length - 2
-        ? `${part} e`
-        : part
+      return index === array.length - 2 
+      ? `${part} e`
+      : part
     })
   }
 
@@ -53,14 +54,14 @@ export const addConjunction = (parts, int) => {
  * @returns {Array} Partes com algumas partes removidas.
  */
 export const clear = (parts) => {
-
   // Etapas para a remoção:
   // - Etapa 1: Remove zeros à esquerda.
   // - Etapa 2: Remove partes que não são lidas.
   // - Etapa 3: Remove o "1" das partes com "1 mil".
   return parts
-    .map(part => part.replace(/^0+\s?/, ''))
-    .filter(part => /^\d/.test(part))
+    .map(part => part.replace(/^0+\s?/, '-').trim())
+    .filter(part => (part.split(' ').length > 1 || parseInt(part) == part || /^\d/.test(part)))
+    .map(part => part.replace(/\-/g, ''))
     .map(part => part.replace(/^1\s(mil)$/, '$1'))
 }
 
@@ -72,14 +73,20 @@ export const clear = (parts) => {
  * @param {string} locale Código do país para escrever o número.
  * @returns {Array} Partes com os inteiros escritos por extenso.
  */
-export const name = (parts, locale) => {
-  return reverse(reverse(parts).map((part, i) => {
-    const numberName = getList(locale)[i - 1]
-
-    return numberName
-      ? `${part} ${numberName}`
-      : part
-  }))
+export const name = (parts, locale, scale) => {
+  return reverse(
+    reverse(parts)
+      .map(part => {
+        if (split(part).length > 1) {
+          return gt1000(part, locale, scale);
+        }
+        return part;
+      })
+      .map((part, i) => {
+        const numberName = getList(locale)[i - 1];
+        return numberName ? `${part} ${numberName}` : part;
+      })
+  )
 }
 
 /**
@@ -104,12 +111,12 @@ export const singularize = (parts) => {
  * @param {string} locale Código do país para escrever o número.
  * @returns {string} Número como todas as partes escritas por extenso.
  */
-export const write = (parts, locale) => {
+export const write = (parts, locale, scale) => {
   return parts.map(part => {
     return part.replace(/^(\d+)/, digit => {
       const int = parseInt(digit)
 
-      return lt1000(int, locale)
+      return int < 1000 ? lt1000(int, locale) : gt1000(int, locale, scale)
     })
   })
 }

@@ -23,9 +23,10 @@ test('Deve adicionar "e" no final de algumas partes', (t) => {
  * Função: clear
  */
 test('Deve trechos em partes que não são lidos', (t) => {
-  t.deepEqual(clear([ '2 milhões', '042 mil', '001' ]), [ '2 milhões', '42 mil', '1' ])
-  t.deepEqual(clear([ '2 milhões', '000 mil', '000' ]), [ '2 milhões' ])
-  t.deepEqual(clear([ '1 mil' ]),                       [ 'mil' ])
+  t.deepEqual(clear([ 'mil bilhões', ' milhões', '000 mil', '000' ]), [ 'mil bilhões' ])
+  t.deepEqual(clear([ '2 milhões', '042 mil', '001' ]),               [ '2 milhões', '42 mil', '1' ])
+  t.deepEqual(clear([ '2 milhões', '000 mil', '000' ]),               [ '2 milhões' ])
+  t.deepEqual(clear([ '1 mil' ]),                                     [ 'mil' ])
 })
 
 /**
@@ -35,6 +36,7 @@ test('Deve adicionar o nome de cada parte', (t) => {
   t.deepEqual(name([ '1', '000', '000' ], 'br'),        [ '1 milhões', '000 mil', '000' ])
   t.deepEqual(name([ '1', '000' ], 'br'),               [ '1 mil', '000' ])
   t.deepEqual(name([ '1', '000', '000', '000' ], 'pt'), [ '1 biliões', '000 milhões', '000 mil', '000' ])
+  t.deepEqual(name([ '2000', '000', '000' ], 'pt'),     [ 'dois mil milhões', '000 mil', '000' ])
 })
 
 /**

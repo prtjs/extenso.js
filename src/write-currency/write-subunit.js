@@ -7,10 +7,11 @@ import writeInt from '../write-int'
  * @param {string} val Valor a ser escrito.
  * @param {string} locale Código do país para escrever o número.
  * @param {object} opts Opções de escrita do valor.
+ * @param {string} [scale='long'] Escala numérica a ser usada.
  * @returns {string} Valor escrito por extenso.
  */
-export default (val, locale, opts) => {
-  const textNumber = writeInt(val, locale)
+export default (val, locale, opts, scale='long') => {
+  const textNumber = writeInt(val, locale, undefined, scale)
 
   return parseInt(val) === 1
     ? `${textNumber} ${opts.subunit.singular}`

@@ -25,5 +25,15 @@ test('Deve escrever números maiores que mil', (t) => {
   t.is(gt1000('2001001', 'br'),    'dois milhões, mil e um')
   t.is(gt1000('2001100', 'br'),    'dois milhões, mil e cem')
   t.is(gt1000('2001101', 'br'),    'dois milhões, mil cento e um')
-  t.is(gt1000('2000001101', 'pt'), 'dois biliões, mil cento e um')
+})
+
+test('Deve escrever números maiores que mil e diferenciar as escalas numéricas', (t) => {
+  t.is(gt1000('2001101', 'br'),                'dois milhões, mil cento e um')
+  t.is(gt1000('2001101', 'br', 'short'),       'dois milhões, mil cento e um')
+
+  t.is(gt1000('2000001101', 'pt'),             'dois mil milhões, mil cento e um')
+  t.is(gt1000('2000001101', 'pt', 'short'),    'dois biliões, mil cento e um')
+
+  t.is(gt1000('1000000000000', 'pt'),          'um bilião')
+  t.is(gt1000('1000000000000', 'pt', 'short'), 'um trilião')
 })

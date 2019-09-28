@@ -70,6 +70,7 @@ retornará um erro.
 
 - `mode` - *string*
 - `locale` - *string*
+- `scale` - *string*
 - `negative` - *string*
 - `currency` - *object*
 - `currency.type` - *string*
@@ -127,6 +128,20 @@ diferenças é feita aqui.
 extenso('16') // 'dezesseis'
 extenso('16', { locale: 'br' }) // 'dezesseis'
 extenso('16', { locale: 'pt' }) // 'dezasseis'
+```
+
+#### `scale`
+
+> Define a escala numérica a ser usada.
+
+- `long` (*valor padrão*) - Números superiores a um milhão terão um novo termo a cada 1.000.000 vezes em relação ao termo anterior.
+- `short` - Números superiores a um milhão terão um novo termo a cada 1.000 vezes em relação ao termo anterior.
+
+##### Exemplo
+
+```js
+extenso('1000000000', { locale: 'pt' }) // 'mil milhões'
+extenso('1000000000', { locale: 'pt', scale: 'short' }) // 'um bilião'
 ```
 
 #### `currency.type`
