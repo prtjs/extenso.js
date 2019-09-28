@@ -61,6 +61,11 @@ export default (num, opts = {}) => {
       decimal: 'formal'
     }
   }
+  
+  // a escala longa é a padrão, com excessão ao Brasil se `opts.scale` não for definido
+  if (opts.scale === undefined  && (opts.locale == undefined || opts.locale == 'br')) {
+    opts.scale = 'short'
+  }
 
   // Usando o pacote 'assign-deep' no lugar de Object.assign(),
   // pois esse último substitui completamente todas as propriedades

@@ -134,7 +134,7 @@ extenso('16', { locale: 'pt' }) // 'dezasseis'
 
 > Define a escala numérica a ser usada.
 
-- `long` (*valor padrão*) - Números superiores a um milhão terão um novo termo a cada 1.000.000 vezes em relação ao termo anterior.
+- `long` (*valor padrão, com exeção em `{ locale: 'br' }`*) - Números superiores a um milhão terão um novo termo a cada 1.000.000 vezes em relação ao termo anterior.
 - `short` - Números superiores a um milhão terão um novo termo a cada 1.000 vezes em relação ao termo anterior.
 
 ##### Exemplo
