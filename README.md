@@ -176,9 +176,9 @@ extenso('42', { number: { gender: 'f' } }) // 'quarenta e duas'
 ##### Exemplo
 
 ```js
-extenso('3.14') // 'três inteiros e quatorze centésimos'
-extenso('3.14', { number: { decimal: 'formal' } }) // 'três inteiros e quatorze centésimos'
-extenso('3.14', { number: { decimal: 'informal' } }) // 'três vírgula quatorze'
+extenso('3,14') // 'três inteiros e quatorze centésimos'
+extenso('3,14', { number: { decimal: 'formal' } }) // 'três inteiros e quatorze centésimos'
+extenso('3,14', { number: { decimal: 'informal' } }) // 'três vírgula quatorze'
 ```
 
 ## Contribuição
