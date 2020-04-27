@@ -26,13 +26,13 @@ export const toFemale = (num) => {
  * @param {string} [gender='m'] A opção do gênero do número.
  * @returns {string} O número escrito.
  */
-export default (int, locale, gender = 'm') => {
+export default (int, locale, gender='m', scale='short') => {
   const intNum = parseInt(int)
   let num
 
   if (intNum < 1000) num = lt1000(intNum, locale)
   if (intNum === 1000) num = 'mil'
-  if (intNum > 1000) num = gt1000(int, locale)
+  if (intNum > 1000) num = gt1000(int, locale, scale)
 
   return gender === 'f'
     ? toFemale(num)

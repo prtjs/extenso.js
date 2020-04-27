@@ -52,6 +52,7 @@ export default (num, opts) => {
     mode: 'number',
     locale: 'br',
     negative: 'formal',
+    scale: 'short',
     currency: {
       type: 'BRL'
     },
@@ -70,6 +71,7 @@ export default (num, opts) => {
        !isValidOpt(opts.mode, [ 'number', 'currency' ])
     || !isValidOpt(opts.locale, [ 'pt', 'br' ])
     || !isValidOpt(opts.negative, [ 'formal', 'informal' ])
+    || !isValidOpt(opts.scale, [ 'short', 'long' ])
     || !isValidOpt(opts.currency.type, [ 'BRL', 'EUR', 'ECV' ])
     || !isValidOpt(opts.number.gender, [ 'm', 'f' ])
     || !isValidOpt(opts.number.decimal, [ 'formal', 'informal' ])
@@ -82,7 +84,7 @@ export default (num, opts) => {
   if (opts.mode === 'currency') {
     const iso = opts.currency.type
     const locale = opts.locale
-    const numText = writeCurrency(iso, locale, integer, decimal)
+    const numText = writeCurrency(iso, locale, integer, decimal, opts.scale)
 
     return isNegative
       ? toNegative(numText, opts.negative)
@@ -92,7 +94,7 @@ export default (num, opts) => {
   if (opts.mode === 'number') {
     const intNameSingular = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
     const intName = parseInt(integer) === 1 ? intNameSingular : `${intNameSingular}s`
-    const intText = writeInt(integer, opts.locale, opts.number.gender)
+    const intText = writeInt(integer, opts.locale, opts.number.gender, opts.scale)
     const decText = writeDecimal(decimal, opts.locale, opts.number.decimal)
 
     // Se tem a parte inteira e não tem a parte decimal

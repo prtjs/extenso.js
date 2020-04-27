@@ -41,6 +41,17 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeAll('100', { mode: 'currency', currency: { type: 'EUR' } }), 'cem euros')
 })
 
+test('Deve escrever conforme a escala desejada', (t) => {
+  t.is(writeAll('2.000.000.001', { scale: 'short' }), 'dois bilhões e um')
+  t.is(writeAll('2.000.000.001', { scale: 'short', number: { gender: 'f' } }), 'duas bilhões e uma')
+  t.is(writeAll('2.000.000.001', { scale: 'long' }), 'dois mil milhões e um')
+  t.is(writeAll('2.000.000.001', { scale: 'long', number: { gender: 'f' } }), 'duas mil milhões e uma')
+
+  // "de reais"???
+  t.is(writeAll('2.000.000.001', { mode: 'currency', scale: 'short' }), 'dois bilhões e um de reais')
+  t.is(writeAll('2.000.000.001', { mode: 'currency', scale: 'long' }), 'dois mil milhões e um de reais')
+})
+
 test('Deve verificar se uma opção é válida', (t) => {
   t.true(isValidOpt('foo', [ 'foo', 'bar', 'baz' ]))
   t.false(isValidOpt('bar', [ 'foo', 'baz' ]))

@@ -9,8 +9,8 @@ import { name, clear, singularize, addConjunction, addComma, write } from './par
  * @param {string} locale Código do país para escrever o número.
  * @returns {number} Valor escrito por extenso.
  */
-export default (int, locale) => {
-  const number = write(addComma(addConjunction(singularize(clear(name(split(int), locale))), int)), locale)
+export default (int, locale, scale) => {
+  const number = write(addComma(addConjunction(singularize(clear(name(split(int), locale, scale))), int)), locale)
 
   return number.join(' ')
 }
