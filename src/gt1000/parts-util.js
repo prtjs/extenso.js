@@ -72,9 +72,9 @@ export const clear = (parts) => {
  * @param {string} locale Código do país para escrever o número.
  * @returns {Array} Partes com os inteiros escritos por extenso.
  */
-export const name = (parts, locale) => {
+export const name = (parts, locale, scale) => {
   return reverse(reverse(parts).map((part, i) => {
-    const numberName = getList(locale)[i - 1]
+    const numberName = getList(locale, scale)[i - 1]
 
     return numberName
       ? `${part} ${numberName}`

@@ -35,6 +35,7 @@ test('Deve adicionar o nome de cada parte', (t) => {
   t.deepEqual(name([ '1', '000', '000' ], 'br'),        [ '1 milhões', '000 mil', '000' ])
   t.deepEqual(name([ '1', '000' ], 'br'),               [ '1 mil', '000' ])
   t.deepEqual(name([ '1', '000', '000', '000' ], 'pt'), [ '1 biliões', '000 milhões', '000 mil', '000' ])
+  t.deepEqual(name([ '1', '000', '000', '000' ], 'pt', 'long'), [ '1 mil milhões', '000 milhões', '000 mil', '000' ])
 })
 
 /**
