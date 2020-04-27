@@ -145,6 +145,7 @@ extenso('42', { mode: 'currency' }) // 'quarenta e dois reais'
 extenso('42', { mode: 'currency', currency: { type: 'BRL' } }) // 'quarenta e dois reais'
 extenso('42', { mode: 'currency', currency: { type: 'EUR' } }) // 'quarenta e dois euros'
 extenso('42', { mode: 'currency', currency: { type: 'ECV' } }) // 'quarenta e dois escudos'
+extenso('42', { mode: 'currency', currency: { type: 'MZN' } }) // 'quarenta e dois meticais'
 ```
 
 #### `number.gender`
