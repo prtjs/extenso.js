@@ -49,7 +49,7 @@ export const isZero = (val) => {
  * @param {string} [subunit='0'] Sub-unidade do valor (parte "decimal").
  * @returns {string} Valor escrito por extenso.
  */
-export default (iso, locale, unit = '0', subunit = '0') => {
+export default (iso, locale, unit='0', subunit='0', scale) => {
   if (!isValidIso(iso, allCurrencies)) {
     throw new Error('Invalid ISO code')
   }
@@ -59,7 +59,7 @@ export default (iso, locale, unit = '0', subunit = '0') => {
   }
 
   const opts = allCurrencies[iso]
-  const unitText = write(unit, locale, opts)
+  const unitText = write(unit, locale, scale, opts)
   const subunitText = writeSubunit(subunit, locale, opts)
 
   if (isZero(unit)) return subunitText
