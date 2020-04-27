@@ -78,22 +78,43 @@ export const listLt1000 = (locale) => {
  * @param {string} locale Código do país que deve ser escrito.
  * @returns {Array} Lista das partes do número.
  */
-export const listGt1000 = (locale) => { 
-  return [
+export const listGt1000 = (locale, scale='short') => {
+  const baseList = [
     'mil',
     'milhões',
-    ({ br: 'bilhões', pt: 'biliões' })[locale],
-    ({ br: 'trilhões', pt: 'triliões' })[locale],
-    ({ br: 'quatrilhões', pt: 'quatriliões' })[locale],
-    ({ br: 'quintilhões', pt: 'quintiliões' })[locale],
-    ({ br: 'sextilhões', pt: 'sextiliões' })[locale],
-    ({ br: 'septilhões', pt: 'septiliões' })[locale],
-    ({ br: 'octilhões', pt: 'octiliões' })[locale],
-    ({ br: 'nonilhões', pt: 'noniliões' })[locale],
-    ({ br: 'decilhões', pt: 'deciliões' })[locale],
-    ({ br: 'undecilhões', pt: 'undeciliões' })[locale],
-    ({ br: 'duodecilhões', pt: 'duodeciliões' })[locale]
+
+    // Sem o sufixo, pois ele será dinâmico
+    'bil',
+    'tril',
+    'quatril',
+    'quintil',
+    'sextil',
+    'septil',
+    'octil',
+    'nonil',
+    'decil',
+    'undecil',
+    'duodecil'
   ]
+
+  return baseList
+    .map((value, index) => { // Resolve sufixo entre 'br' e 'pt'
+      if (index < 2) return value
+      const suffixes = {
+        'br': 'hões',
+        'pt': 'iões'
+      }
+      return value + suffixes[locale]
+    })
+    .map((value, index, array) => { // Resolve escala entre longa e curta
+      if (scale === 'long') {
+        if (index < 2) return value
+        if (index % 2 == 0) return 'mil ' + array[index / 2]
+        return array[index / 2 + .5]
+      } else {
+        return value
+      }
+    })
 }
 
 /**
