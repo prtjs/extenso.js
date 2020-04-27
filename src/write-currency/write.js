@@ -9,7 +9,7 @@ import writeInt from '../write-int'
  * @param {object} opts As opções de escrita do valor.
  * @returns {string} O valor escrito por extenso.
  */
-export default (val, locale, scale, opts) => {
+export default (val, locale, opts, scale) => {
   const number = parseInt(val)
   const text = writeInt(val, locale, 'm', scale)
 
