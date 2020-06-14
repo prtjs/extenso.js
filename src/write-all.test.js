@@ -2,6 +2,7 @@ import test from 'ava'
 import writeAll, { isValidOpt, toNegative } from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
+  t.is(writeAll(1), 'um')
   t.is(writeAll('1'), 'um')
   t.is(writeAll('1', { number: { gender: 'm' } }), 'um')
   t.is(writeAll('1', { number: { gender: 'f' } }), 'uma')
@@ -13,6 +14,7 @@ test('Deve escrever números simples por extenso', (t) => {
 })
 
 test('Deve escrever números negativos por extenso', (t) => {
+  t.is(writeAll(-42), 'quarenta e dois negativo')
   t.is(writeAll('-42'), 'quarenta e dois negativo')
   t.is(writeAll('-42', { negative: 'formal' }), 'quarenta e dois negativo')
   t.is(writeAll('-42', { negative: 'informal' }), 'menos quarenta e dois')
@@ -25,6 +27,17 @@ test('Deve escrever números decimais por extenso', (t) => {
   t.is(writeAll('1,14', { number: { gender: 'f' } }), 'uma inteira e quatorze centésimos')
   t.is(writeAll('3,14'), 'três inteiros e quatorze centésimos')
   t.is(writeAll('3,14', { locale: 'pt' }), 'três inteiros e catorze centésimos')
+})
+
+test('Deve escrever números com decimais separados por ponto', (t) => {
+  const options = { number: { decimalSeparator: 'dot' } }
+
+  t.is(writeAll('1', options), 'um')
+  t.is(writeAll('1,001', options), 'mil e um')
+  t.is(writeAll('1,000,000.14', options), 'um milhão inteiros e quatorze centésimos')
+  t.is(writeAll('3.14', options), 'três inteiros e quatorze centésimos')
+  t.is(writeAll(3.14, options), 'três inteiros e quatorze centésimos')
+  t.is(writeAll(3.14), 'três inteiros e quatorze centésimos')
 })
 
 test('Deve escrever valores monetários por extenso', (t) => {
