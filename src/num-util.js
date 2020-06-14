@@ -69,6 +69,11 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
  * @returns {object} Objeto com as informações do número
  */
 export const parseNumber = (num, isCommaSeparator=false) => {
+  if (typeof num === 'number' && !Number.isInteger(num)) {
+    num = num.toString()
+    isCommaSeparator = true
+  }
+
   const separator = isCommaSeparator ? ',' : '.'
   const decimalSeparator = isCommaSeparator ? '.' : ','
   const isNegative = /^-/.test(num)
