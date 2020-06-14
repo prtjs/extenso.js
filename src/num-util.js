@@ -5,7 +5,7 @@
  * @param {string|float} val Um valor para ser verificado.
  * @returns {boolean} Verificação do valor.
  */
-export const isValidNumber = (val, isCommaSeparator=false) => {
+export const isValidNumber = (val, decimalSeparatorIsDot=false) => {
   if (typeof val === 'number') {
 
     // Se for um inteiro e não for seguro
@@ -27,7 +27,7 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
   const isNotFormatted = /^-?\d+$/.test(val)
 
   /*
-   * Separados por "." (ponto)
+   * Decimal separado por ',' (vírgula)
    */
 
   // "1.000.000", "-2.000", etc.
@@ -38,7 +38,7 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
   const isNotFormattetDecimalDot = /^-?\d+,\d+$/.test(val)
 
   /*
-   * Separados por "," (vírgula)
+   * Decimal separado por '.' (ponto)
    */
 
   // "1,000,000", "-2,000", etc.
@@ -48,7 +48,7 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
   // "1000000.42", "-2000.00", etc.
   const isNotFormattetDecimalComma = /^-?\d+\.\d+$/.test(val)
 
-  if (isCommaSeparator) {
+  if (decimalSeparatorIsDot) {
     return isNotFormatted
         || isFormattedComma
         || isFormattedDecimalComma
@@ -68,14 +68,14 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
  * @param {string} val Um número para ser analisado
  * @returns {object} Objeto com as informações do número
  */
-export const parseNumber = (num, isCommaSeparator=false) => {
+export const parseNumber = (num, decimalSeparatorIsDot=false) => {
   if (typeof num === 'number') {
     num = num.toString()
-    isCommaSeparator = true
+    decimalSeparatorIsDot = true
   }
 
-  const separator = isCommaSeparator ? ',' : '.'
-  const decimalSeparator = isCommaSeparator ? '.' : ','
+  const separator = decimalSeparatorIsDot ? ',' : '.'
+  const decimalSeparator = decimalSeparatorIsDot ? '.' : ','
   const isNegative = /^-/.test(num)
   const normalized = num.replace(RegExp(`(-|\\${separator})`, 'g'), '')
 
