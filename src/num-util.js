@@ -5,19 +5,25 @@
  * @param {string} val Um valor para ser verificado.
  * @returns {boolean} Verificação do valor.
  */
-export const isValidNumber = (val) => {
+export const isValidNumber = (val, isDotSeparator=false) => {
   if (typeof val === 'number' && !Number.isSafeInteger(val)) {
     return false
   }
 
-  // Verifica se é um número
-  if (
-       /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val) // ...formatado
-    || /^-?\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val) // ...decimal formatado
-    || /^-?\d+$/.test(val) // ...não formatado
-    || /^-?\d+,\d+/.test(val) // ...decimal não formatado
-  ) {
-    return true
+  // "1.000.000", "-2.000", etc.
+  const isFormatted   = /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val)
+
+  // "1000000", "-2000", etc.
+  const isNotFormatted = /^-?\d+$/.test(val)
+
+  // "1.000.000,42", "-2.000,00", etc.
+  const isFormattedDecimal = /^-?\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val)
+
+  // "1000000,42", "-2000,00", etc.
+  const isNotFormattetDecimal = /^-?\d+,\d+/.test(val)
+
+  if (isFormatted || isNotFormatted) {
+    return isFormattedDecimal || isNotFormattetDecimal
   }
 
   return false
