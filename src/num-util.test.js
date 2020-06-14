@@ -16,9 +16,10 @@ test('Deve validar um número', (t) => {
   t.true(isValidNumber('1.234.567,42'))
 
   /*
-   * Float
+   * Number
    */
   t.true(isValidNumber(3.14))
+  t.true(isValidNumber(42))
 
   /*
    * Ponto como separador decimal

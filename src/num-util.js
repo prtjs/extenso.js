@@ -2,7 +2,7 @@
  * Verificar se um valor é um número, da língua portuguesa, valido.
  *
  * @method isValidNumber
- * @param {string} val Um valor para ser verificado.
+ * @param {string|float} val Um valor para ser verificado.
  * @returns {boolean} Verificação do valor.
  */
 export const isValidNumber = (val, isCommaSeparator=false) => {
@@ -69,7 +69,7 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
  * @returns {object} Objeto com as informações do número
  */
 export const parseNumber = (num, isCommaSeparator=false) => {
-  if (typeof num === 'number' && !Number.isInteger(num)) {
+  if (typeof num === 'number') {
     num = num.toString()
     isCommaSeparator = true
   }
