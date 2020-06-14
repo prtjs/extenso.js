@@ -75,7 +75,7 @@ export const parseNumber = (num, isCommaSeparator=false) => {
   const normalized = num.replace(RegExp(`(-|\\${separator})`, 'g'), '')
 
   if (normalized.includes(decimalSeparator)) {
-    const [integer, decimal] = normalized
+    const [ integer, decimal ] = normalized
       .split(decimalSeparator)
       .map((val) => val.replace(/^0+$/, '0'))
 
