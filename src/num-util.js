@@ -68,12 +68,16 @@ export const isValidNumber = (val, isCommaSeparator=false) => {
  * @param {string} val Um número para ser analisado
  * @returns {object} Objeto com as informações do número
  */
-export const parseNumber = (num) => {
+export const parseNumber = (num, isCommaSeparator=false) => {
+  const separator = isCommaSeparator ? ',' : '.'
+  const decimalSeparator = isCommaSeparator ? '.' : ','
   const isNegative = /^-/.test(num)
-  const normalized = num.replace(/(-|\.)/g, '')
+  const normalized = num.replace(RegExp(`(-|\\${separator})`, 'g'), '')
 
-  if (normalized.includes(',')) {
-    const [ integer, decimal ] = normalized.split(',').map((val) => val.replace(/^0+$/, '0'))
+  if (normalized.includes(decimalSeparator)) {
+    const [integer, decimal] = normalized
+      .split(decimalSeparator)
+      .map((val) => val.replace(/^0+$/, '0'))
 
     return {
       isNegative,
