@@ -76,6 +76,7 @@ retornará um erro.
 - `number` - *object*
 - `number.gender` - *string*
 - `number.decimal` - *string*
+- `number.decimalSeparator` - *string*
 
 #### `mode`
 
@@ -181,6 +182,13 @@ extenso('3,14') // 'três inteiros e quatorze centésimos'
 extenso('3,14', { number: { decimal: 'formal' } }) // 'três inteiros e quatorze centésimos'
 extenso('3,14', { number: { decimal: 'informal' } }) // 'três vírgula quatorze'
 ```
+
+#### `number.decimalSeparator`
+
+> Define o separador de inteiro e decimal.
+
+- `comma` (*valor padrão*) - Para usar **vírgula** como separador (ex. `3,14`).
+- `dot` - Para usar **ponto** como separador (ex.: `3.14`)
 
 ## Contribuição
 
