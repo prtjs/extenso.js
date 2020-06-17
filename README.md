@@ -42,12 +42,12 @@ extenso(number, [options])
 
 > O valor numérico que deverá ser escrito por extenso.
 
-Se o valor for do tipo `number`, então ele deve ser um número inteiro seguro,
-ou seja, ele deve ser válido com `Number.isSafeInteger()`. Porém, é altamente
-recomendado que os números sejam passados dentro de *strings* devido ao fato
-que, no JavaScript, números (do tipo `number`) maiores que 9 quatrilhões
-perdem valores, ou seja, são imprecisos (leia [este artigo no Tableless para
-mais informações](https://bit.ly/2BLo6aP)).
+Se o valor for do tipo `number`, então ele deve ser um número inteiro ou decimal
+(*float*) seguro, ou seja, ele deve ser válido com `Number.isSafeInteger()`.
+Porém, é altamente recomendado que os números sejam passados dentro de
+*strings* devido ao fato que, no JavaScript, números (do tipo `number`) maiores
+que 9 quatrilhões perdem valores, ou seja, são imprecisos (leia [este artigo no
+Tableless para mais informações](https://bit.ly/2BLo6aP)).
 
 Números envolvidos em *strings* deverão seguir o formato natural de escrita
 de números na língua portuguesa. Você pode usar `-` no início do número para
@@ -189,6 +189,16 @@ extenso('3,14', { number: { decimal: 'informal' } }) // 'três vírgula quatorze
 
 - `comma` (*valor padrão*) - Para usar **vírgula** como separador (ex. `3,14`).
 - `dot` - Para usar **ponto** como separador (ex.: `3.14`)
+
+##### Exemplo
+
+```js
+extenso('3,14')
+extenso('3,14', { number: { decimalSeparator: 'comma' } })
+extenso('3.14', { number: { decimalSeparator: 'dot' } })
+
+// 'três inteiros e quatorze centésimos'
+```
 
 ## Contribuição
 
