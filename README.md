@@ -55,10 +55,16 @@ representar a negatividade, `.` para representar a separção de milhares (isso
 é só para semântica e não causa efeitos no retorno) e `,` para reprentar a
 separação dos números inteiros e dos números decimais.
 
-Observe que o uso do `.` para separar milhares não é obrigatório, no entanto,
-se você for usá-lo ele deve obedecer estritamente a regra de escrita, por
-exemplo, `1.000.000` é um número válido que será aceito, mas `1.000000`
+O uso do `.` para separar milhares não é obrigatório, no entanto, se você for
+usá-lo ele deve obedecer estritamente a regra de escrita, por exemplo,
+`1.000.000` é um número válido que será aceito, mas `1.000000`
 retornará um erro.
+
+**Observação especial**:
+
+É possível usar `,` (vírgula) como separador de milhar com a utilização do
+parâmetro `number.decimalSeparator`, onde nesse caso o separador decimal deverá
+ser `.` (ponto, ou `dot` como está nas configurações).
 
 ### `options`
 
@@ -189,6 +195,11 @@ extenso('3,14', { number: { decimal: 'informal' } }) // 'três vírgula quatorze
 
 - `comma` (*valor padrão*) - Para usar **vírgula** como separador (ex. `3,14`).
 - `dot` - Para usar **ponto** como separador (ex.: `3.14`)
+
+##### Observação
+
+Quando o separador de decimal é o `.` (ponto) automaticamente o separador de
+milhar será o `,` (vírgula) e vice-versa.
 
 ##### Exemplo
 
