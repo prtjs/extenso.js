@@ -42,12 +42,6 @@ export default (num, opts) => {
     throw new TypeError('Must be a string or a number')
   }
 
-  const numString = num.toString()
-
-  if (!isValidNumber(numString)) {
-    throw new Error('Invalid number')
-  }
-
   let defaultOpts = {
     mode: 'number',
     locale: 'br',
@@ -58,7 +52,8 @@ export default (num, opts) => {
     },
     number: {
       gender: 'm',
-      decimal: 'formal'
+      decimal: 'formal',
+      decimalSeparator: 'comma'
     }
   }
 
@@ -75,11 +70,18 @@ export default (num, opts) => {
     || !isValidOpt(opts.currency.type, [ 'BRL', 'EUR', 'ECV' ])
     || !isValidOpt(opts.number.gender, [ 'm', 'f' ])
     || !isValidOpt(opts.number.decimal, [ 'formal', 'informal' ])
+    || !isValidOpt(opts.number.decimalSeparator, [ 'comma', 'dot' ])
   ) {
     throw new Error('Invalid option')
   }
 
-  const { isNegative, integer, decimal } = parseNumber(numString)
+  const decimalSeparatorIsDot = opts.number.decimalSeparator === 'dot'
+
+  if (!isValidNumber(num, decimalSeparatorIsDot)) {
+    throw new Error('Invalid number')
+  }
+
+  const { isNegative, integer, decimal } = parseNumber(num, decimalSeparatorIsDot)
 
   if (opts.mode === 'currency') {
     const iso = opts.currency.type

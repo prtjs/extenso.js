@@ -2,25 +2,63 @@
  * Verificar se um valor é um número, da língua portuguesa, valido.
  *
  * @method isValidNumber
- * @param {string} val Um valor para ser verificado.
+ * @param {string|float} val Um valor para ser verificado.
  * @returns {boolean} Verificação do valor.
  */
-export const isValidNumber = (val) => {
-  if (typeof val === 'number' && !Number.isSafeInteger(val)) {
-    return false
+export const isValidNumber = (val, decimalSeparatorIsDot=false) => {
+  if (typeof val === 'number') {
+
+    // Se for um inteiro e não for seguro
+    if (Number.isInteger(val) && !Number.isSafeInteger(val)) {
+      return false
+    }
+
+    // Se for um float
+    if (!Number.isInteger(val)) {
+      return true
+    }
   }
 
-  // Verifica se é um número
-  if (
-       /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val) // ...formatado
-    || /^-?\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val) // ...decimal formatado
-    || /^-?\d+$/.test(val) // ...não formatado
-    || /^-?\d+,\d+/.test(val) // ...decimal não formatado
-  ) {
-    return true
+  /*
+   * Geral
+   */
+
+  // "1000000", "-2000", etc.
+  const isNotFormatted = /^-?\d+$/.test(val)
+
+  /*
+   * Decimal separado por ',' (vírgula)
+   */
+
+  // "1.000.000", "-2.000", etc.
+  const isFormattedDot   = /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val)
+  // "1.000.000,42", "-2.000,00", etc.
+  const isFormattedDecimalDot = /^-?\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val)
+  // "1000000,42", "-2000,00", etc.
+  const isNotFormattetDecimalDot = /^-?\d+,\d+$/.test(val)
+
+  /*
+   * Decimal separado por '.' (ponto)
+   */
+
+  // "1,000,000", "-2,000", etc.
+  const isFormattedComma   = /^-?\d{1,3}\d?((,\d{3})+)?$/.test(val)
+  // "1,000,000.42", "-2,000.00", etc.
+  const isFormattedDecimalComma = /^-?\d{1,3}\d?((,\d{3})+)?\.\d+$/.test(val)
+  // "1000000.42", "-2000.00", etc.
+  const isNotFormattetDecimalComma = /^-?\d+\.\d+$/.test(val)
+
+  if (decimalSeparatorIsDot) {
+    return isNotFormatted
+        || isFormattedComma
+        || isFormattedDecimalComma
+        || isNotFormattetDecimalComma
   }
 
-  return false
+  return isNotFormatted
+      || isFormattedDot
+      || isFormattedDecimalDot
+      || isNotFormattetDecimalDot
 }
 
 /**
@@ -30,12 +68,21 @@ export const isValidNumber = (val) => {
  * @param {string} val Um número para ser analisado
  * @returns {object} Objeto com as informações do número
  */
-export const parseNumber = (num) => {
-  const isNegative = /^-/.test(num)
-  const normalized = num.replace(/(-|\.)/g, '')
+export const parseNumber = (num, decimalSeparatorIsDot=false) => {
+  if (typeof num === 'number') {
+    num = num.toString()
+    decimalSeparatorIsDot = true
+  }
 
-  if (normalized.includes(',')) {
-    const [ integer, decimal ] = normalized.split(',').map((val) => val.replace(/^0+$/, '0'))
+  const separator = decimalSeparatorIsDot ? ',' : '.'
+  const decimalSeparator = decimalSeparatorIsDot ? '.' : ','
+  const isNegative = /^-/.test(num)
+  const normalized = num.replace(RegExp(`(-|\\${separator})`, 'g'), '')
+
+  if (normalized.includes(decimalSeparator)) {
+    const [ integer, decimal ] = normalized
+      .split(decimalSeparator)
+      .map((val) => val.replace(/^0+$/, '0'))
 
     return {
       isNegative,
