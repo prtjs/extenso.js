@@ -29,31 +29,24 @@ var extenso = require('extenso')
 ## Sintaxe
 
 ```
-extenso(number, [options])
+extenso(number[, options])
 ```
 
 ### `number`
 
-**Obs.**: Existência obrigatória.
+**Obs.**: Parâmetro obrigatório.
 
 - **Tipo**: `string` ou `number`
 
-> O valor numérico que deverá ser escrito por extenso.
+> O número que deverá ser escrito por extenso.
 
-Se o valor for do tipo `number`, então ele deve ser um número inteiro ou decimal (*float*) seguro, ou seja, ele deve ser válido com `Number.isSafeInteger()`. Porém, é altamente recomendado que os números sejam passados dentro de
-*strings* devido ao fato que, no JavaScript, números (do tipo `number`) maiores que 9 quatrilhões perdem valores, ou seja, são imprecisos (leia [este artigo no Tableless para mais informações](https://bit.ly/2BLo6aP)).
+Se o valor for do tipo `number`, então ele deve ser um número com parte inteira segura, ou seja, o valor deve ser válido na verificação com `Number.isSafeInteger()`. No entanto, é muito recomendado que os números sejam encapsulados em *string* devivo ao fato que no JavaScript números (do tipo `number`) maiores que 9 quatrilhões perdem valores sendo imprecisos ([experimente este artigo para mais informações](https://bit.ly/2BLo6aP) *[Tableless]*).
 
-Números envolvidos em *strings* deverão seguir o formato natural de escrita de números na língua portuguesa. Você pode usar `-` no início do número para representar a negatividade, `.` para representar a separção de milhares (isso é só para semântica e não causa efeitos no retorno) e `,` para reprentar a separação dos números inteiros e dos números decimais.
-
-O uso do `.` para separar milhares não é obrigatório, no entanto, se você for usá-lo ele deve obedecer estritamente a regra de escrita, por exemplo, `1.000.000` é um número válido que será aceito, mas `1.000000` retornará um erro.
-
-**Observação especial**:
-
-É possível usar `,` (vírgula) como separador de milhar com a utilização do parâmetro `number.decimalSeparator`, onde nesse caso o separador decimal deverá ser `.` (ponto, ou `dot` como está nas configurações).
+Números envolvidos em *strings* deverão seguir o formato natural de escrita de números. Você poder usar `-` no início para representar números negativos e vírgula (`,`) ou ponto (`.`) para separação de milhares e decimais, onde por padrão segue-se o formato de escrita do Brasil podendo alterar as prefencias (como será visto no parâmetro `number.decimalSeparator`).
 
 ### `options`
 
-**Obs.**: Existência opcional.
+**Obs.**: Parâmetro opcional.
 
 - **Tipo**: `object`
 
