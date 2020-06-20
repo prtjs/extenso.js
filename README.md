@@ -1,26 +1,24 @@
 ﻿# Extenso.js
 
-<!-- Todos os badges. -->
-[![Status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)](https://travis-ci.org/theuves/extenso.js)
-[![Doar](https://img.shields.io/badge/paypal-doar-179bd7.svg?logo=paypal&style=flat&logoColor=blue)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3WZ447WCJ54XG&source=url)
+[![Build status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)](https://travis-ci.org/theuves/extenso.js)
 
-> Biblioteca completa para escrever números por extenso.
+> Números por extenso com JavaScript.
 
 ## Características
 
-- [x] Aceita números até duodecilhões.
-- [x] Aceita números negativos.
-- [x] Aceita números decimais.
-- [x] Aceita configuração de dialetos diferentes.
-- [x] Aceita configuração de genero (masculino/feminino).
-- [x] Aceita valores monetários (Reais, Euros, e está apto para +).
+- [x] Números até duodecilhões.
+- [x] Números negativos.
+- [x] Números decimais.
+- [x] Valores monetários (BRL, EUR e mais).
+- [x] Preferências de dialetos (Brasil, Portugal e mais).
+- [x] Preferências de gênero.
 
 ## Instalação
 
-Instale-o com *npm* ou *yarn*:
+Instale-o com seu gerenciador preferido:
 
-- **npm**: `npm install extenso`.
-- **yarn**: `yarn add extenso`.
+- **npm**: `npm install extenso`
+- **Yarn**: `yarn add extenso`
 
 ## Uso
 
@@ -42,29 +40,16 @@ extenso(number, [options])
 
 > O valor numérico que deverá ser escrito por extenso.
 
-Se o valor for do tipo `number`, então ele deve ser um número inteiro ou decimal
-(*float*) seguro, ou seja, ele deve ser válido com `Number.isSafeInteger()`.
-Porém, é altamente recomendado que os números sejam passados dentro de
-*strings* devido ao fato que, no JavaScript, números (do tipo `number`) maiores
-que 9 quatrilhões perdem valores, ou seja, são imprecisos (leia [este artigo no
-Tableless para mais informações](https://bit.ly/2BLo6aP)).
+Se o valor for do tipo `number`, então ele deve ser um número inteiro ou decimal (*float*) seguro, ou seja, ele deve ser válido com `Number.isSafeInteger()`. Porém, é altamente recomendado que os números sejam passados dentro de
+*strings* devido ao fato que, no JavaScript, números (do tipo `number`) maiores que 9 quatrilhões perdem valores, ou seja, são imprecisos (leia [este artigo no Tableless para mais informações](https://bit.ly/2BLo6aP)).
 
-Números envolvidos em *strings* deverão seguir o formato natural de escrita
-de números na língua portuguesa. Você pode usar `-` no início do número para
-representar a negatividade, `.` para representar a separção de milhares (isso
-é só para semântica e não causa efeitos no retorno) e `,` para reprentar a
-separação dos números inteiros e dos números decimais.
+Números envolvidos em *strings* deverão seguir o formato natural de escrita de números na língua portuguesa. Você pode usar `-` no início do número para representar a negatividade, `.` para representar a separção de milhares (isso é só para semântica e não causa efeitos no retorno) e `,` para reprentar a separação dos números inteiros e dos números decimais.
 
-O uso do `.` para separar milhares não é obrigatório, no entanto, se você for
-usá-lo ele deve obedecer estritamente a regra de escrita, por exemplo,
-`1.000.000` é um número válido que será aceito, mas `1.000000`
-retornará um erro.
+O uso do `.` para separar milhares não é obrigatório, no entanto, se você for usá-lo ele deve obedecer estritamente a regra de escrita, por exemplo, `1.000.000` é um número válido que será aceito, mas `1.000000` retornará um erro.
 
 **Observação especial**:
 
-É possível usar `,` (vírgula) como separador de milhar com a utilização do
-parâmetro `number.decimalSeparator`, onde nesse caso o separador decimal deverá
-ser `.` (ponto, ou `dot` como está nas configurações).
+É possível usar `,` (vírgula) como separador de milhar com a utilização do parâmetro `number.decimalSeparator`, onde nesse caso o separador decimal deverá ser `.` (ponto, ou `dot` como está nas configurações).
 
 ### `options`
 
@@ -120,10 +105,7 @@ extenso('42', { negative: 'informal' }) // 'menos quarenta e dois'
 
 > Define a localização para o modo de escrita.
 
-A escrita de alguns números pode váriar de país para país (e talvez até de
-região para região), por exemplo, o número 16 é escrito *dezesseis* no Brasil,
-enquanto que em Portugal é escrito *dezasseis*. A configuração dessas
-diferenças é feita aqui.
+A escrita de alguns números pode váriar de país para país (e talvez até de região para região), por exemplo, o número 16 é escrito *dezesseis* no Brasil, enquanto que em Portugal é escrito *dezasseis*. A configuração dessas diferenças é feita aqui.
 
 - `br` (*valor padrão*) - Para escrever no dialeto do Brasil.
 - `pt` - Para escrever no dialeto de Portugal.
@@ -138,8 +120,7 @@ extenso('16', { locale: 'pt' }) // 'dezasseis'
 
 #### `currency.type`
 
-> Define o código [ISO](https://bit.ly/2QeGHBm) da moeda em que o número deverá
-ser escrito.
+> Define o código [ISO](https://bit.ly/2QeGHBm) da moeda em que o número deverá ser escrito.
 
 - `BRL` (*valor padrão*) - Para escrever valores em Real (moeda brasileira).
 - `EUR` - Para escrever valores em Euro (moeda da maior parte da União Européia).
@@ -159,9 +140,7 @@ extenso('42', { mode: 'currency', currency: { type: 'MZN' } }) // 'quarenta e do
 
 > Define o gênero do número que será escrito.
 
-Alguns números podem ser representados tanto no modo masculino quanto no modo
-feminino, por exemplo, *42* pode ser escrito como *quarenta e dois* ou *42* ou
-*quarenta e duas*.
+Alguns números podem ser representados tanto no modo masculino quanto no modo feminino, por exemplo, *42* pode ser escrito como *quarenta e dois* ou *42* ou *quarenta e duas*.
 
 - `m` (*valor padrão*) - Para escrever no modo masculino.
 - `f` - Para escrever no modo feminino.
@@ -213,10 +192,7 @@ extenso('3.14', { number: { decimalSeparator: 'dot' } })
 
 ## Contribuição
 
-Oi, você é de Portugal, Angola, Moçambique ou qualquer outro país que usa fala
-português? Viu alguma escrita de números que é diferente no seu país? Então
-abra uma *issue* e vamos discutir como adaptar essas caracteristicas ao projeto
-para deixá-lo o mais completo possível.
+Oi, você é de Portugal, Angola, Moçambique ou qualquer outro país que usa fala português? Viu alguma escrita de números que é diferente no seu país? Então abra uma *issue* e vamos discutir como adaptar essas caracteristicas ao projeto para deixá-lo o mais completo possível.
 
 Viu algum erro ou qualquer coisa que pode ser melhorada?
 
@@ -234,23 +210,15 @@ Tendo em vista a participação de falantes da língua portuguesa, escreva:
 - Nome dos arquivos e diretórios em **inglês**.
 - *Issues*, *pull requests* e comentários em **português**.
 - Descrição dos testes em **português**.
-  - **REGRA 1**: Deve ter o formato: *Deve(m) + verbo + descrição*.
-  - **REGRA 2**: Nunca use ponto final na descrição.
+  - **Regra 1**: Deve ter o formato: *Deve(m) + verbo + descrição*.
+  - **Regra 2**: Nunca use ponto final na descrição.
 - Mensagem de *commits* em **português**.
-  - **REGRA 1**: Inicie-os sempre em caixa alta.
-  - **REGRA 2**: Nunca use ponto final na descrição.
+  - **Regra 1**: Inicie-os sempre em caixa alta.
+  - **Regra 2**: Nunca use ponto final na descrição.
 
 ## *TODO*
 
 - [ ] Traduzir o `README.md` em inglês (`README-en.md`).
-
-## Ajuda-me
-
-Usa ou gosta desse e outros projetos mantindos por mim?
-
-Você pode me ajudar com uma doação.
-
-[![Link para doar](https://www.paypalobjects.com/pt_BR/BR/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=3WZ447WCJ54XG&source=url)
 
 ## Licença
 
