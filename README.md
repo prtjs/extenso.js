@@ -50,17 +50,17 @@ Números envolvidos em *strings* deverão seguir o formato natural de escrita de
 
 - **Tipo**: `object`
 
-> Lista de opções válidas e o tipo do seu valor.
+> Configurações opcionais de escrita.
 
-- `mode` - *string*
-- `locale` - *string*
-- `negative` - *string*
-- `currency` - *object*
-- `currency.type` - *string*
-- `number` - *object*
-- `number.gender` - *string*
-- `number.decimal` - *string*
-- `number.decimalSeparator` - *string*
+- `mode` (*string*)
+- `locale` (*string*)
+- `negative` (*string*)
+- `currency` (*object*)
+- `currency.type` (*string*)
+- `number` (*object*)
+- `number.gender` (*string*)
+- `number.decimal` (*string*)
+- `number.decimalSeparator` (*string*)
 
 #### `mode`
 
