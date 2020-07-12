@@ -2,6 +2,7 @@ import test from 'ava'
 import writeAll, { isValidOpt, toNegative } from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
+  t.is(writeAll(0), 'zero')
   t.is(writeAll(1), 'um')
   t.is(writeAll('1'), 'um')
   t.is(writeAll('1', { number: { gender: 'm' } }), 'um')
