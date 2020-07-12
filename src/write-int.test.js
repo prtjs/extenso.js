@@ -13,6 +13,7 @@ test('Deve passar os números para o feminino', (t) => {
  * Função: writeInt
  */
 test('Deve escrever números inteiros', (t) => {
+  t.is(writeInt('0', 'br'),       'zero')
   t.is(writeInt('1', 'br'),       'um')
   t.is(writeInt('1', 'br', 'f'),  'uma')
   t.is(writeInt('10', 'br'),      'dez')
