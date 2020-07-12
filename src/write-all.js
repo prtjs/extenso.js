@@ -99,6 +99,10 @@ export default (num, opts) => {
     const intText = writeInt(integer, opts.locale, opts.number.gender, opts.scale)
     const decText = writeDecimal(decimal, opts.locale, opts.number.decimal)
 
+    if (integer === '0' && decimal === '0') {
+      return intText
+    }
+
     // Se tem a parte inteira e não tem a parte decimal
     if (integer !== '0' && decimal === '0') {
       return isNegative
@@ -114,7 +118,7 @@ export default (num, opts) => {
 
       return isNegative
         ? toNegative(number, opts.negative)
-        : number      
+        : number
     }
 
     // Se tem a parte inteira e a parte decimal
