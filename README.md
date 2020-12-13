@@ -89,9 +89,9 @@ extenso('42', { mode: 'currency' }) // 'quarenta e dois reais'
 ##### Exemplo
 
 ```js
-extenso('42') // 'quarenta e dois negativo'
-extenso('42', { negative: 'formal' }) // 'quarenta e dois negativo'
-extenso('42', { negative: 'informal' }) // 'menos quarenta e dois'
+extenso('-42') // 'quarenta e dois negativo'
+extenso('-42', { negative: 'formal' }) // 'quarenta e dois negativo'
+extenso('-42', { negative: 'informal' }) // 'menos quarenta e dois'
 ```
 
 #### `locale`
