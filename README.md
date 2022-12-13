@@ -1,8 +1,12 @@
-﻿# Extenso.js
+# Extenso.js
 
 [![Build status](https://travis-ci.org/theuves/extenso.js.svg?branch=master)](https://travis-ci.org/theuves/extenso.js)
 
 > Números por extenso com JavaScript.
+
+***
+**Precisando de um desenvolvedor? Entre em contato: theuves@gmail.com**
+***
 
 ## Características
 
