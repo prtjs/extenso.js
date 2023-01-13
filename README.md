@@ -4,10 +4,6 @@
 
 > Números por extenso com JavaScript.
 
-***
-**Precisando de um desenvolvedor? Entre em contato: theuves@gmail.com**
-***
-
 ## Características
 
 - [x] Números até duodecilhões.
