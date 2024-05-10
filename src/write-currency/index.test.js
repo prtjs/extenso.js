@@ -16,6 +16,7 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeCurrency('BRL', 'br', '0', '05'),       'cinco centavos')
   t.is(writeCurrency('BRL', 'br', undefined, '25'), 'vinte e cinco centavos')
   t.is(writeCurrency('BRL', 'br', '1000000'),       'um milhão de reais')
+  t.is(writeCurrency('BRL', 'br', '1000011'),       'um milhão e onze reais')
   t.is(writeCurrency('BRL', 'br', '2000000', '50'), 'dois milhões de reais e cinquenta centavos')
 
   // Testes com o ESCUDO
