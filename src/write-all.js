@@ -75,7 +75,7 @@ export default (num, opts) => {
     throw new Error('Invalid option')
   }
 
-  const decimalSeparatorIsDot = opts.number.decimalSeparator === 'dot'
+  const decimalSeparatorIsDot = opts.number.decimalSeparator === 'dot' || typeof num === 'number'
 
   if (!isValidNumber(num, decimalSeparatorIsDot)) {
     throw new Error('Invalid number')
@@ -86,7 +86,8 @@ export default (num, opts) => {
   if (opts.mode === 'currency') {
     const iso = opts.currency.type
     const locale = opts.locale
-    const numText = writeCurrency(iso, locale, integer, decimal, opts.scale)
+    const decimalCents = decimal.slice(0, 2)
+    const numText = writeCurrency(iso, locale, integer, decimalCents, opts.scale)
 
     return isNegative
       ? toNegative(numText, opts.negative)
