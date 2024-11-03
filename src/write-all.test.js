@@ -50,6 +50,8 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeAll('17', { mode: 'currency' }), 'dezessete reais')
   t.is(writeAll('17', { mode: 'currency', locale: 'pt' }), 'dezassete reais')
   t.is(writeAll('1000000', { mode: 'currency' }), 'um milhão de reais')
+  t.is(writeAll('2000000', { mode: 'currency' }), 'dois milhões de reais')
+  t.is(writeAll('33000000', { mode: 'currency' }), 'trinta e três milhões de reais')
   t.is(writeAll('1', { mode: 'currency', currency: { type: 'EUR' } }), 'um euro')
   t.is(writeAll('1,50', { mode: 'currency', currency: { type: 'EUR' } }), 'um euro e cinquenta cêntimos')
   t.is(writeAll('100', { mode: 'currency', currency: { type: 'EUR' } }), 'cem euros')
