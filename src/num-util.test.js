@@ -40,6 +40,6 @@ test('Deve analisar um número (separador decimal = .)', (t) => {
   t.deepEqual(parseNumber('-42,000.42', true), { isNegative: true, integer: '42000', decimal: '42' })
 })
 
-test('Dever analisar um número (tipo number)', (t) => {
+test('Deve analisar um número (tipo number)', (t) => {
   t.deepEqual(parseNumber(3.14), { isNegative: false, integer: '3', decimal: '14' })
 })
