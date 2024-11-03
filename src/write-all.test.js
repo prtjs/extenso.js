@@ -63,9 +63,8 @@ test('Deve escrever conforme a escala desejada', (t) => {
   t.is(writeAll('2.000.000.001', { scale: 'long' }), 'dois mil milhões e um')
   t.is(writeAll('2.000.000.001', { scale: 'long', number: { gender: 'f' } }), 'duas mil milhões e uma')
 
-  // "de reais"???
-  t.is(writeAll('2.000.000.001', { mode: 'currency', scale: 'short' }), 'dois bilhões e um de reais')
-  t.is(writeAll('2.000.000.001', { mode: 'currency', scale: 'long' }), 'dois mil milhões e um de reais')
+  t.is(writeAll('2.000.000.001', { mode: 'currency', scale: 'short' }), 'dois bilhões e um reais')
+  t.is(writeAll('2.000.000.001', { mode: 'currency', scale: 'long' }), 'dois mil milhões e um reais')
 })
 
 test('Deve verificar se uma opção é válida', (t) => {
