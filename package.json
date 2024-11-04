@@ -1,7 +1,7 @@
 {
   "name": "extenso",
   "version": "2.0.1",
-  "description": "Escrever números por extenso.",
+  "description": "Uma biblioteca avançada para escrever números por extenso (em português).",
   "main": "dist/extenso.min.js",
   "types": "index.d.ts",
   "files": [
