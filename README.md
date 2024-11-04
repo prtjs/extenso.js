@@ -1,8 +1,8 @@
 # Extenso.js
 
-> Números por extenso com JavaScript.
+> Uma biblioteca avançada para escrever números por extenso (em português).
 
-## Características
+## Features
 
 - [x] Números até duodecilhões.
 - [x] Números negativos.
