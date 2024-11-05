@@ -111,11 +111,12 @@ extenso('16', { locale: 'pt' }) // 'dezasseis'
 
 #### `currency.type`
 
-> Define o código [ISO](https://bit.ly/2QeGHBm) da moeda em que o número deverá ser escrito.
+> Define o código [ISO](https://pt.wikipedia.org/wiki/ISO_4217) da moeda em que o número deverá ser escrito.
 
-- `BRL` (*valor padrão*) - Para escrever valores em Real (moeda brasileira).
-- `EUR` - Para escrever valores em Euro (moeda da maior parte da União Européia).
-- `ECV` - Para escrever valores em Escudo (moeda de Cabo Verde).
+- `BRL` (*valor padrão*) - Para escrever valores em Real brasileiro.
+- `EUR` - Para escrever valores em Euro.
+- `ECV` - Para escrever valores em Escudo cabo-verdiano.
+- `MZN` - Para escrever valores em Metical moçambicano.
 
 ##### Exemplo
 
