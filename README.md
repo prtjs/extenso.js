@@ -115,7 +115,7 @@ extenso('16', { locale: 'pt' }) // 'dezasseis'
 
 - `BRL` (*valor padrão*) - Para escrever valores em Real brasileiro.
 - `EUR` - Para escrever valores em Euro.
-- `ECV` - Para escrever valores em Escudo cabo-verdiano.
+- `CVE` - Para escrever valores em Escudo cabo-verdiano.
 - `MZN` - Para escrever valores em Metical moçambicano.
 
 ##### Exemplo
@@ -124,7 +124,7 @@ extenso('16', { locale: 'pt' }) // 'dezasseis'
 extenso('42', { mode: 'currency' }) // 'quarenta e dois reais'
 extenso('42', { mode: 'currency', currency: { type: 'BRL' } }) // 'quarenta e dois reais'
 extenso('42', { mode: 'currency', currency: { type: 'EUR' } }) // 'quarenta e dois euros'
-extenso('42', { mode: 'currency', currency: { type: 'ECV' } }) // 'quarenta e dois escudos'
+extenso('42', { mode: 'currency', currency: { type: 'CVE' } }) // 'quarenta e dois escudos'
 extenso('42', { mode: 'currency', currency: { type: 'MZN' } }) // 'quarenta e dois meticais'
 ```
 

@@ -10,7 +10,7 @@ declare module 'extenso' {
       mode?: 'number' | 'currency'
       locale?: 'pt' | 'br'
       negative?: 'formal' | 'informal'
-      currency?: { type?: 'BRL' | 'EUR' | 'ECV' | 'MZN' | string }
+      currency?: { type?: 'BRL' | 'EUR' | 'CVE' | 'MZN' | string }
       number?: {
         gender?: 'm' | 'f'
         decimal?: 'formal' | 'informal'

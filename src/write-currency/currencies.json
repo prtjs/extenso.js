@@ -7,7 +7,7 @@
       "plural": "centavos"
     }
   },
-  "ECV": {
+  "CVE": {
     "singular": "escudo",
     "plural": "escudos",
     "subunit": {
