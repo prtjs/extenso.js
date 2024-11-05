@@ -45,6 +45,8 @@ test('Deve escrever números com decimais separados por ponto', (t) => {
 })
 
 test('Deve escrever valores monetários por extenso', (t) => {
+  // TODO
+  //t.is(writeAll(0, { mode: 'currency' }), 'zero reais')
   t.is(writeAll('1', { mode: 'currency' }), 'um real')
   t.is(writeAll('2', { mode: 'currency' }), 'dois reais')
   t.is(writeAll('-2', { mode: 'currency' }), 'dois reais negativo')
