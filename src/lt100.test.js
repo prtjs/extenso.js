@@ -2,9 +2,9 @@ import test from 'ava'
 import lt100 from './lt100'
 
 test('Deve escrever números menores que cem', (t) => {
-  t.is(lt100(0, 'br'),  'zero')
-  t.is(lt100(5, 'br'),  'cinco')
-  t.is(lt100(9, 'br'),  'nove')
+  t.is(lt100(0, 'br'), 'zero')
+  t.is(lt100(5, 'br'), 'cinco')
+  t.is(lt100(9, 'br'), 'nove')
   t.is(lt100(10, 'br'), 'dez')
   t.is(lt100(14, 'br'), 'quatorze')
   t.is(lt100(19, 'br'), 'dezenove')

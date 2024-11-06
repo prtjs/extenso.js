@@ -78,7 +78,7 @@ export const listLt1000 = (locale) => {
  * @param {string} locale Código do país que deve ser escrito.
  * @returns {Array} Lista das partes do número.
  */
-export const listGt1000 = (locale, scale='short') => {
+export const listGt1000 = (locale, scale = 'short') => {
   const baseList = [
     'mil',
     'milhões',
@@ -109,8 +109,8 @@ export const listGt1000 = (locale, scale='short') => {
     .map((value, index, array) => { // Resolve escala entre longa e curta
       if (scale === 'long') {
         if (index < 2) return value
-        if (index % 2 == 0) return 'mil ' + array[index / 2]
-        return array[index / 2 + .5]
+        if (index % 2 === 0) return 'mil ' + array[index / 2]
+        return array[index / 2 + 0.5]
       } else {
         return value
       }

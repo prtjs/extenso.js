@@ -5,9 +5,8 @@
  * @param {string|float} val Um valor para ser verificado.
  * @returns {boolean} Verificação do valor.
  */
-export const isValidNumber = (val, decimalSeparatorIsDot=false) => {
+export const isValidNumber = (val, decimalSeparatorIsDot = false) => {
   if (typeof val === 'number') {
-
     // Se for um inteiro e não for seguro
     if (Number.isInteger(val) && !Number.isSafeInteger(val)) {
       return false
@@ -31,7 +30,7 @@ export const isValidNumber = (val, decimalSeparatorIsDot=false) => {
    */
 
   // "1.000.000", "-2.000", etc.
-  const isFormattedDot   = /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val)
+  const isFormattedDot = /^-?\d{1,3}\d?((\.\d{3})+)?$/.test(val)
   // "1.000.000,42", "-2.000,00", etc.
   const isFormattedDecimalDot = /^-?\d{1,3}\d?((\.\d{3})+)?,\d+$/.test(val)
   // "1000000,42", "-2000,00", etc.
@@ -42,23 +41,23 @@ export const isValidNumber = (val, decimalSeparatorIsDot=false) => {
    */
 
   // "1,000,000", "-2,000", etc.
-  const isFormattedComma   = /^-?\d{1,3}\d?((,\d{3})+)?$/.test(val)
+  const isFormattedComma = /^-?\d{1,3}\d?((,\d{3})+)?$/.test(val)
   // "1,000,000.42", "-2,000.00", etc.
   const isFormattedDecimalComma = /^-?\d{1,3}\d?((,\d{3})+)?\.\d+$/.test(val)
   // "1000000.42", "-2000.00", etc.
   const isNotFormattetDecimalComma = /^-?\d+\.\d+$/.test(val)
 
   if (decimalSeparatorIsDot) {
-    return isNotFormatted
-        || isFormattedComma
-        || isFormattedDecimalComma
-        || isNotFormattetDecimalComma
+    return isNotFormatted ||
+        isFormattedComma ||
+        isFormattedDecimalComma ||
+        isNotFormattetDecimalComma
   }
 
-  return isNotFormatted
-      || isFormattedDot
-      || isFormattedDecimalDot
-      || isNotFormattetDecimalDot
+  return isNotFormatted ||
+      isFormattedDot ||
+      isFormattedDecimalDot ||
+      isNotFormattetDecimalDot
 }
 
 /**
@@ -68,7 +67,7 @@ export const isValidNumber = (val, decimalSeparatorIsDot=false) => {
  * @param {string} val Um número para ser analisado
  * @returns {object} Objeto com as informações do número
  */
-export const parseNumber = (num, decimalSeparatorIsDot=false) => {
+export const parseNumber = (num, decimalSeparatorIsDot = false) => {
   if (typeof num === 'number') {
     num = num.toString()
     decimalSeparatorIsDot = true

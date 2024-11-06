@@ -26,7 +26,7 @@ export const toFemale = (num) => {
  * @param {string} [gender='m'] A opção do gênero do número.
  * @returns {string} O número escrito.
  */
-export default (int, locale, gender='m', scale='short') => {
+export default (int, locale, gender = 'm', scale = 'short') => {
   const intNum = parseInt(int)
   let num
 

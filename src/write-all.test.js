@@ -12,7 +12,7 @@ test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll('1', { number: { gender: 'f' } }), 'uma')
   t.is(writeAll('2'), 'dois')
   t.is(writeAll('42'), 'quarenta e dois')
-  t.is(writeAll('100'),'cem')
+  t.is(writeAll('100'), 'cem')
   t.is(writeAll('1000'), 'mil')
   t.is(writeAll('1001'), 'mil e um')
 })
@@ -46,7 +46,7 @@ test('Deve escrever números com decimais separados por ponto', (t) => {
 
 test('Deve escrever valores monetários por extenso', (t) => {
   // TODO
-  //t.is(writeAll(0, { mode: 'currency' }), 'zero reais')
+  // t.is(writeAll(0, { mode: 'currency' }), 'zero reais')
   t.is(writeAll('1', { mode: 'currency' }), 'um real')
   t.is(writeAll('2', { mode: 'currency' }), 'dois reais')
   t.is(writeAll('-2', { mode: 'currency' }), 'dois reais negativo')

@@ -9,9 +9,7 @@ export const getType = (place) => {
   switch (place % 3) {
     case 1:
       return 'décimo'
-      break
     case 2:
       return 'centésimo'
-      break
   }
 }

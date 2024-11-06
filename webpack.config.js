@@ -1,5 +1,4 @@
 const path = require('path')
-const pkg = require('./package.json')
 const UglifyjsPlugin = require('uglifyjs-webpack-plugin')
 const { BannerPlugin } = require('webpack')
 const { version, license, author } = require('./package')
@@ -29,7 +28,7 @@ module.exports = {
           presets: ['@babel/preset-env']
         }
       }]
-      
+
     }]
   },
   optimization: {

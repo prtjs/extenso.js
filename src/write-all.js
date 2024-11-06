@@ -63,14 +63,14 @@ export default (num, opts) => {
   opts = assignDeep(defaultOpts, opts)
 
   if (
-       !isValidOpt(opts.mode, [ 'number', 'currency' ])
-    || !isValidOpt(opts.locale, [ 'pt', 'br' ])
-    || !isValidOpt(opts.negative, [ 'formal', 'informal' ])
-    || !isValidOpt(opts.scale, [ 'short', 'long' ])
-    || !isValidOpt(opts.currency.type, [ 'BRL', 'EUR', 'CVE' ])
-    || !isValidOpt(opts.number.gender, [ 'm', 'f' ])
-    || !isValidOpt(opts.number.decimal, [ 'formal', 'informal' ])
-    || !isValidOpt(opts.number.decimalSeparator, [ 'comma', 'dot' ])
+    !isValidOpt(opts.mode, [ 'number', 'currency' ]) ||
+    !isValidOpt(opts.locale, [ 'pt', 'br' ]) ||
+    !isValidOpt(opts.negative, [ 'formal', 'informal' ]) ||
+    !isValidOpt(opts.scale, [ 'short', 'long' ]) ||
+    !isValidOpt(opts.currency.type, [ 'BRL', 'EUR', 'CVE' ]) ||
+    !isValidOpt(opts.number.gender, [ 'm', 'f' ]) ||
+    !isValidOpt(opts.number.decimal, [ 'formal', 'informal' ]) ||
+    !isValidOpt(opts.number.decimalSeparator, [ 'comma', 'dot' ])
   ) {
     throw new Error('Invalid option')
   }

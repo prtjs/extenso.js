@@ -49,7 +49,7 @@ export const isZero = (val) => {
  * @param {string} [subunit='0'] Sub-unidade do valor (parte "decimal").
  * @returns {string} Valor escrito por extenso.
  */
-export default (iso, locale, unit='0', subunit='0', scale) => {
+export default (iso, locale, unit = '0', subunit = '0', scale) => {
   if (!isValidIso(iso, allCurrencies)) {
     throw new Error('Invalid ISO code')
   }

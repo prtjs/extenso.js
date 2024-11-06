@@ -12,7 +12,6 @@ import lt1000 from '../lt1000'
  */
 export const addComma = (parts) => {
   return parts.map((part, index, array) => {
-
     // REGRA: Não adiciona entre a penúltima e a última parte.
     return index < array.length - 2
       ? `${part},`
@@ -53,7 +52,6 @@ export const addConjunction = (parts, int) => {
  * @returns {Array} Partes com algumas partes removidas.
  */
 export const clear = (parts) => {
-
   // Etapas para a remoção:
   // - Etapa 1: Remove zeros à esquerda.
   // - Etapa 2: Remove partes que não são lidas.
