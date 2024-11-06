@@ -17,6 +17,7 @@
     "url": "git+https://github.com/theuves/extenso.js.git"
   },
   "devDependencies": {
+    "@arr/reverse": "^1.0.1",
     "assign-deep": "^1.0.1",
     "ava": "1.0.0-rc.2",
     "esbuild": "^0.24.0",
