@@ -1,1 +1,3 @@
-module.exports = require('./src/write-all').default
+import extenso from './src/write-all.js'
+
+export default extenso

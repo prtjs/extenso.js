@@ -1,4 +1,4 @@
-const esbuild = require('esbuild')
+import esbuild from 'esbuild'
 
 const banner = `/*! Extenso.js v2.1.0 | MIT (c) 2015-2024 by Matheus Alves */\n`
 
