@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeSubunit from './write-subunit'
+import writeSubunit from './write-subunit.js'
 
 test('Deve obter a sub-unidade escrita por extenso', (t) => {
   const opts = {

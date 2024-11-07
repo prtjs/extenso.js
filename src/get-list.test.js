@@ -1,5 +1,5 @@
 import test from 'ava'
-import { listLt10, listLt100, listLt1000, listGt1000, listDecimals } from './get-list'
+import { listLt10, listLt100, listLt1000, listGt1000, listDecimals } from './get-list.js'
 
 /**
  * Função: *

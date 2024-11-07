@@ -1,5 +1,5 @@
-import { listLt1000 as getList } from './get-list'
-import lt100 from './lt100'
+import { listLt1000 as getList } from './get-list.js'
+import lt100 from './lt100.js'
 
 /**
  * Obter um número inteiro menor que mil por extenso.

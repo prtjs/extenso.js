@@ -1,5 +1,5 @@
 import test from 'ava'
-import write from './write'
+import write from './write.js'
 
 test('Deve obter o valor escrito por extenso', (t) => {
   const opts = {

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { split, getLastNumber } from './int-util'
+import { split, getLastNumber } from './int-util.js'
 
 /**
  * Função: split

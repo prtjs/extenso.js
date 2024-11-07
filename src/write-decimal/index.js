@@ -1,6 +1,6 @@
-import writeInt from '../write-int'
-import { listDecimals as getList } from '../get-list'
-import { getType } from './util'
+import writeInt from '../write-int.js'
+import { listDecimals as getList } from '../get-list.js'
+import { getType } from './util.js'
 
 /**
  * Adicionar 's' nos finais de determinadas palavras - pluralizar.

@@ -1,7 +1,7 @@
 import reverse from '@arr/reverse'
-import { getLastNumber } from './int-util'
-import { listGt1000 as getList } from '../get-list'
-import lt1000 from '../lt1000'
+import { getLastNumber } from './int-util.js'
+import { listGt1000 as getList } from '../get-list.js'
+import lt1000 from '../lt1000.js'
 
 /**
  * Adicionar vírgula entre algumas partes.

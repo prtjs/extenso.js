@@ -1,5 +1,5 @@
 import test from 'ava'
-import lt100 from './lt100'
+import lt100 from './lt100.js'
 
 test('Deve escrever números menores que cem', (t) => {
   t.is(lt100(0, 'br'), 'zero')

@@ -1,8 +1,8 @@
 import assignDeep from 'assign-deep'
-import { isValidNumber, parseNumber } from './num-util'
-import writeCurrency from './write-currency'
-import writeDecimal from './write-decimal'
-import writeInt from './write-int'
+import { isValidNumber, parseNumber } from './num-util.js'
+import writeCurrency from './write-currency/index.js'
+import writeDecimal from './write-decimal/index.js'
+import writeInt from './write-int.js'
 
 /**
  * Verificar se uma opção é válida.

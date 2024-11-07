@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeDecimal, { pluralize, writeDecimalFormal, writeDecimalInformal } from './'
+import writeDecimal, { pluralize, writeDecimalFormal, writeDecimalInformal } from './index.js'
 
 /**
  * Função: pluralize

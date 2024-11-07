@@ -2,7 +2,8 @@
   "name": "extenso",
   "version": "2.1.0",
   "description": "Uma biblioteca avançada para escrever números por extenso (em português).",
-  "main": "dist/extenso.min.js",
+  "main": "dist/extenso.esm.js",
+  "type": "module",
   "types": "index.d.ts",
   "files": [
     "dist",
@@ -19,14 +20,9 @@
   "devDependencies": {
     "@arr/reverse": "^1.0.1",
     "assign-deep": "^1.0.1",
-    "ava": "1.0.0-rc.2",
+    "ava": "^6.2.0",
     "esbuild": "^0.24.0",
     "format-number": "^3.0.0"
-  },
-  "ava": {
-    "require": [
-      "esm"
-    ]
   },
   "author": "Matheus Alves",
   "license": "MIT"
