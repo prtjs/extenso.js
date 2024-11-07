@@ -3,6 +3,8 @@ import writeAll, { isValidOpt, toNegative } from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll(0), 'zero')
+  t.is(writeAll(100n), 'cem')
+  t.is(writeAll(10000000000000001n), 'dez quatrilhões e um')
   t.is(writeAll(0, { mode: 'number' }), 'zero')
   t.is(writeAll('0'), 'zero')
   t.is(writeAll('0', { mode: 'number' }), 'zero')
@@ -20,6 +22,7 @@ test('Deve escrever números simples por extenso', (t) => {
 test('Deve escrever números negativos por extenso', (t) => {
   t.is(writeAll(-42), 'quarenta e dois negativo')
   t.is(writeAll('-42'), 'quarenta e dois negativo')
+  t.is(writeAll(-42n), 'quarenta e dois negativo')
   t.is(writeAll('-42', { negative: 'formal' }), 'quarenta e dois negativo')
   t.is(writeAll('-42', { negative: 'informal' }), 'menos quarenta e dois')
 })
@@ -57,6 +60,7 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeAll('17', { mode: 'currency' }), 'dezessete reais')
   t.is(writeAll('17', { mode: 'currency', locale: 'pt' }), 'dezassete reais')
   t.is(writeAll('1000000', { mode: 'currency' }), 'um milhão de reais')
+  t.is(writeAll(1000000n, { mode: 'currency' }), 'um milhão de reais')
   t.is(writeAll('2000000', { mode: 'currency' }), 'dois milhões de reais')
   t.is(writeAll('33000000', { mode: 'currency' }), 'trinta e três milhões de reais')
   t.is(writeAll('1', { mode: 'currency', currency: { type: 'EUR' } }), 'um euro')
@@ -66,6 +70,7 @@ test('Deve escrever valores monetários por extenso', (t) => {
 
 test('Deve escrever conforme a escala desejada', (t) => {
   t.is(writeAll('2.000.000.001', { scale: 'short' }), 'dois bilhões e um')
+  t.is(writeAll(2000000001n, { scale: 'short' }), 'dois bilhões e um')
   t.is(writeAll('2.000.000.001', { scale: 'short', number: { gender: 'f' } }), 'duas bilhões e uma')
   t.is(writeAll('2.000.000.001', { scale: 'long' }), 'dois mil milhões e um')
   t.is(writeAll('2.000.000.001', { scale: 'long', number: { gender: 'f' } }), 'duas mil milhões e uma')

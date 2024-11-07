@@ -33,13 +33,16 @@ export const toNegative = (num, mode = 'formal') => {
 /**
  * Escrever números por extenso.
  *
- * @param {string|number} num Número para ser escrito por extenso.
+ * @param {string|number|bigint} num Número para ser escrito por extenso.
  * @param {object} opts Opções para configurar modo de escrita.
  * @returns {string} Número escrito por extenso.
  */
 export default (num, opts) => {
+  if (typeof num === 'bigint') {
+    num = num.toString()
+  }
   if (typeof num !== 'string' && typeof num !== 'number') {
-    throw new TypeError('Must be a string or a number')
+    throw new TypeError('Must be a string, number or bigint')
   }
 
   let defaultOpts = {
