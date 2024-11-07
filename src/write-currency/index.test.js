@@ -6,6 +6,7 @@ import writeCurrency, { getIsos, isValidIso, isZero } from './'
  */
 test('Deve escrever valores monetários por extenso', (t) => {
   // Testes com o REAL
+  t.is(writeCurrency('BRL', 'br', '0'), 'zero reais')
   t.is(writeCurrency('BRL', 'br', '1'), 'um real')
   t.is(writeCurrency('BRL', 'br', '2'), 'dois reais')
   t.is(writeCurrency('BRL', 'br', '1', '50'), 'um real e cinquenta centavos')
@@ -33,6 +34,7 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeCurrency('CVE', 'pt', '2000000', '50'), 'dois milhões de escudos e cinquenta cêntimos')
 
   // Testes com o EURO
+  t.is(writeCurrency('EUR', 'pt', '0'), 'zero euros')
   t.is(writeCurrency('EUR', 'pt', '1'), 'um euro')
   t.is(writeCurrency('EUR', 'pt', '2'), 'dois euros')
   t.is(writeCurrency('EUR', 'br', '14', '50'), 'quatorze euros e cinquenta cêntimos')

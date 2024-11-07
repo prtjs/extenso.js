@@ -62,9 +62,9 @@ export default (iso, locale, unit = '0', subunit = '0', scale) => {
   const unitText = write(unit, locale, opts, scale)
   const subunitText = writeSubunit(subunit, locale, opts)
 
+  if (isZero(unit) && isZero(subunit)) return `zero ${opts.plural}`
   if (isZero(unit)) return subunitText
   if (isZero(subunit)) return unitText
-  if (isZero(unit) && isZero(subunit)) return `zero ${opts.plural}`
 
   return `${unitText} e ${subunitText}`
 }
