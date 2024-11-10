@@ -53,6 +53,7 @@ Números envolvidos em *strings* deverão seguir o formato natural de escrita de
 - `mode` (*string*)
 - `locale` (*string*)
 - `negative` (*string*)
+- `scale` (* string *)
 - `currency` (*object*)
 - `currency.type` (*string*)
 - `number` (*object*)
@@ -90,6 +91,27 @@ extenso('42', { mode: 'currency' }) // 'quarenta e dois reais'
 extenso('-42') // 'quarenta e dois negativo'
 extenso('-42', { negative: 'formal' }) // 'quarenta e dois negativo'
 extenso('-42', { negative: 'informal' }) // 'menos quarenta e dois'
+```
+
+#### `scale`
+
+> Define a escala de escrita (curta ou longa).
+
+As escalas curta e longa são dois sistemas de escrita dos números. A escala curta é a utilizado no Brasil, enquanto que a escala longa é a utilizada no restante dos paises de lingua portuguesa.
+
+A escrita diverge somente em números iguais ou superiores a um milhar de milhões (`>= 10e9`), números inferiores a isso seguem com a escrita idêntica em ambas as escalas.
+
+*Mais informações [aqui](https://pt.wikipedia.org/wiki/Escalas_curta_e_longa) [Wikipédia].*
+
+- `short` (*valor padrão*) - Para escrever o número utilizando a escala curta.
+- `long` - Para escrever o número utilizando a escala longa.
+
+##### Exemplo
+
+```js
+extenso('2.000.000.001') // 'dois bilhões e um'
+extenso('2.000.000.001', { scale: 'short' }) // 'dois bilhões e um'
+extenso('2.000.000.001', { scale: 'long' }) // 'dois mil milhões e um'
 ```
 
 #### `locale`
