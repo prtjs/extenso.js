@@ -34,13 +34,13 @@ extenso(number[, options])
 
 **Obs.**: Parâmetro obrigatório.
 
-- **Tipo**: `string` ou `number`
+- **Tipo**: `string`, `number` ou `bigint`
 
 > O número que deverá ser escrito por extenso.
 
-Se o valor for do tipo `number`, então ele deve ser um número com parte inteira segura, ou seja, o valor deve ser válido na verificação com `Number.isSafeInteger()`. No entanto, é muito recomendado que os números sejam encapsulados em *string* devivo ao fato que no JavaScript números (do tipo `number`) maiores que 9 quatrilhões perdem valores sendo imprecisos ([experimente este artigo para mais informações](https://bit.ly/tableless-bigint) *[Tableless]*).
+Se o valor for do tipo `number`, então ele deve ser um número com parte inteira segura, ou seja, o valor deve ser válido na verificação com `Number.isSafeInteger()`. No entanto, é muito recomendado que os números sejam encapsulados em *string* devivo ao fato que no JavaScript números (do tipo `number`) maiores que 9 quatrilhões perdem valor ou também pode-se utilizar números BigInt (do tipo `bigint`) adicionando `n` no final, por exemplo `10000000000000001n` ([leia este artigo para mais informações](https://bit.ly/tableless-bigint)).
 
-Números envolvidos em *strings* deverão seguir o formato natural de escrita de números. Você poder usar `-` no início para representar números negativos e vírgula (`,`) ou ponto (`.`) para separação de milhares e decimais, onde por padrão segue-se o formato de escrita do Brasil podendo alterar as prefencias (como será visto no parâmetro `number.decimalSeparator`).
+Números envolvidos em *strings* deverão seguir o formato natural de escrita de números. Você pode usar `-` no início para representar números negativos e vírgula (`,`) ou ponto (`.`) para separação de milhares e decimais, onde por padrão segue-se o formato de escrita do Brasil podendo alterar as prefencias (como será visto no parâmetro `number.decimalSeparator`).
 
 ### `options`
 
