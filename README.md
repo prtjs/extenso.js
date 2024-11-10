@@ -8,6 +8,7 @@
 - [x] Números negativos.
 - [x] Números decimais.
 - [x] Valores monetários (BRL, EUR e mais).
+- [x] Escala curta e longa.
 - [x] Preferências de dialetos (Brasil, Portugal e mais).
 - [x] Preferências de gênero.
 
