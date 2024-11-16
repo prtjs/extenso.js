@@ -1,4 +1,3 @@
-import reverse from '@arr/reverse'
 import { getLastNumber } from './int-util.js'
 import { listGt1000 as getList } from '../get-list.js'
 import lt1000 from '../lt1000.js'
@@ -60,6 +59,17 @@ export const clear = (parts) => {
     .map(part => part.replace(/^0+\s?/, ''))
     .filter(part => /^\d/.test(part))
     .map(part => part.replace(/^1\s(mil)$/, '$1'))
+}
+
+/**
+ * Inverter array.
+ * 
+ * @param {Array} arr Array a ser invertida.
+ * @returns {Array} Array invertida.
+ */
+function reverse(arr) {
+  arr.reverse()
+  return arr;
 }
 
 /**
