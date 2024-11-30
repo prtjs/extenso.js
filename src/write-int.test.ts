@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeInt, { toFemale } from './write-int.js'
+import writeInt, { toFemale } from './write-int.ts'
 
 /**
  * Função: toFemale

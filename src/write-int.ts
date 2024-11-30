@@ -1,5 +1,5 @@
-import lt1000 from './lt1000.js'
-import gt1000 from './gt1000/index.js'
+import lt1000 from './lt1000.ts'
+import gt1000 from './gt1000/index.ts'
 
 /**
  * Passar para o feminino alguns números.

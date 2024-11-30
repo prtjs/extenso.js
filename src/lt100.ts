@@ -1,5 +1,5 @@
-import lt10 from './lt10.js'
-import { listLt100 as getList } from './get-list.js'
+import lt10 from './lt10.ts'
+import { listLt100 as getList } from './get-list.ts'
 
 /**
  * Obter um número inteiro menor que cem por extenso.

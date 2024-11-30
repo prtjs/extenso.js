@@ -1,6 +1,6 @@
-import { getLastNumber } from './int-util.js'
-import { listGt1000 as getList } from '../get-list.js'
-import lt1000 from '../lt1000.js'
+import { getLastNumber } from './int-util.ts'
+import { listGt1000 as getList } from '../get-list.ts'
+import lt1000 from '../lt1000.ts'
 
 /**
  * Adicionar vírgula entre algumas partes.

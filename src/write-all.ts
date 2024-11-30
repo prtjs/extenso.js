@@ -1,7 +1,7 @@
-import { isValidNumber, parseNumber } from './num-util.js'
-import writeCurrency from './write-currency/index.js'
-import writeDecimal from './write-decimal/index.js'
-import writeInt from './write-int.js'
+import { isValidNumber, parseNumber } from './num-util.ts'
+import writeCurrency from './write-currency/index.ts'
+import writeDecimal from './write-decimal/index.ts'
+import writeInt from './write-int.ts'
 
 /**
  * Verificar se uma opção é válida.

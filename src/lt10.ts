@@ -1,4 +1,4 @@
-import { listLt10 as getList } from './get-list.js'
+import { listLt10 as getList } from './get-list.ts'
 
 /**
  * Obter um número inteiro menor que dez por extenso.

@@ -1,6 +1,6 @@
-import allCurrencies from './currencies.js'
-import write from './write.js'
-import writeSubunit from './write-subunit.js'
+import allCurrencies from './currencies.ts'
+import write from './write.ts'
+import writeSubunit from './write-subunit.ts'
 
 /**
  * Obter lista dos códigos ISO de um registro de moedas.

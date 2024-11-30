@@ -1,4 +1,4 @@
-import writeInt from '../write-int.js'
+import writeInt from '../write-int.ts'
 
 /**
  * Obter o valor escrito por extenso.

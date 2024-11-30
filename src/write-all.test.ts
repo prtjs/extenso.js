@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeAll, { isValidOpt, toNegative } from './write-all.js'
+import writeAll, { isValidOpt, toNegative } from './write-all.ts'
 
 test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll(0), 'zero')

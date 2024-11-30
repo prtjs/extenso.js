@@ -1,4 +1,4 @@
-import writeInt from '../write-int.js'
+import writeInt from '../write-int.ts'
 
 /**
  * Obter a sub-unidade escrita por extenso.

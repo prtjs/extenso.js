@@ -1,5 +1,5 @@
 import test from 'ava'
-import { addComma, addConjunction, clear, name, singularize, write } from './parts-util.js'
+import { addComma, addConjunction, clear, name, singularize, write } from './parts-util.ts'
 
 /**
  * Função: addComma
