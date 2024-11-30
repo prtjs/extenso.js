@@ -44,16 +44,16 @@ export default (num, opts) => {
     throw new TypeError('Must be a string, number or bigint')
   }
 
-  let defaultOpts = {
+  const defaultOpts = {
     mode: 'number',
     locale: 'br',
     negative: 'formal',
     scale: 'short',
   }
-  let defaultOptsCurrency = {
+  const defaultOptsCurrency = {
     type: 'BRL',
   }
-  let defaultOptsNumber = {
+  const defaultOptsNumber = {
     gender: 'm',
     decimal: 'formal',
     decimalSeparator: 'comma',
@@ -114,7 +114,7 @@ export default (num, opts) => {
 
     // Se não tem a parte inteira e tem a parte decimal
     if (integer === '0' && decimal !== '0') {
-      let number = opts.number.decimal === 'informal'
+      const number = opts.number.decimal === 'informal'
         ? `zero ${decText}`
         : decText
 

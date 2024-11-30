@@ -19,6 +19,8 @@ export default [
       "space-before-blocks": ["error", "always"],
       "comma-dangle": ["error", "always-multiline"],
       "semi": ["error", "never"],
+      "no-unused-vars": "error",
+      "prefer-const": ["error", { "ignoreReadBeforeAssign": true }],
     },
   },
   pluginJs.configs.recommended,
