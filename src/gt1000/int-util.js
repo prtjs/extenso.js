@@ -1,5 +1,3 @@
-import formatNumber from 'format-number'
-
 /**
  * Separar um inteiro em uma array com base na formatação de um número.
  *
@@ -8,11 +6,7 @@ import formatNumber from 'format-number'
  * @returns {Array} Array com as partes do número.
  */
 export const split = (int) => {
-  const format = formatNumber()
-  const formatted = format(int)
-  const splitted = formatted.split(',')
-
-  return splitted
+  return int.match(/\d{1,3}(?=(\d{3})*$)/g)
 }
 
 /**
