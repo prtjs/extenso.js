@@ -1,5 +1,5 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
+import globals from "globals"
+import pluginJs from "@eslint/js"
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -18,7 +18,8 @@ export default [
       "keyword-spacing": ["error", { before: true, after: true }],
       "space-before-blocks": ["error", "always"],
       "comma-dangle": ["error", "always-multiline"],
+      "semi": ["error", "never"],
     },
   },
   pluginJs.configs.recommended,
-];
+]

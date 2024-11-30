@@ -69,7 +69,7 @@ export const clear = (parts) => {
  */
 function reverse(arr) {
   arr.reverse()
-  return arr;
+  return arr
 }
 
 /**
