@@ -11,17 +11,21 @@
   ],
   "scripts": {
     "test": "ava --colors",
-    "build": "node esbuild.config.js"
+    "build": "node esbuild.config.js",
+    "lint": "eslint . --ignore-pattern 'dist/*'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theuves/extenso.js.git"
   },
   "devDependencies": {
+    "@eslint/js": "^9.15.0",
     "assign-deep": "^1.0.1",
     "ava": "^6.2.0",
     "esbuild": "^0.24.0",
-    "format-number": "^3.0.0"
+    "eslint": "^9.15.0",
+    "format-number": "^3.0.0",
+    "globals": "^15.12.0"
   },
   "author": "Matheus Alves",
   "license": "MIT"

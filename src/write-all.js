@@ -1,4 +1,3 @@
-import assignDeep from 'assign-deep'
 import { isValidNumber, parseNumber } from './num-util.js'
 import writeCurrency from './write-currency/index.js'
 import writeDecimal from './write-decimal/index.js'

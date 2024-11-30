@@ -2,10 +2,9 @@
  * Obter lista de números menores que dez.
  *
  * @method listLt10
- * @param {string} locale Código do país que deve ser escrito.
  * @returns {Array} Lista das partes do número.
  */
-export const listLt10 = (locale) => {
+export const listLt10 = () => {
   return [
     'zero',
     'um',
@@ -54,10 +53,9 @@ export const listLt100 = (locale) => {
  * Obter lista de números menores que mil.
  *
  * @method listLt1000
- * @param {string} locale Código do país que deve ser escrito.
  * @returns {Array} Lista das partes do número.
  */
-export const listLt1000 = (locale) => {
+export const listLt1000 = () => {
   return [
     'cento',
     'duzentos',
@@ -121,10 +119,9 @@ export const listGt1000 = (locale, scale = 'short') => {
  * Obter lista de números decimais.
  *
  * @method listDecimals
- * @param {string} locale Código do país que deve ser escrito.
  * @returns {Array} Lista das partes do número.
  */
-export const listDecimals = (locale) => {
+export const listDecimals = () => {
   return [
     'milésimo',
     'milionésimo',
