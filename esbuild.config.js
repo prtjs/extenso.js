@@ -23,7 +23,7 @@ const options = [
 
 options.forEach((opt) => {
   esbuild.build({
-    entryPoints: ['./index.js'],
+    entryPoints: ['./index.ts'],
     bundle: true,
     minify: true,
     sourcemap: true,
