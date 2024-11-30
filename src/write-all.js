@@ -50,20 +50,19 @@ export default (num, opts) => {
     locale: 'br',
     negative: 'formal',
     scale: 'short',
-    currency: {
-      type: 'BRL'
-    },
-    number: {
-      gender: 'm',
-      decimal: 'formal',
-      decimalSeparator: 'comma'
-    }
+  }
+  let defaultOptsCurrency = {
+    type: 'BRL'
+  }
+  let defaultOptsNumber = {
+    gender: 'm',
+    decimal: 'formal',
+    decimalSeparator: 'comma'
   }
 
-  // Usando o pacote 'assign-deep' no lugar de Object.assign(),
-  // pois esse último substitui completamente todas as propriedades
-  // de um objeto que está dentro de outro objeto.
-  opts = assignDeep(defaultOpts, opts)
+  opts = Object.assign(defaultOpts, opts)
+  opts.currency = Object.assign(defaultOptsCurrency, opts.currency)
+  opts.number = Object.assign(defaultOptsNumber, opts.number)
 
   if (
     !isValidOpt(opts.mode, [ 'number', 'currency' ]) ||
