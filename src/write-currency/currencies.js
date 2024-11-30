@@ -4,31 +4,31 @@
     plural: "reais",
     subunit: {
       singular: "centavo",
-      plural: "centavos"
-    }
+      plural: "centavos",
+    },
   },
   CVE: {
     singular: "escudo",
     plural: "escudos",
     subunit: {
       singular: "cêntimo",
-      plural: "cêntimos"
-    }
+      plural: "cêntimos",
+    },
   },
   EUR: {
     singular: "euro",
     plural: "euros",
     subunit: {
       singular: "cêntimo",
-      plural: "cêntimos"
-    }
+      plural: "cêntimos",
+    },
   },
   MZN: {
     singular: "metical",
     plural: "meticais",
     subunit: {
       singular: "centavos",
-      plural: "centavos"
-    }
-  }
+      plural: "centavos",
+    },
+  },
 }

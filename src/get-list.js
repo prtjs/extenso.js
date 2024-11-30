@@ -15,7 +15,7 @@ export const listLt10 = () => {
     'seis',
     'sete',
     'oito',
-    'nove'
+    'nove',
   ]
 }
 
@@ -45,7 +45,7 @@ export const listLt100 = (locale) => {
     'sessenta',
     'setenta',
     'oitenta',
-    'noventa'
+    'noventa',
   ]
 }
 
@@ -65,7 +65,7 @@ export const listLt1000 = () => {
     'seiscentos',
     'setecentos',
     'oitocentos',
-    'novecentos'
+    'novecentos',
   ]
 }
 
@@ -92,7 +92,7 @@ export const listGt1000 = (locale, scale = 'short') => {
     'nonil',
     'decil',
     'undecil',
-    'duodecil'
+    'duodecil',
   ]
 
   return baseList
@@ -100,7 +100,7 @@ export const listGt1000 = (locale, scale = 'short') => {
       if (index < 2) return value
       const suffixes = {
         'br': 'hões',
-        'pt': 'iões'
+        'pt': 'iões',
       }
       return value + suffixes[locale]
     })
@@ -135,6 +135,6 @@ export const listDecimals = () => {
     'nonilionésimo',
     'decilionésimo',
     'undecilionésimo',
-    'duodecilionésimo'
+    'duodecilionésimo',
   ]
 }

@@ -10,6 +10,15 @@ export default [
         ...globals.node,
       },
     },
+    "rules": {
+      "indent": ["error", 2],
+      "no-trailing-spaces": "error",
+      "space-in-parens": ["error", "never"],
+      "space-before-function-paren": ["error", "never"],
+      "keyword-spacing": ["error", { before: true, after: true }],
+      "space-before-blocks": ["error", "always"],
+      "comma-dangle": ["error", "always-multiline"],
+    },
   },
   pluginJs.configs.recommended,
 ];

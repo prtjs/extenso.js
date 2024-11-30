@@ -86,13 +86,13 @@ export const parseNumber = (num, decimalSeparatorIsDot = false) => {
     return {
       isNegative,
       integer,
-      decimal
+      decimal,
     }
   }
 
   return {
     isNegative,
     integer: normalized,
-    decimal: '0'
+    decimal: '0',
   }
 }

@@ -63,7 +63,7 @@ export const clear = (parts) => {
 
 /**
  * Inverter array.
- * 
+ *
  * @param {Array} arr Array a ser invertida.
  * @returns {Array} Array invertida.
  */

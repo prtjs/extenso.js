@@ -51,12 +51,12 @@ export default (num, opts) => {
     scale: 'short',
   }
   let defaultOptsCurrency = {
-    type: 'BRL'
+    type: 'BRL',
   }
   let defaultOptsNumber = {
     gender: 'm',
     decimal: 'formal',
-    decimalSeparator: 'comma'
+    decimalSeparator: 'comma',
   }
 
   opts = Object.assign(defaultOpts, opts)

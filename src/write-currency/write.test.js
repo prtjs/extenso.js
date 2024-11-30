@@ -4,7 +4,7 @@ import write from './write.js'
 test('Deve obter o valor escrito por extenso', (t) => {
   const opts = {
     singular: 'real',
-    plural: 'reais'
+    plural: 'reais',
   }
 
   t.is(write('0', 'br', opts), 'zero reais')

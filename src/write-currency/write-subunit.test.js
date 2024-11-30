@@ -5,8 +5,8 @@ test('Deve obter a sub-unidade escrita por extenso', (t) => {
   const opts = {
     subunit: {
       singular: 'centavo',
-      plural: 'centavos'
-    }
+      plural: 'centavos',
+    },
   }
 
   t.is(writeSubunit('0', 'br', opts), 'zero centavos')
