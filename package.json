@@ -3,28 +3,43 @@
   "version": "2.1.0",
   "description": "Uma biblioteca avançada para escrever números por extenso (em português).",
   "main": "dist/extenso.esm.js",
-  "type": "module",
   "types": "index.d.ts",
   "files": [
     "dist",
     "index.d.ts"
   ],
+  "ava": {
+    "typescript": {
+      "rewritePaths": {
+        "src/": "build/src/"
+      },
+      "compile": "tsc"
+    }
+  },
   "scripts": {
-    "test": "ava --colors",
-    "build": "node esbuild.config.js",
-    "lint": "eslint . --ignore-pattern 'dist/*'"
+    "test": "rm -rf build && ava --colors",
+    "build": "node esbuild.config.mjs",
+    "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theuves/extenso.js.git"
   },
   "devDependencies": {
+    "@ava/typescript": "^5.0.0",
     "@eslint/js": "^9.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/parser": "^8.16.0",
     "ava": "^6.2.0",
     "esbuild": "^0.24.0",
-    "eslint": "^9.15.0",
-    "globals": "^15.12.0"
+    "eslint": "^9.16.0",
+    "globals": "^15.12.0",
+    "tsimp": "^2.0.12",
+    "typescript-eslint": "^8.16.0"
   },
   "author": "Matheus Alves",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.7.2"
+  }
 }
