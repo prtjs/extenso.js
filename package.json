@@ -10,16 +10,16 @@
   ],
   "ava": {
 		"typescript": {
-			"compile": "tsc",
 			"rewritePaths": {
-				"source/": "build/"
-			}
+				"src/": "build/src/"
+			},
+      "compile": "tsc"
 		}
 	},
   "scripts": {
-    "test": "ava --colors",
+    "test": "rm -rf build && ava --colors",
     "build": "node esbuild.config.mjs",
-    "lint": "eslint . --ignore-pattern 'dist/*'"
+    "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*'"
   },
   "repository": {
     "type": "git",

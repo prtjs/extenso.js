@@ -1,9 +1,6 @@
-# Diretórios
-
 node_modules/
 dist/
+build/
 out/
-
-# Arquivos
-
+tsconfig.tsbuildinfo
 extenso-*.tgz

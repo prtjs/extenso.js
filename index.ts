@@ -1,3 +1,3 @@
-import extenso from './src/write-all.js'
+import extenso from './src/write-all'
 
 export default extenso
