@@ -1,20 +1,25 @@
 // @ts-check
-
 import tseslint from 'typescript-eslint'
 
 export default tseslint.config(
   {
     rules: {
-      "indent": ["error", 2],
-      "no-trailing-spaces": "error",
-      "space-in-parens": ["error", "never"],
-      "space-before-function-paren": ["error", "never"],
-      "keyword-spacing": ["error", { before: true, after: true }],
-      "space-before-blocks": ["error", "always"],
-      "comma-dangle": ["error", "always-multiline"],
-      "semi": ["error", "never"],
-      "no-unused-vars": "error",
-      "prefer-const": ["error", { "ignoreReadBeforeAssign": true }],
+      'comma-dangle': ['error', 'always-multiline'],
+      'func-style': ['error', 'expression'],
+      'indent': ['error', 2],
+      'keyword-spacing': ['error', { before: true, after: true }],
+      'max-lines': ['error', { 'max': 300, 'skipBlankLines': true, 'skipComments': true }],
+      'no-implicit-globals': 'error',
+      'no-trailing-spaces': 'error',
+      'no-unused-vars': 'error',
+      'no-var': 'error',
+      'prefer-const': ['error', { 'ignoreReadBeforeAssign': true }],
+      'quotes': ['error', 'single', { 'allowTemplateLiterals': true }],
+      'semi': ['error', 'never'],
+      'space-before-blocks': ['error', 'always'],
+      'space-before-function-paren': ['error', 'never'],
+      'space-in-parens': ['error', 'never'],
+      'strict': 'error',
     },
   },
   tseslint.configs.strict,
