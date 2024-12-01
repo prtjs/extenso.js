@@ -32,7 +32,7 @@ export interface Options {
   number?: NumberOptions
 }
 
-export default (num: string | number | bigint, opts?: Options): string | undefined => {
+export default (num: string | number | bigint, opts?: Options) => {
   if (typeof num === 'bigint') {
     num = num.toString()
   }

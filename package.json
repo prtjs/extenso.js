@@ -18,8 +18,9 @@
   },
   "scripts": {
     "test": "rm -rf build && ava --colors",
-    "build": "node esbuild.config.mjs",
-    "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*'"
+    "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*'",
+    "lint:fix": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*' --fix",
+    "build": "node esbuild.config.mjs"
   },
   "repository": {
     "type": "git",
@@ -27,19 +28,11 @@
   },
   "devDependencies": {
     "@ava/typescript": "^5.0.0",
-    "@eslint/js": "^9.15.0",
-    "@typescript-eslint/eslint-plugin": "^8.16.0",
-    "@typescript-eslint/parser": "^8.16.0",
     "ava": "^6.2.0",
     "esbuild": "^0.24.0",
     "eslint": "^9.16.0",
-    "globals": "^15.12.0",
-    "tsimp": "^2.0.12",
     "typescript-eslint": "^8.16.0"
   },
   "author": "Matheus Alves",
-  "license": "MIT",
-  "dependencies": {
-    "typescript": "^5.7.2"
-  }
+  "license": "MIT"
 }

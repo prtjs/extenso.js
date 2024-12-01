@@ -2,35 +2,35 @@
 
 export default {
   BRL: {
-    singular: "real",
-    plural: "reais",
+    singular: 'real',
+    plural: 'reais',
     subunit: {
-      singular: "centavo",
-      plural: "centavos",
+      singular: 'centavo',
+      plural: 'centavos',
     },
   },
   CVE: {
-    singular: "escudo",
-    plural: "escudos",
+    singular: 'escudo',
+    plural: 'escudos',
     subunit: {
-      singular: "cêntimo",
-      plural: "cêntimos",
+      singular: 'cêntimo',
+      plural: 'cêntimos',
     },
   },
   EUR: {
-    singular: "euro",
-    plural: "euros",
+    singular: 'euro',
+    plural: 'euros',
     subunit: {
-      singular: "cêntimo",
-      plural: "cêntimos",
+      singular: 'cêntimo',
+      plural: 'cêntimos',
     },
   },
   MZN: {
-    singular: "metical",
-    plural: "meticais",
+    singular: 'metical',
+    plural: 'meticais',
     subunit: {
-      singular: "centavos",
-      plural: "centavos",
+      singular: 'centavos',
+      plural: 'centavos',
     },
   },
 }
