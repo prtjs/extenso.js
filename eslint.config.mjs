@@ -1,16 +1,10 @@
-import globals from "globals"
-import pluginJs from "@eslint/js"
+// @ts-check
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
   {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
-    },
-    "rules": {
+    rules: {
       "indent": ["error", 2],
       "no-trailing-spaces": "error",
       "space-in-parens": ["error", "never"],
@@ -23,5 +17,6 @@ export default [
       "prefer-const": ["error", { "ignoreReadBeforeAssign": true }],
     },
   },
-  pluginJs.configs.recommended,
-]
+  tseslint.configs.strict,
+  tseslint.configs.stylistic,
+)

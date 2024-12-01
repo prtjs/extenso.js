@@ -7,25 +7,29 @@ export const isValidOpt = (val: string | undefined, vals: string[]): boolean => 
   return vals.includes(val || '')
 }
 
-export const toNegative = (num: string, mode: string = 'formal'): string => {
+export const toNegative = (num: string, mode = 'formal'): string => {
   return mode === 'informal'
     ? `menos ${num}`
     : `${num} negativo`
 }
 
-interface Options {
+export interface CurrencyOptions {
+  type?: 'BRL' | 'EUR' | 'CVE'
+}
+
+export interface NumberOptions {
+  gender?: 'm' | 'f'
+  decimal?: 'formal' | 'informal'
+  decimalSeparator?: 'comma' | 'dot'
+}
+
+export interface Options {
   mode?: 'number' | 'currency'
   locale?: 'pt' | 'br'
   negative?: 'formal' | 'informal'
   scale?: 'short' | 'long'
-  currency?: {
-    type?: 'BRL' | 'EUR' | 'CVE'
-  }
-  number?: {
-    gender?: 'm' | 'f'
-    decimal?: 'formal' | 'informal'
-    decimalSeparator?: 'comma' | 'dot'
-  }
+  currency?: CurrencyOptions
+  number?: NumberOptions
 }
 
 export default (num: string | number | bigint, opts?: Options): string | undefined => {

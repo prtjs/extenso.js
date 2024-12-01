@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeAll, { isValidOpt, toNegative } from './write-all'
+import writeAll, { isValidOpt, toNegative, Options } from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll(0), 'zero')
@@ -37,7 +37,7 @@ test('Deve escrever números decimais por extenso', (t) => {
 })
 
 test('Deve escrever números com decimais separados por ponto', (t) => {
-  const options = { 'number': { 'decimalSeparator': 'dot' as 'dot' } }
+  const options: Options = { 'number': { 'decimalSeparator': 'dot' } }
 
   t.is(writeAll('1', options), 'um')
   t.is(writeAll('1,001', options), 'mil e um')

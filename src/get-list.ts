@@ -50,7 +50,7 @@ export const listLt1000 = (): string[] => {
   ]
 }
 
-export const listGt1000 = (locale: 'br' | 'pt', scale: string = 'short'): string[] => {
+export const listGt1000 = (locale: 'br' | 'pt', scale = 'short'): string[] => {
   const baseList = [
     'mil',
     'milhões',

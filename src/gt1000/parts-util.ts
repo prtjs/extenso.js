@@ -39,7 +39,7 @@ export const clear = (parts: string[]): string[] => {
 }
 
 // TODO: Adiciona ao testes
-export function reverse(arr: any[]): any[] {
+export function reverse(arr: string[]): string[] {
   arr.reverse()
   return arr
 }

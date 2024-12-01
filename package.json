@@ -9,13 +9,13 @@
     "index.d.ts"
   ],
   "ava": {
-		"typescript": {
-			"rewritePaths": {
-				"src/": "build/src/"
-			},
+    "typescript": {
+      "rewritePaths": {
+        "src/": "build/src/"
+      },
       "compile": "tsc"
-		}
-	},
+    }
+  },
   "scripts": {
     "test": "rm -rf build && ava --colors",
     "build": "node esbuild.config.mjs",
@@ -28,11 +28,14 @@
   "devDependencies": {
     "@ava/typescript": "^5.0.0",
     "@eslint/js": "^9.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.16.0",
+    "@typescript-eslint/parser": "^8.16.0",
     "ava": "^6.2.0",
     "esbuild": "^0.24.0",
-    "eslint": "^9.15.0",
+    "eslint": "^9.16.0",
     "globals": "^15.12.0",
-    "tsimp": "^2.0.12"
+    "tsimp": "^2.0.12",
+    "typescript-eslint": "^8.16.0"
   },
   "author": "Matheus Alves",
   "license": "MIT",

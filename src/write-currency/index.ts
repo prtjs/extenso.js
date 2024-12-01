@@ -14,7 +14,7 @@ export const isZero = (val: string) => {
   return /^0+$/.test(val)
 }
 
-export default (iso: string, locale: 'br' | 'pt', unit: string = '0', subunit: string = '0', scale?: string) => {
+export default (iso: string, locale: 'br' | 'pt', unit = '0', subunit = '0', scale?: string) => {
   if (!isValidIso(iso, allCurrencies)) {
     throw new Error('Invalid ISO code')
   }

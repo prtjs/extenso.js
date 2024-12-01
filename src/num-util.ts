@@ -1,4 +1,4 @@
-export const isValidNumber = (val: string | number, decimalSeparatorIsDot: boolean = false): boolean => {
+export const isValidNumber = (val: string | number, decimalSeparatorIsDot = false): boolean => {
   if (typeof val === 'number') {
     // Se for um inteiro e não for seguro
     if (Number.isInteger(val) && !Number.isSafeInteger(val)) {
@@ -56,7 +56,7 @@ export const isValidNumber = (val: string | number, decimalSeparatorIsDot: boole
 }
 
 // TODO: Criar uma interface (TypeScript) para o retorno
-export const parseNumber = (num: string | number, decimalSeparatorIsDot: boolean = false): { isNegative: boolean, integer: string, decimal: string } => {
+export const parseNumber = (num: string | number, decimalSeparatorIsDot = false): { isNegative: boolean, integer: string, decimal: string } => {
   if (typeof num === 'number') {
     num = num.toString()
     decimalSeparatorIsDot = true
