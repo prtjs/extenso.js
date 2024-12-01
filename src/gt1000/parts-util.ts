@@ -1,40 +1,24 @@
-import { getLastNumber } from './int-util.ts'
-import { listGt1000 as getList } from '../get-list.ts'
-import lt1000 from '../lt1000.ts'
+import { getLastNumber } from './int-util'
+import { listGt1000 as getList } from '../get-list'
+import lt1000 from '../lt1000'
 
-/**
- * Adicionar vírgula entre algumas partes.
- *
- * @method addComma
- * @param {Array} parts Array com as partes.
- * @returns {Array} Partes com a vírgula caso tenho sido necessário.
- */
-export const addComma = (parts) => {
-  return parts.map((part, index, array) => {
+export const addComma = (parts: string[]): string[] => {
+  return parts.map((part: string, i: number, array: string[]) => {
     // REGRA: Não adiciona entre a penúltima e a última parte.
-    return index < array.length - 2
+    return i < array.length - 2
       ? `${part},`
       : part
   })
 }
 
-/**
- * Adicionar conjunção "e" em determinadas partes.
- *
- * @method addConjunction
- * @param {Array} parts Partes do número que está sendo processado.
- * @param {string} int Número inteiro que está sendo processado.
- * @returns {Array} Partes com a conjução "e" caso tenha sido necessário.
- */
-export const addConjunction = (parts, int) => {
+export const addConjunction = (parts: string[], int: string): string[] => {
   const lastNum = getLastNumber(int)
-
   // A parte é valida apenas se:
   // - Caso 1: A parte é um inteiro menor que cem.
   // - Caso 2: A parte é um inteiro divisível por cem.
   if (lastNum < 100 || lastNum % 100 === 0) {
-    return parts.map((part, index, array) => {
-      return index === array.length - 2
+    return parts.map((part: string, i: number, array: string[]) => {
+      return i === array.length - 2
         ? `${part} e`
         : part
     })
@@ -43,14 +27,7 @@ export const addConjunction = (parts, int) => {
   return parts
 }
 
-/**
- * Limpar partes que não são lidas no número.
- *
- * @method clear
- * @param {Array} parts Partes do número que está sendo processado.
- * @returns {Array} Partes com algumas partes removidas.
- */
-export const clear = (parts) => {
+export const clear = (parts: string[]): string[] => {
   // Etapas para a remoção:
   // - Etapa 1: Remove zeros à esquerda.
   // - Etapa 2: Remove partes que não são lidas.
@@ -61,27 +38,14 @@ export const clear = (parts) => {
     .map(part => part.replace(/^1\s(mil)$/, '$1'))
 }
 
-/**
- * Inverter array.
- *
- * @param {Array} arr Array a ser invertida.
- * @returns {Array} Array invertida.
- */
-function reverse(arr) {
+// TODO: Adiciona ao testes
+export function reverse(arr: any[]): any[] {
   arr.reverse()
   return arr
 }
 
-/**
- * Escrever por extenso os números inteiros dentro das partes.
- *
- * @method name
- * @param {Array} parts Partes do número que está sendo processado.
- * @param {string} locale Código do país para escrever o número.
- * @returns {Array} Partes com os inteiros escritos por extenso.
- */
-export const name = (parts, locale, scale) => {
-  return reverse(reverse(parts).map((part, i) => {
+export const name = (parts: string[], locale: 'br' | 'pt', scale?: string): string[] => {
+  return reverse(reverse(parts).map((part: string, i: number) => {
     const numberName = getList(locale, scale)[i - 1]
 
     return numberName
@@ -90,29 +54,14 @@ export const name = (parts, locale, scale) => {
   }))
 }
 
-/**
- * Singularizar partes do número que são maiores que um.
- *
- * @method singularize
- * @param {Array} parts Partes do número que está sendo processado.
- * @returns {string} Número com as partes singularizadas.
- */
-export const singularize = (parts) => {
+export const singularize = (parts: string[]) => {
   const regex = /^(1\s.*)ões/
-  const replacer = (str) => str.replace(regex, '$1ão')
+  const replacer = (str: string) => str.replace(regex, '$1ão')
 
   return parts.map(replacer)
 }
 
-/**
- * Deve escrever os inteiros restantes em uma array com as partes.
- *
- * @method write
- * @param {Array} parts Partes do número que está sendo processado.
- * @param {string} locale Código do país para escrever o número.
- * @returns {string} Número como todas as partes escritas por extenso.
- */
-export const write = (parts, locale) => {
+export const write = (parts: string[], locale: 'br' | 'pt'): string[] => {
   return parts.map(part => {
     return part.replace(/^(\d+)/, digit => {
       const int = parseInt(digit)

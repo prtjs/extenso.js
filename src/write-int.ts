@@ -1,34 +1,15 @@
-import lt1000 from './lt1000.ts'
-import gt1000 from './gt1000/index.ts'
+import lt1000 from './lt1000'
+import gt1000 from './gt1000/index'
 
-/**
- * Passar para o feminino alguns números.
- *
- * @method toFemale
- * @param {string} num Um número qualquer.
- * @returns {string} O número com algumas partes no feminino.
- * @example
- * toFemale('quarenta e dois')
- * // 'quarenta e duas'
- */
-export const toFemale = (num) => {
+export const toFemale = (num: string) => {
   return num
     .replace(/\bum\b/, 'uma')
     .replace(/\bdois\b/, 'duas')
 }
 
-/**
- * Obter qualquer número escrito por extenso.
- *
- * @method writeInt
- * @param {string} int Um número para ser escrito.
- * @param {string} locale Código do país para escrever o número.
- * @param {string} [gender='m'] A opção do gênero do número.
- * @returns {string} O número escrito.
- */
-export default (int, locale, gender = 'm', scale = 'short') => {
+export default (int: string, locale: 'br' | 'pt', gender = 'm', scale = 'short') => {
   const intNum = parseInt(int)
-  let num
+  let num = ''
 
   if (intNum < 1000) num = lt1000(intNum, locale)
   if (intNum === 1000) num = 'mil'

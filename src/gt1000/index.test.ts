@@ -1,5 +1,5 @@
 import test from 'ava'
-import gt1000 from './index.ts'
+import gt1000 from './index'
 
 test('Deve escrever números maiores que mil', (t) => {
   t.is(gt1000('1001', 'br'), 'mil e um')

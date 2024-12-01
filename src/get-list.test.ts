@@ -1,14 +1,16 @@
 import test from 'ava'
-import { listLt10, listLt100, listLt1000, listGt1000, listDecimals } from './get-list.ts'
+import { listLt10, listLt100, listLt1000, listGt1000, listDecimals } from './get-list'
 
 /**
  * Função: *
  */
 test('Deve ser funções que retornam arrays', (t) => {
   t.true(Array.isArray(listLt10()))
-  t.true(Array.isArray(listLt100()))
+  t.true(Array.isArray(listLt100('br')))
+  t.true(Array.isArray(listLt100('pt')))
   t.true(Array.isArray(listLt1000()))
-  t.true(Array.isArray(listGt1000()))
+  t.true(Array.isArray(listGt1000('br')))
+  t.true(Array.isArray(listGt1000('pt')))
   t.true(Array.isArray(listDecimals()))
 })
 

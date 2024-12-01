@@ -1,15 +1,14 @@
-import writeInt from '../write-int.ts'
+import writeInt from '../write-int'
 
-/**
- * Obter a sub-unidade escrita por extenso.
- *
- * @method writeSubunit
- * @param {string} val Valor a ser escrito.
- * @param {string} locale Código do país para escrever o número.
- * @param {object} opts Opções de escrita do valor.
- * @returns {string} Valor escrito por extenso.
- */
-export default (val, locale, opts) => {
+// TODO: Melhorar isso
+interface Currency{
+  subunit: {
+    singular: string
+    plural: string
+  }
+}
+
+export default (val: string, locale: 'br' | 'pt', opts: Currency) => {
   const textNumber = writeInt(val, locale)
 
   return parseInt(val) === 1

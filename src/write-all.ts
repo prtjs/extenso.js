@@ -1,42 +1,34 @@
-import { isValidNumber, parseNumber } from './num-util.ts'
-import writeCurrency from './write-currency/index.ts'
-import writeDecimal from './write-decimal/index.ts'
-import writeInt from './write-int.ts'
+import { isValidNumber, parseNumber } from './num-util'
+import writeCurrency from './write-currency/index'
+import writeDecimal from './write-decimal/index'
+import writeInt from './write-int'
 
-/**
- * Verificar se uma opção é válida.
- *
- * @method isValidOpt
- * @param {string} val Valor da opção.
- * @param {Array} vals Valores para checagem.
- * @returns {boolean} Informação da validade da opção.
- */
-export const isValidOpt = (val, vals) => {
-  return vals.includes(val)
+export const isValidOpt = (val: string | undefined, vals: string[]): boolean => {
+  return vals.includes(val || '')
 }
 
-/**
- * Passar um número escrito por extenso para o modo negativo.
- *
- * @method toNegative
- * @param {string} num Valor escrito por extenso.
- * @param {string} [mode='formal'] Opção sobre o modo a ser escrito.
- * @returns {string} Valor como negativo.
- */
-export const toNegative = (num, mode = 'formal') => {
+export const toNegative = (num: string, mode: string = 'formal'): string => {
   return mode === 'informal'
     ? `menos ${num}`
     : `${num} negativo`
 }
 
-/**
- * Escrever números por extenso.
- *
- * @param {string|number|bigint} num Número para ser escrito por extenso.
- * @param {object} opts Opções para configurar modo de escrita.
- * @returns {string} Número escrito por extenso.
- */
-export default (num, opts) => {
+interface Options {
+  mode?: 'number' | 'currency'
+  locale?: 'pt' | 'br'
+  negative?: 'formal' | 'informal'
+  scale?: 'short' | 'long'
+  currency?: {
+    type?: 'BRL' | 'EUR' | 'CVE'
+  }
+  number?: {
+    gender?: 'm' | 'f'
+    decimal?: 'formal' | 'informal'
+    decimalSeparator?: 'comma' | 'dot'
+  }
+}
+
+export default (num: string | number | bigint, opts?: Options): string | undefined => {
   if (typeof num === 'bigint') {
     num = num.toString()
   }
@@ -44,24 +36,19 @@ export default (num, opts) => {
     throw new TypeError('Must be a string, number or bigint')
   }
 
-  const defaultOpts = {
-    mode: 'number',
-    locale: 'br',
-    negative: 'formal',
-    scale: 'short',
-  }
-  const defaultOptsCurrency = {
-    type: 'BRL',
-  }
-  const defaultOptsNumber = {
-    gender: 'm',
-    decimal: 'formal',
-    decimalSeparator: 'comma',
-  }
+  opts = opts || {}
+  opts.mode = opts.mode || 'number'
+  opts.locale = opts.locale || 'br'
+  opts.negative = opts.negative || 'formal'
+  opts.scale = opts.scale || 'short'
 
-  opts = Object.assign(defaultOpts, opts)
-  opts.currency = Object.assign(defaultOptsCurrency, opts.currency)
-  opts.number = Object.assign(defaultOptsNumber, opts.number)
+  opts.currency = opts.currency || {}
+  opts.currency.type = opts.currency.type || 'BRL'
+
+  opts.number = opts.number || {}
+  opts.number.gender = opts.number.gender || 'm'
+  opts.number.decimal = opts.number.decimal || 'formal'
+  opts.number.decimalSeparator = opts.number.decimalSeparator || 'comma'
 
   if (
     !isValidOpt(opts.mode, [ 'number', 'currency' ]) ||
@@ -88,7 +75,7 @@ export default (num, opts) => {
     const iso = opts.currency.type
     const locale = opts.locale
     const decimalCents = decimal.slice(0, 2)
-    const numText = writeCurrency(iso, locale, integer, decimalCents, opts.scale)
+    const numText = writeCurrency(iso || '', locale, integer, decimalCents, opts.scale)
 
     return isNegative
       ? toNegative(numText, opts.negative)

@@ -1,5 +1,5 @@
 import test from 'ava'
-import { isValidNumber, parseNumber } from './num-util.ts'
+import { isValidNumber, parseNumber } from './num-util'
 
 test('Deve validar um número', (t) => {
   t.true(isValidNumber('42'))

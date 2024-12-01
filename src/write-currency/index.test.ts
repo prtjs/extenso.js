@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeCurrency, { getIsos, isValidIso, isZero } from './index.ts'
+import writeCurrency, { getIsos, isValidIso, isZero } from './index'
 
 /**
  * Função: writeCurrency

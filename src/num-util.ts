@@ -1,11 +1,4 @@
-/**
- * Verificar se um valor é um número, da língua portuguesa, valido.
- *
- * @method isValidNumber
- * @param {string|float} val Um valor para ser verificado.
- * @returns {boolean} Verificação do valor.
- */
-export const isValidNumber = (val, decimalSeparatorIsDot = false) => {
+export const isValidNumber = (val: string | number, decimalSeparatorIsDot: boolean = false): boolean => {
   if (typeof val === 'number') {
     // Se for um inteiro e não for seguro
     if (Number.isInteger(val) && !Number.isSafeInteger(val)) {
@@ -17,6 +10,8 @@ export const isValidNumber = (val, decimalSeparatorIsDot = false) => {
       return true
     }
   }
+
+  val = val.toString()
 
   /*
    * Geral
@@ -60,14 +55,8 @@ export const isValidNumber = (val, decimalSeparatorIsDot = false) => {
       isNotFormattetDecimalDot
 }
 
-/**
- * Analisar um número.
- *
- * @method parseNumber
- * @param {string} val Um número para ser analisado
- * @returns {object} Objeto com as informações do número
- */
-export const parseNumber = (num, decimalSeparatorIsDot = false) => {
+// TODO: Criar uma interface (TypeScript) para o retorno
+export const parseNumber = (num: string | number, decimalSeparatorIsDot: boolean = false): { isNegative: boolean, integer: string, decimal: string } => {
   if (typeof num === 'number') {
     num = num.toString()
     decimalSeparatorIsDot = true

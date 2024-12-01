@@ -1,5 +1,5 @@
 import test from 'ava'
-import writeInt, { toFemale } from './write-int.ts'
+import writeInt, { toFemale } from './write-int'
 
 /**
  * Função: toFemale
@@ -28,7 +28,7 @@ test('Deve escrever números inteiros', (t) => {
   t.is(writeInt('2000001', 'br'), 'dois milhões e um')
 
   t.is(writeInt('2000000001', 'br'), 'dois bilhões e um')
-  t.is(writeInt('2000000001', 'br', null, 'short'), 'dois bilhões e um')
-  t.is(writeInt('2000000001', 'pt', null, 'short'), 'dois biliões e um')
-  t.is(writeInt('2000000001', 'br', null, 'long'), 'dois mil milhões e um')
+  t.is(writeInt('2000000001', 'br', 'm', 'short'), 'dois bilhões e um')
+  t.is(writeInt('2000000001', 'pt', 'm', 'short'), 'dois biliões e um')
+  t.is(writeInt('2000000001', 'br', 'm', 'long'), 'dois mil milhões e um')
 })

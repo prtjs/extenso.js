@@ -1,5 +1,5 @@
 import test from 'ava'
-import { split, getLastNumber } from './int-util.ts'
+import { split, getLastNumber } from './int-util'
 
 /**
  * Função: split

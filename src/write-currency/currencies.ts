@@ -1,4 +1,6 @@
-﻿export default {
+﻿// TODO: Criar uma interface para isso
+
+export default {
   BRL: {
     singular: "real",
     plural: "reais",

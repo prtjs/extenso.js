@@ -1,5 +1,5 @@
 import test from 'ava'
-import { getType } from './util.ts'
+import { getType } from './util'
 
 test('Deve retornar "décimo" ou "centésimo" para determinados números', (t) => {
   t.is(getType(7), 'décimo')

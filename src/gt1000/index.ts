@@ -1,15 +1,8 @@
-import { split } from './int-util.ts'
-import { name, clear, singularize, addConjunction, addComma, write } from './parts-util.ts'
+import { split } from './int-util'
+import { name, clear, singularize, addConjunction, addComma, write } from './parts-util'
 
-/**
- * Escrever números maiores que mil.
- *
- * @function gt1000
- * @param {string} int Número inteiro maior que mil.
- * @param {string} locale Código do país para escrever o número.
- * @returns {number} Valor escrito por extenso.
- */
-export default (int, locale, scale) => {
+export default (int: string, locale: 'br' | 'pt', scale?: string): string => {
+  // TODO: Melhorar isso
   const number = write(addComma(addConjunction(singularize(clear(name(split(int), locale, scale))), int)), locale)
 
   return number.join(' ')
