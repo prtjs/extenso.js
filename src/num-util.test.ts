@@ -1,29 +1,29 @@
 import test from 'ava'
-import { isValidNumber, parseNumber } from './num-util'
+import { validateNumber, parseNumber } from './num-util'
 
 test('Deve validar um número', (t) => {
-  t.true(isValidNumber('42'))
-  t.true(isValidNumber('42,0'))
-  t.true(isValidNumber('42,42'))
-  t.true(isValidNumber('1000'))
-  t.true(isValidNumber('1234567'))
-  t.true(isValidNumber('1234567,42'))
-  t.true(isValidNumber('1.000'))
-  t.true(isValidNumber('1.234.567'))
-  t.true(isValidNumber('1.234.567,42'))
+  t.true(validateNumber('42'))
+  t.true(validateNumber('42,0'))
+  t.true(validateNumber('42,42'))
+  t.true(validateNumber('1000'))
+  t.true(validateNumber('1234567'))
+  t.true(validateNumber('1234567,42'))
+  t.true(validateNumber('1.000'))
+  t.true(validateNumber('1.234.567'))
+  t.true(validateNumber('1.234.567,42'))
 })
 
 test('Deve validar um número (separador decimal = .)', (t) => {
-  t.true(isValidNumber('1000', true))
-  t.true(isValidNumber('42.5', true))
-  t.true(isValidNumber('1234567.42', true))
-  t.true(isValidNumber('1,234,567', true))
-  t.true(isValidNumber('1,234,567.42', true))
+  t.true(validateNumber('1000', true))
+  t.true(validateNumber('42.5', true))
+  t.true(validateNumber('1234567.42', true))
+  t.true(validateNumber('1,234,567', true))
+  t.true(validateNumber('1,234,567.42', true))
 })
 
 test('Deve validar um número (tipo number)', (t) => {
-  t.true(isValidNumber(3.14))
-  t.true(isValidNumber(42))
+  t.true(validateNumber(3.14))
+  t.true(validateNumber(42))
 })
 
 test('Deve analisar um número', (t) => {

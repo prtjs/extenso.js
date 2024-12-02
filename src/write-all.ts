@@ -1,10 +1,22 @@
-import { isValidNumber, parseNumber } from './num-util'
+import {
+  Modes,
+  Locales,
+  Negatives,
+  Scales,
+  Currencies,
+  Genders,
+  Decimals,
+  DecimalSeparators,
+} from './enums/options.enum'
+import { Options } from './interfaces/options.interface'
+
+import { validateNumber, parseNumber } from './num-util'
 import writeCurrency from './write-currency/index'
 import writeDecimal from './write-decimal/index'
 import writeInt from './write-int'
 
-export const isValidOpt = (val: string | undefined, vals: string[]): boolean => {
-  return vals.includes(val || '')
+export const validateOption = (val: string, vals: string[]): boolean => {
+  return vals.includes(val)
 }
 
 export const toNegative = (num: string, mode = 'formal'): string => {
@@ -13,63 +25,44 @@ export const toNegative = (num: string, mode = 'formal'): string => {
     : `${num} negativo`
 }
 
-export interface CurrencyOptions {
-  type?: 'BRL' | 'EUR' | 'CVE'
-}
-
-export interface NumberOptions {
-  gender?: 'm' | 'f'
-  decimal?: 'formal' | 'informal'
-  decimalSeparator?: 'comma' | 'dot'
-}
-
-export interface Options {
-  mode?: 'number' | 'currency'
-  locale?: 'pt' | 'br'
-  negative?: 'formal' | 'informal'
-  scale?: 'short' | 'long'
-  currency?: CurrencyOptions
-  number?: NumberOptions
-}
-
 export default (num: string | number | bigint, opts?: Options) => {
+
+  // Força que bigints sejam uma string
   if (typeof num === 'bigint') {
     num = num.toString()
   }
+
   if (typeof num !== 'string' && typeof num !== 'number') {
     throw new TypeError('Must be a string, number or bigint')
   }
 
   opts = opts || {}
-  opts.mode = opts.mode || 'number'
-  opts.locale = opts.locale || 'br'
-  opts.negative = opts.negative || 'formal'
-  opts.scale = opts.scale || 'short'
-
   opts.currency = opts.currency || {}
-  opts.currency.type = opts.currency.type || 'BRL'
-
   opts.number = opts.number || {}
-  opts.number.gender = opts.number.gender || 'm'
-  opts.number.decimal = opts.number.decimal || 'formal'
-  opts.number.decimalSeparator = opts.number.decimalSeparator || 'comma'
+
+  opts.mode = opts.mode || Modes.NUMBER
+  opts.locale = opts.locale || Locales.BR
+  opts.negative = opts.negative || Negatives.FORMAL
+  opts.scale = opts.scale || Scales.SHORT
+  opts.currency.type = opts.currency.type || Currencies.BRL
+  opts.number.gender = opts.number.gender || Genders.MASCULINE
+  opts.number.decimal = opts.number.decimal || Decimals.FORMAL
+  opts.number.decimalSeparator = opts.number.decimalSeparator || DecimalSeparators.COMMA
 
   if (
-    !isValidOpt(opts.mode, [ 'number', 'currency' ]) ||
-    !isValidOpt(opts.locale, [ 'pt', 'br' ]) ||
-    !isValidOpt(opts.negative, [ 'formal', 'informal' ]) ||
-    !isValidOpt(opts.scale, [ 'short', 'long' ]) ||
-    !isValidOpt(opts.currency.type, [ 'BRL', 'EUR', 'CVE' ]) ||
-    !isValidOpt(opts.number.gender, [ 'm', 'f' ]) ||
-    !isValidOpt(opts.number.decimal, [ 'formal', 'informal' ]) ||
-    !isValidOpt(opts.number.decimalSeparator, [ 'comma', 'dot' ])
+    !validateOption(opts.mode, Object.values(Modes)) ||
+    !validateOption(opts.locale, Object.values(Locales)) ||
+    !validateOption(opts.negative, Object.values(Negatives)) ||
+    !validateOption(opts.scale, Object.values(Scales)) ||
+    !validateOption(opts.currency.type, Object.values(Currencies)) ||
+    !validateOption(opts.number.gender, Object.values(Genders)) ||
+    !validateOption(opts.number.decimal, Object.values(Decimals)) ||
+    !validateOption(opts.number.decimalSeparator, Object.values(DecimalSeparators))
   ) {
     throw new Error('Invalid option')
   }
 
-  const decimalSeparatorIsDot = opts.number.decimalSeparator === 'dot' || typeof num === 'number'
-
-  if (!isValidNumber(num, decimalSeparatorIsDot)) {
+  if (!validateNumber(num, opts.number.decimalSeparator)) {
     throw new Error('Invalid number')
   }
 

@@ -1,5 +1,6 @@
 import test from 'ava'
-import writeAll, { isValidOpt, toNegative, Options } from './write-all'
+import { Options } from './interfaces/options.interface'
+import writeAll, { validateOption,, validateOption toNegative } from './write-all'
 
 test('Deve escrever números simples por extenso', (t) => {
   t.is(writeAll(0), 'zero')
@@ -79,8 +80,8 @@ test('Deve escrever conforme a escala desejada', (t) => {
 })
 
 test('Deve verificar se uma opção é válida', (t) => {
-  t.true(isValidOpt('foo', [ 'foo', 'bar', 'baz' ]))
-  t.false(isValidOpt('bar', [ 'foo', 'baz' ]))
+  t.true(validateOption('foo', [ 'foo', 'bar', 'baz' ]))
+  t.false(validateOption('bar', [ 'foo', 'baz' ]))
 })
 
 test('Deve passar para o negativo um número escrito por extenso', (t) => {
