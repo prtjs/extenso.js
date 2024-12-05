@@ -14,10 +14,11 @@
 
 ## Instalação
 
-Instale-o com seu gerenciador preferido:
+```bash
+npm install extenso
+```
 
-- **npm**: `npm install extenso`
-- **Yarn**: `yarn add extenso`
+Ou com Yarn: `yarn add extenso`.
 
 ## Uso
 
