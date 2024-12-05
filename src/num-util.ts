@@ -37,33 +37,44 @@ export const validateNumber = (input: string | number, decimalSeparator: Decimal
   }
 }
 
-// TODO: Criar uma interface (TypeScript) para o retorno
-export const parseNumber = (num: string | number, decimalSeparatorIsDot = false): { isNegative: boolean, integer: string, decimal: string } => {
-  if (typeof num === 'number') {
-    num = num.toString()
-    decimalSeparatorIsDot = true
+interface Parser {
+  isNegative: boolean
+  integerPart: string
+  decimalPart: string
+}
+
+export const parser = (input: string | number, decimalSeparator: DecimalSeparators): Parser => {
+  if (typeof input === 'number') {
+    input = input.toString()
+    // Força ser DOT caso o tipo seja number
+    decimalSeparator = DecimalSeparators.DOT
   }
 
-  const separator = decimalSeparatorIsDot ? ',' : '.'
-  const decimalSeparator = decimalSeparatorIsDot ? '.' : ','
-  const isNegative = /^-/.test(num)
-  const normalized = num.replace(RegExp(`(-|\\${separator})`, 'g'), '')
+  input = input.trim()
 
-  if (normalized.includes(decimalSeparator)) {
-    const [ integer, decimal ] = normalized
-      .split(decimalSeparator)
-      .map((val) => val.replace(/^0+$/, '0'))
+  const separatorFor = {
+    decimal: decimalSeparator === DecimalSeparators.DOT ? '.' : ',',
+    thousands: decimalSeparator === DecimalSeparators.DOT ? ',' : '.',
+  }
+  const isNegative = /^-/.test(input)
+  const pureNumber = input.replace(RegExp(`(-|\\${separatorFor.thousands})`, 'g'), '')
 
+  // Caso seja um número inteiro
+  if (!pureNumber.includes(separatorFor.decimal)) {
     return {
       isNegative,
-      integer,
-      decimal,
+      integerPart: pureNumber,
+      decimalPart: '0',
     }
   }
 
+  const [integerPart, decimalPart] = pureNumber
+    .split(separatorFor.decimal)
+    .map((number) => number.replace(/^0+$/, '0'))
+
   return {
     isNegative,
-    integer: normalized,
-    decimal: '0',
+    integerPart,
+    decimalPart,
   }
 }

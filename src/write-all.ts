@@ -10,7 +10,7 @@ import {
 } from './enums/options.enum'
 import { Options } from './interfaces/options.interface'
 
-import { validateNumber, parseNumber } from './num-util'
+import { validateNumber, parser } from './num-util'
 import writeCurrency from './write-currency/index'
 import writeDecimal from './write-decimal/index'
 import writeInt from './write-int'
@@ -66,13 +66,13 @@ export default (num: string | number | bigint, opts?: Options) => {
     throw new Error('Invalid number')
   }
 
-  const { isNegative, integer, decimal } = parseNumber(num, decimalSeparatorIsDot)
+  const { isNegative, integerPart, decimalPart } = parser(num, opts.number.decimalSeparator)
 
   if (opts.mode === 'currency') {
     const iso = opts.currency.type
     const locale = opts.locale
-    const decimalCents = decimal.slice(0, 2)
-    const numText = writeCurrency(iso || '', locale, integer, decimalCents, opts.scale)
+    const decimalCents = decimalPart.slice(0, 2)
+    const numText = writeCurrency(iso || '', locale, integerPart, decimalCents, opts.scale)
 
     return isNegative
       ? toNegative(numText, opts.negative)
@@ -81,23 +81,23 @@ export default (num: string | number | bigint, opts?: Options) => {
 
   if (opts.mode === 'number') {
     const intNameSingular = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
-    const intName = parseInt(integer) === 1 ? intNameSingular : `${intNameSingular}s`
-    const intText = writeInt(integer, opts.locale, opts.number.gender, opts.scale)
-    const decText = writeDecimal(decimal, opts.locale, opts.number.decimal)
+    const intName = parseInt(integerPart) === 1 ? intNameSingular : `${intNameSingular}s`
+    const intText = writeInt(integerPart, opts.locale, opts.number.gender, opts.scale)
+    const decText = writeDecimal(decimalPart, opts.locale, opts.number.decimal)
 
-    if (integer === '0' && decimal === '0') {
+    if (integerPart === '0' && decimalPart === '0') {
       return intText
     }
 
     // Se tem a parte inteira e não tem a parte decimal
-    if (integer !== '0' && decimal === '0') {
+    if (integerPart !== '0' && decimalPart === '0') {
       return isNegative
         ? toNegative(intText, opts.negative)
         : intText
     }
 
     // Se não tem a parte inteira e tem a parte decimal
-    if (integer === '0' && decimal !== '0') {
+    if (integerPart === '0' && decimalPart !== '0') {
       const number = opts.number.decimal === 'informal'
         ? `zero ${decText}`
         : decText
@@ -108,7 +108,7 @@ export default (num: string | number | bigint, opts?: Options) => {
     }
 
     // Se tem a parte inteira e a parte decimal
-    if (integer !== '0' && decimal !== '0') {
+    if (integerPart !== '0' && decimalPart !== '0') {
       if (opts.number.decimal === 'informal') {
         return `${intText} ${decText}`
       }
