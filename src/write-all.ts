@@ -26,7 +26,6 @@ export const toNegative = (num: string, mode = 'formal'): string => {
 }
 
 export default (num: string | number | bigint, opts?: Options) => {
-
   // Força que bigints sejam uma string
   if (typeof num === 'bigint') {
     num = num.toString()
