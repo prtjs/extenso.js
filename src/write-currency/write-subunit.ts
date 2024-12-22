@@ -1,7 +1,7 @@
 import writeInt from '../write-int'
 
 // TODO: Melhorar isso
-interface Currency{
+interface Currency {
   subunit: {
     singular: string
     plural: string
