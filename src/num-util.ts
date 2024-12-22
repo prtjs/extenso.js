@@ -56,7 +56,7 @@ export const parser = (input: string | number, decimalSeparator: DecimalSeparato
     decimal: decimalSeparator === DecimalSeparators.DOT ? '.' : ',',
     thousands: decimalSeparator === DecimalSeparators.DOT ? ',' : '.',
   }
-  const isNegative = /^-/.test(input)
+  const isNegative = input.startsWith('-')
   const pureNumber = input.replace(RegExp(`(-|\\${separatorFor.thousands})`, 'g'), '')
 
   // Caso seja um número inteiro
