@@ -1,33 +1,31 @@
-import allCurrencies from './currencies'
+import { Currencies, Locales } from '../enums/options.enum'
+import currencies from './currencies'
 import write from './write'
 import writeSubunit from './write-subunit'
 
-export const getIsos = (currencies: object) => {
-  return Object.keys(currencies)
+export const validateCurrencyISO = (code: Currencies) => {
+  const listOfCurrencyISOs = Object.keys(currencies)
+  return listOfCurrencyISOs.includes(code)
 }
 
-export const isValidIso = (iso: string, currencies: object) => {
-  return getIsos(currencies).includes(iso)
+export const isZero = (input: string) => {
+  return /^0+$/.test(input)
 }
 
-export const isZero = (val: string) => {
-  return /^0+$/.test(val)
-}
+export default (code: Currencies, locale: Locales, unit = '0', subunit = '0', scale?: string) => {
+  subunit = subunit.padEnd(2, '0')
 
-export default (iso: string, locale: 'br' | 'pt', unit = '0', subunit = '0', scale?: string) => {
-  if (!isValidIso(iso, allCurrencies)) {
+  if (!validateCurrencyISO(code)) {
     throw new Error('Invalid ISO code')
   }
 
-  if (subunit.length === 1) {
-    subunit = subunit + '0'
-  }
+  const currency = currencies[code]
 
-  const opts = allCurrencies[iso as keyof typeof allCurrencies]
-  const unitText = write(unit, locale, opts, scale)
-  const subunitText = writeSubunit(subunit, locale, opts)
+  if (isZero(unit) && isZero(subunit)) return `zero ${currency.plural}`
 
-  if (isZero(unit) && isZero(subunit)) return `zero ${opts.plural}`
+  const subunitText = writeSubunit(subunit, locale, currency)
+  const unitText = write(unit, locale, currency, scale)
+
   if (isZero(unit)) return subunitText
   if (isZero(subunit)) return unitText
 

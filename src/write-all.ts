@@ -67,18 +67,18 @@ export default (num: string | number | bigint, opts?: Options) => {
 
   const { isNegative, integerPart, decimalPart } = parser(num, opts.number.decimalSeparator)
 
-  if (opts.mode === 'currency') {
+  if (opts.mode === Modes.CURRENCY) {
     const iso = opts.currency.type
     const locale = opts.locale
     const decimalCents = decimalPart.slice(0, 2)
-    const numText = writeCurrency(iso || '', locale, integerPart, decimalCents, opts.scale)
+    const numText = writeCurrency(iso, locale, integerPart, decimalCents, opts.scale)
 
     return isNegative
       ? toNegative(numText, opts.negative)
       : numText
   }
 
-  if (opts.mode === 'number') {
+  if (opts.mode === Modes.NUMBER) {
     const intNameSingular = opts.number.gender === 'f' ? 'inteira' : 'inteiro'
     const intName = parseInt(integerPart) === 1 ? intNameSingular : `${intNameSingular}s`
     const intText = writeInt(integerPart, opts.locale, opts.number.gender, opts.scale)
