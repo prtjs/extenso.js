@@ -1,5 +1,11 @@
 import { DecimalSeparators } from "./enums/options.enum"
 
+interface Parser {
+  isNegative: boolean
+  integerPart: string
+  decimalPart: string
+}
+
 export const validateNumber = (input: string | number, decimalSeparator: DecimalSeparators): boolean => {
   const REGEX_NOT_FORMATTED = /^-?\d+$/
 
@@ -35,12 +41,6 @@ export const validateNumber = (input: string | number, decimalSeparator: Decimal
     default:
       return false
   }
-}
-
-interface Parser {
-  isNegative: boolean
-  integerPart: string
-  decimalPart: string
 }
 
 export const parser = (input: string | number, decimalSeparator: DecimalSeparators): Parser => {

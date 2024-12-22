@@ -30,19 +30,19 @@ test('Deve validar um número (tipo number)', (t) => {
 })
 
 test('Deve analisar um número', (t) => {
-  t.deepEqual(parser('123', DecimalSeparators.COMMA), { isNegative: false, integer: '123', decimal: '0' })
-  t.deepEqual(parser('-123', DecimalSeparators.COMMA), { isNegative: true, integer: '123', decimal: '0' })
-  t.deepEqual(parser('123,42', DecimalSeparators.COMMA), { isNegative: false, integer: '123', decimal: '42' })
-  t.deepEqual(parser('-42.000,42', DecimalSeparators.COMMA), { isNegative: true, integer: '42000', decimal: '42' })
+  t.deepEqual(parser('123', DecimalSeparators.COMMA), { isNegative: false, integerPart: '123', decimalPart: '0' })
+  t.deepEqual(parser('-123', DecimalSeparators.COMMA), { isNegative: true, integerPart: '123', decimalPart: '0' })
+  t.deepEqual(parser('123,42', DecimalSeparators.COMMA), { isNegative: false, integerPart: '123', decimalPart: '42' })
+  t.deepEqual(parser('-42.000,42', DecimalSeparators.COMMA), { isNegative: true, integerPart: '42000', decimalPart: '42' })
 })
 
 test('Deve analisar um número (separador decimal = .)', (t) => {
-  t.deepEqual(parser('123', DecimalSeparators.DOT), { isNegative: false, integer: '123', decimal: '0' })
-  t.deepEqual(parser('-123', DecimalSeparators.DOT), { isNegative: true, integer: '123', decimal: '0' })
-  t.deepEqual(parser('123.42', DecimalSeparators.DOT), { isNegative: false, integer: '123', decimal: '42' })
-  t.deepEqual(parser('-42,000.42', DecimalSeparators.DOT), { isNegative: true, integer: '42000', decimal: '42' })
+  t.deepEqual(parser('123', DecimalSeparators.DOT), { isNegative: false, integerPart: '123', decimalPart: '0' })
+  t.deepEqual(parser('-123', DecimalSeparators.DOT), { isNegative: true, integerPart: '123', decimalPart: '0' })
+  t.deepEqual(parser('123.42', DecimalSeparators.DOT), { isNegative: false, integerPart: '123', decimalPart: '42' })
+  t.deepEqual(parser('-42,000.42', DecimalSeparators.DOT), { isNegative: true, integerPart: '42000', decimalPart: '42' })
 })
 
 test('Deve analisar um número (tipo number)', (t) => {
-  t.deepEqual(parser(3.14, DecimalSeparators.COMMA), { isNegative: false, integer: '3', decimal: '14' })
+  t.deepEqual(parser(3.14, DecimalSeparators.COMMA), { isNegative: false, integerPart: '3', decimalPart: '14' })
 })
