@@ -1,5 +1,5 @@
 import lt1000 from './lt1000'
-import gt1000 from './gt1000/index'
+import gt1000 from './gt1000'
 
 export const toFemale = (num: string) => {
   return num

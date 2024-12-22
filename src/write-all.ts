@@ -11,8 +11,8 @@ import {
 import { Options } from './interfaces/options.interface'
 
 import { validateNumber, parser } from './num-util'
-import writeCurrency from './write-currency/index'
-import writeDecimal from './write-decimal/index'
+import writeCurrency from './write-currency'
+import writeDecimal from './write-decimal'
 import writeInt from './write-int'
 
 export const validateOption = (val: string, vals: string[]): boolean => {
