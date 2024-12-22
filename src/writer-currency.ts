@@ -10,13 +10,6 @@ class WriterCurrency extends Writer {
         return validCodes.includes(code)
     }
 
-    public setCode(code: Currencies) {
-        if (!this.validateCode(code)) {
-            throw new Error('Invalid currency code')
-        }
-        this.currency = currencies[code]
-    }
-
     private writeUnit() {
         if (Number(this.integer) === 1) {
             return `${this.writeInteger()} ${this.currency.singular}`
@@ -34,6 +27,13 @@ class WriterCurrency extends Writer {
             return `${this.writeDecimal()} ${this.currency.subunit.singular}`
         }
         return `${this.writeDecimal()} ${this.currency.subunit.plural}`
+    }
+
+    public setCode(code: Currencies) {
+        if (!this.validateCode(code)) {
+            throw new Error('Invalid currency code')
+        }
+        this.currency = currencies[code]
     }
 
     public write() {
