@@ -39,14 +39,14 @@ export default (num: string | number | bigint, opts?: Options) => {
   opts.currency = opts.currency || {}
   opts.number = opts.number || {}
 
-  opts.mode = opts.mode || Modes.NUMBER
-  opts.locale = opts.locale || Locales.BR
-  opts.negative = opts.negative || Negatives.FORMAL
-  opts.scale = opts.scale || Scales.SHORT
-  opts.currency.type = opts.currency.type || Currencies.BRL
-  opts.number.gender = opts.number.gender || Genders.MASCULINE
-  opts.number.decimal = opts.number.decimal || Decimals.FORMAL
-  opts.number.decimalSeparator = opts.number.decimalSeparator || DecimalSeparators.COMMA
+  opts.mode = opts.mode ?? Modes.NUMBER
+  opts.locale = opts.locale ?? Locales.BR
+  opts.negative = opts.negative ?? Negatives.FORMAL
+  opts.scale = opts.scale ?? Scales.SHORT
+  opts.currency.type = opts.currency.type ?? Currencies.BRL
+  opts.number.gender = opts.number.gender ?? Genders.MASCULINE
+  opts.number.decimal = opts.number.decimal ?? Decimals.FORMAL
+  opts.number.decimalSeparator = opts.number.decimalSeparator ?? DecimalSeparators.COMMA
 
   if (
     !validateOption(opts.mode, Object.values(Modes)) ||
