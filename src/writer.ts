@@ -16,7 +16,7 @@ class Writer {
         this.decimal = decimal
     }
 
-    private toText(number: string) {
+    public toText(number: string) {
         if (Number(number) < 1000) {
             return lt1000(Number(number), this.locale)
         }
@@ -32,14 +32,6 @@ class Writer {
 
     public setScale(scale: Scales) {
         this.scale = scale
-    }
-
-    public writeInteger() {
-        return this.toText(this.integer)
-    }
-
-    public writeDecimal() {
-        return this.toText(this.decimal)
     }
 
     public hasInteger() {

@@ -7,7 +7,7 @@ import { Currencies } from './enums/options.enum'
 test('writer', (t) => {
     const writer = new Writer('10001,1')
 
-    t.is(writer.writeInteger(), 'dez mil e um')
+    t.is(writer.toText(writer.integer), 'dez mil e um')
     t.is(writer.decimal, '1')
 })
 

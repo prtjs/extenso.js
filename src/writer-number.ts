@@ -22,37 +22,41 @@ class WriterNumber extends Writer {
 
     public formalizeDecimal() {
         this.decimal = this.decimal.replace(/^0+/, '')
+        const words = this.toText(this.decimal)
         const length = this.decimal.length
         const decimalBase = pluralize(length % 3 === 1 ? 'décimo' : 'centéssimo', Number(this.decimal))
         const decimalBig = getList()[Math.floor(length / 3 - 1)]
 
         if (length < 3) {
-            return `${this.writeDecimal()} ${decimalBase}`
+            return `${words} ${decimalBase}`
         }
         if (length % 3 === 0) {
-            return `${this.writeDecimal()} ${pluralize(decimalBig, Number(this.decimal))}`
+            return `${words} ${pluralize(decimalBig, Number(this.decimal))}`
         }
-        return `${this.writeDecimal()} ${decimalBase} de ${decimalBig}`
+        return `${words} ${decimalBase} de ${decimalBig}`
     }
 
     public unformalizeDecimal() {
-        return `vírgula ${this.writeDecimal()}`
+        const words = this.toText(this.decimal)
+        return `vírgula ${words}`
     }
 
     public write() {
+        const words = this.toText(this.integer)
+
         if (!this.hasInteger() && !this.hasDecimal()) {
-            return this.writeInteger()
+            return words
         }
         if (this.hasInteger() && !this.hasDecimal()) {
-            return this.writeInteger()
+            return words
         }
         if (this.decimalMode === Decimals.UNFORMAL) {
-            return `${this.writeInteger()} ${this.formalizeDecimal()}`
+            return `${words} ${this.unformalizeDecimal()}`
         }
         if (!this.hasInteger() && this.hasDecimal()) {
-            return this.writeDecimal()
+            return this.formalizeDecimal()
         }
-        return `${this.writeInteger()} ${pluralize('inteiro', Number(this.integer))} e ${this.formalizeDecimal()}`
+        return `${words} ${pluralize('inteiro', Number(this.integer))} e ${this.formalizeDecimal()}`
     }
 }
 
