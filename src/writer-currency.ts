@@ -6,8 +6,8 @@ class WriterCurrency extends Writer {
     private currency: Currency = currencies[Currencies.BRL]
 
     private validateCode(code: Currencies) {
-        const validCodes = Object.keys(currencies)
-        return validCodes.includes(code)
+        const codes = Object.keys(currencies)
+        return codes.includes(code)
     }
 
     private writeUnit() {

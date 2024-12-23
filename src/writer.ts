@@ -34,14 +34,23 @@ class Writer {
     }
 
     public setLocale(locale: Locales) {
+        if (!Object.keys(Locales).includes(locale)) {
+            throw new Error('Invalid locale option')
+        }
         this.locale = locale
     }
 
     public setScale(scale: Scales) {
+        if (!Object.keys(Scales).includes(scale)) {
+            throw new Error('Invalid scale option')
+        }
         this.scale = scale
     }
     
     public setNegative(negative: Negatives) {
+        if (!Object.keys(Negatives).includes(negative)) {
+            throw new Error('Invalid negative option')
+        }
         this.negative = negative
     }
 
