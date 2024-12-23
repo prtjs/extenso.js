@@ -1,3 +1,3 @@
-import extenso from './src/write-all'
+const extenso = () => {}
 
 export default extenso

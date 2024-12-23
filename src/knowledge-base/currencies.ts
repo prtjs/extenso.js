@@ -1,4 +1,4 @@
-﻿import { Currencies } from "./enums/options.enum"
+﻿import { Currencies } from "../enums/options.enum"
 
 export interface Currency {
   singular: string
@@ -10,7 +10,6 @@ export interface Currency {
 }
 
 const currencies: { [key in Currencies]: Currency } = {
-  // Angola (official CPLP member)
   [Currencies.AOA]: {
     singular: 'kwanza',
     plural: 'kwanzas',
@@ -19,8 +18,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'cêntimos',
     },
   },
-
-  // Cabo Verde (official CPLP member)
   [Currencies.CVE]: {
     singular: 'escudo',
     plural: 'escudos',
@@ -29,8 +26,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'centavos',
     },
   },
-
-  // Brasil (official CPLP member)
   [Currencies.BRL]: {
     singular: 'real',
     plural: 'reais',
@@ -39,8 +34,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'centavos',
     },
   },
-
-  // Guiné-Bissau (official CPLP member)
   [Currencies.XOF]: {
     singular: 'franco',
     plural: 'francos',
@@ -49,8 +42,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'centavos',
     },
   },
-
-  // Moçambique (official CPLP member)
   [Currencies.MZN]: {
     singular: 'metical',
     plural: 'meticais',
@@ -59,8 +50,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'centavos',
     },
   },
-
-  // Portugal (official CPLP member)
   [Currencies.EUR]: {
     singular: 'euro',
     plural: 'euros',
@@ -69,8 +58,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'cêntimos',
     },
   },
-
-  // São Tomé e Príncipe (official CPLP member)
   [Currencies.STN]: {
     singular: 'dobra',
     plural: 'dobras',
@@ -79,8 +66,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'centavos',
     },
   },
-
-  // Timor-Leste (official CPLP member)
   [Currencies.USD]: {
     singular: 'dólar',
     plural: 'dólares',
@@ -89,8 +74,6 @@ const currencies: { [key in Currencies]: Currency } = {
       plural: 'centavos',
     },
   },
-
-  // Macau (non-official CPLP member)
   [Currencies.MOP]: {
     singular: 'pataca',
     plural: 'patacas',

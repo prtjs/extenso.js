@@ -1,5 +1,5 @@
 import { Currencies } from "./enums/options.enum"
-import currencies, { Currency } from './currencies'
+import currencies, { Currency } from './knowledge-base/currencies'
 import Writer from "./writer"
 
 class WriterCurrency extends Writer {

@@ -1,7 +1,7 @@
 import { Decimals, Genders, Negatives } from "./enums/options.enum"
 import pluralize from "./utils/pluralize"
 import Writer from "./writer"
-import { listDecimals as getList } from './get-list'
+import decimalsList from './knowledge-base/decimals'
 
 class WriterNumber extends Writer {
     public gender: Genders = Genders.MASCULINE
@@ -20,7 +20,7 @@ class WriterNumber extends Writer {
         const words = this.toText(this.decimalNumber)
         const length = this.decimalNumber.length
         const decimalBase = pluralize(length % 3 === 1 ? 'décimo' : 'centéssimo', Number(this.decimalNumber))
-        const decimalBig = getList()[Math.floor(length / 3 - 1)]
+        const decimalBig = decimalsList[Math.floor(length / 3 - 1)]
 
         if (length < 3) {
             return `${words} ${decimalBase}`
