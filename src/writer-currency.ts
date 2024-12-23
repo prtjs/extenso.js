@@ -1,5 +1,5 @@
 import { Currencies } from "./enums/options.enum"
-import currencies, { Currency } from './write-currency/currencies'
+import currencies, { Currency } from './currencies'
 import Writer from "./writer"
 
 class WriterCurrency extends Writer {
@@ -11,21 +11,21 @@ class WriterCurrency extends Writer {
     }
 
     private writeUnit() {
-        const words = this.toText(this.integer)
+        const words = this.toText(this.integerNumber)
 
-        if (Number(this.integer) === 1) {
+        if (Number(this.integerNumber) === 1) {
             return `${words} ${this.currency.singular}`
         }
-        if (Number(this.integer) >= 1e+6 && Number(this.integer.slice(-6)) === 0) {
+        if (Number(this.integerNumber) >= 1e+6 && Number(this.integerNumber.slice(-6)) === 0) {
             return `${words} de ${this.currency.plural}`
         }
         return `${words} ${this.currency.plural}`
     }
 
     private writeSubunit() {
-        const words = this.toText(this.decimal.slice(0, 2).padEnd(2, '0'))
+        const words = this.toText(this.decimalNumber.slice(0, 2).padEnd(2, '0'))
 
-        if (Number(this.decimal) === 1) {
+        if (Number(this.decimalNumber) === 1) {
             return `${words} ${this.currency.subunit.singular}`
         }
         return `${words} ${this.currency.subunit.plural}`
@@ -38,7 +38,7 @@ class WriterCurrency extends Writer {
         this.currency = currencies[code]
     }
 
-    public write() {
+    private preWrite() {
         if (!this.hasInteger() && !this.hasDecimal()) {
             return `zero ${this.currency.plural}`
         }
@@ -49,6 +49,10 @@ class WriterCurrency extends Writer {
             return this.writeUnit()
         }
         return `${this.writeUnit()} e ${this.writeSubunit()}`
+    }
+
+    public write() {
+        return this.postWrite(this.preWrite())
     }
 }
 

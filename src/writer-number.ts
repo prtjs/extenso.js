@@ -5,58 +5,61 @@ import { listDecimals as getList } from './get-list'
 
 class WriterNumber extends Writer {
     public gender: Genders = Genders.MASCULINE
-    public decimalMode: Decimals = Decimals.FORMAL
-    public negativeMode: Negatives = Negatives.FORMAL
+    public decimal: Decimals = Decimals.FORMAL
 
     public setGender(gender: Genders) {
         this.gender = gender
     }
 
-    public setDecimalMode(decimalMode: Decimals) {
-        this.decimalMode = decimalMode
-    }
-
-    public setNegativeMode(negativeMode: Negatives) {
-        this.negativeMode = negativeMode
+    public setDecimal(decimal: Decimals) {
+        this.decimal = decimal
     }
 
     public formalizeDecimal() {
-        this.decimal = this.decimal.replace(/^0+/, '')
-        const words = this.toText(this.decimal)
-        const length = this.decimal.length
-        const decimalBase = pluralize(length % 3 === 1 ? 'décimo' : 'centéssimo', Number(this.decimal))
+        this.decimalNumber = this.decimalNumber.replace(/^0+/, '')
+        const words = this.toText(this.decimalNumber)
+        const length = this.decimalNumber.length
+        const decimalBase = pluralize(length % 3 === 1 ? 'décimo' : 'centéssimo', Number(this.decimalNumber))
         const decimalBig = getList()[Math.floor(length / 3 - 1)]
 
         if (length < 3) {
             return `${words} ${decimalBase}`
         }
         if (length % 3 === 0) {
-            return `${words} ${pluralize(decimalBig, Number(this.decimal))}`
+            return `${words} ${pluralize(decimalBig, Number(this.decimalNumber))}`
         }
         return `${words} ${decimalBase} de ${decimalBig}`
     }
 
     public unformalizeDecimal() {
-        const words = this.toText(this.decimal)
+        const words = this.toText(this.decimalNumber)
         return `vírgula ${words}`
     }
 
-    public write() {
-        const words = this.toText(this.integer)
+    private preWrite() {
+        const words = this.toText(this.integerNumber)
 
-        if (!this.hasInteger() && !this.hasDecimal()) {
+        if (!this.hasDecimal()) {
             return words
         }
-        if (this.hasInteger() && !this.hasDecimal()) {
-            return words
-        }
-        if (this.decimalMode === Decimals.UNFORMAL) {
+        if (this.decimal === Decimals.UNFORMAL) {
             return `${words} ${this.unformalizeDecimal()}`
         }
         if (!this.hasInteger() && this.hasDecimal()) {
             return this.formalizeDecimal()
         }
-        return `${words} ${pluralize('inteiro', Number(this.integer))} e ${this.formalizeDecimal()}`
+        return `${words} ${pluralize('inteiro', Number(this.integerNumber))} e ${this.formalizeDecimal()}`
+    }
+
+    public write() {
+        let words = this.postWrite(this.preWrite())
+
+        if (this.gender === Genders.FEMININE) {
+            return words
+                .replace(/\bum\b/, 'uma')
+                .replace(/\bdois\b/, 'duas')
+        }
+        return words
     }
 }
 

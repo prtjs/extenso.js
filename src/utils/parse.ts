@@ -1,16 +1,9 @@
 import { DecimalSeparators } from "../enums/options.enum"
 
-interface Parser {
+const parse = (input: string, decimalSeparator: DecimalSeparators): {
   integer: string
   decimal: string
-}
-
-const parser = (input: string | number, decimalSeparator: DecimalSeparators): Parser => {
-  if (typeof input === 'number') {
-    input = input.toString()
-    decimalSeparator = DecimalSeparators.DOT
-  }
-
+} => {
   input = input.trim()
 
   const separatorFor = {
@@ -36,4 +29,4 @@ const parser = (input: string | number, decimalSeparator: DecimalSeparators): Pa
   }
 }
 
-export default parser
+export default parse
