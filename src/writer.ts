@@ -17,9 +17,6 @@ class Writer {
     }
 
     private toText(number: string) {
-        if (!number) {
-            throw new Error('Missing number')
-        }
         if (Number(number) < 1000) {
             return lt1000(Number(number), this.locale)
         }

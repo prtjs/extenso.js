@@ -1,4 +1,5 @@
 import { Decimals, Genders, Negatives } from "./enums/options.enum"
+import pluralize from "./utils/pluralize"
 import Writer from "./writer"
 import { listDecimals as getList } from './get-list'
 
@@ -21,7 +22,6 @@ class WriterNumber extends Writer {
 
     public formalizeDecimal() {
         this.decimal = this.decimal.replace(/^0+/, '')
-        const pluralize = (text: string, count: number) => count === 1 ? text : `${text}s`
         const length = this.decimal.length
         const decimalBase = pluralize(length % 3 === 1 ? 'décimo' : 'centéssimo', Number(this.decimal))
         const decimalBig = getList()[Math.floor(length / 3 - 1)]
@@ -37,6 +37,22 @@ class WriterNumber extends Writer {
 
     public unformalizeDecimal() {
         return `vírgula ${this.writeDecimal()}`
+    }
+
+    public write() {
+        if (!this.hasInteger() && !this.hasDecimal()) {
+            return this.writeInteger()
+        }
+        if (this.hasInteger() && !this.hasDecimal()) {
+            return this.writeInteger()
+        }
+        if (this.decimalMode === Decimals.UNFORMAL) {
+            return `${this.writeInteger()} ${this.formalizeDecimal()}`
+        }
+        if (!this.hasInteger() && this.hasDecimal()) {
+            return this.writeDecimal()
+        }
+        return `${this.writeInteger()} ${pluralize('inteiro', Number(this.integer))} e ${this.formalizeDecimal()}`
     }
 }
 

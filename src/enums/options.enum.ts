@@ -21,7 +21,7 @@ export enum Locales {
 }
 
 export enum Negatives {
-  INFORMAL = 'informal',
+  UNFORMAL = 'informal',
   FORMAL = 'formal',
 }
 
@@ -37,7 +37,7 @@ export enum Genders {
 
 export enum Decimals {
   FORMAL = 'formal',
-  INFORMAL = 'informal',
+  UNFORMAL = 'informal',
 }
 
 export enum DecimalSeparators {

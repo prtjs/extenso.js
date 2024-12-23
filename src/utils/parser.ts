@@ -8,7 +8,6 @@ interface Parser {
 const parser = (input: string | number, decimalSeparator: DecimalSeparators): Parser => {
   if (typeof input === 'number') {
     input = input.toString()
-    // Força ser DOT caso o tipo seja number
     decimalSeparator = DecimalSeparators.DOT
   }
 
@@ -20,7 +19,6 @@ const parser = (input: string | number, decimalSeparator: DecimalSeparators): Pa
   }
   const number = input.replace(RegExp(`(-|\\${separatorFor.thousands})`, 'g'), '')
 
-  // Caso seja um número inteiro
   if (!number.includes(separatorFor.decimal)) {
     return {
       integer: number,

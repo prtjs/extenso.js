@@ -34,12 +34,12 @@ test('Deve escrever números negativos por extenso', (t) => {
   t.is(writeAll('-42'), 'quarenta e dois negativo')
   t.is(writeAll(-42n), 'quarenta e dois negativo')
   t.is(writeAll('-42', { negative: Negatives.FORMAL }), 'quarenta e dois negativo')
-  t.is(writeAll('-42', { negative: Negatives.INFORMAL }), 'menos quarenta e dois')
+  t.is(writeAll('-42', { negative: Negatives.UNFORMAL }), 'menos quarenta e dois')
 })
 
 test('Deve escrever números decimais por extenso', (t) => {
   t.is(writeAll('0,14'), 'quatorze centésimos')
-  t.is(writeAll('0,14', { number: { decimal: Decimals.INFORMAL } }), 'zero vírgula quatorze')
+  t.is(writeAll('0,14', { number: { decimal: Decimals.UNFORMAL } }), 'zero vírgula quatorze')
   t.is(writeAll('1,14'), 'um inteiro e quatorze centésimos')
   t.is(writeAll('1,14', { number: { gender: Genders.FEMININE } }), 'uma inteira e quatorze centésimos')
   t.is(writeAll('3,14'), 'três inteiros e quatorze centésimos')
@@ -60,7 +60,7 @@ test('Deve escrever valores monetários por extenso', (t) => {
   t.is(writeAll('1', { mode: Modes.CURRENCY }), 'um real')
   t.is(writeAll('2', { mode: Modes.CURRENCY }), 'dois reais')
   t.is(writeAll('-2', { mode: Modes.CURRENCY }), 'dois reais negativo')
-  t.is(writeAll('-2', { mode: Modes.CURRENCY, negative: Negatives.INFORMAL }), 'menos dois reais')
+  t.is(writeAll('-2', { mode: Modes.CURRENCY, negative: Negatives.UNFORMAL }), 'menos dois reais')
   t.is(writeAll('3,50', { mode: Modes.CURRENCY }), 'três reais e cinquenta centavos')
   t.is(writeAll(1.123456, { mode: Modes.CURRENCY }), 'um real e doze centavos')
   t.is(writeAll(1882.666, { mode: Modes.CURRENCY }), 'mil oitocentos e oitenta e dois reais e sessenta e seis centavos')
@@ -94,5 +94,5 @@ test('Deve verificar se uma opção é válida', (t) => {
 test('Deve passar para o negativo um número escrito por extenso', (t) => {
   t.is(toNegative('um'), 'um negativo')
   t.is(toNegative('um', 'formal'), 'um negativo')
-  t.is(toNegative('um', Negatives.INFORMAL), 'menos um')
+  t.is(toNegative('um', Negatives.UNFORMAL), 'menos um')
 })
