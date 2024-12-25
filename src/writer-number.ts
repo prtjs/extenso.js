@@ -1,4 +1,4 @@
-import { Decimals, Genders, Negatives } from "./enums/options.enum"
+import { Decimals, Genders } from "./enums/options.enum"
 import pluralize from "./utils/pluralize"
 import Writer from "./writer"
 import decimalsList from './knowledge-base/decimals'

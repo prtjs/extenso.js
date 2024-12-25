@@ -9,13 +9,13 @@ const lowerThan100 = (input: number): string => {
         return list[input - 10]
     }
 
-    // 42 -> 2
-    const unit = input % 10
-    const unitInWords = lowerThan10(unit)
-
-    // 42 -> 4
+    // 12 -> 1
     const ten = (input - input % 10) / 10
     const tenInWords = list[ten + 8]
+
+    // 12 -> 2
+    const unit = input % 10
+    const unitInWords = lowerThan10(unit)
 
     if (unit === 0) {
         return tenInWords
