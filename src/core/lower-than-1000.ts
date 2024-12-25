@@ -1,5 +1,5 @@
-import list from "../knowledge-base/greater-than-1000"
 import lowerThan100 from "./lower-than-100"
+import list from "../knowledge-base/greater-than-1000"
 
 const lowerThan1000 = (input: number): string => {
     if (input < 100) {
