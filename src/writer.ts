@@ -1,9 +1,10 @@
-import lt1000 from './lt1000'
-import gt1000 from './gt1000'
 import parser from './utils/parse'
 import { DecimalSeparators, Locales, Scales, Negatives } from './enums/options.enum'
 import pluralize from './utils/pluralize'
 import validate from './utils/validate'
+
+const lt1000 = (x: any, y: any) => ''
+const gt1000 = (x: any, y: any, z: any) => ''
 
 class Writer {
     public integerNumber: string
