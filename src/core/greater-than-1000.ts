@@ -3,24 +3,25 @@ import lowerThan1000 from './lower-than-1000'
 import list from '../knowledge-base/greater-than-1000'
 
 const greaterThan1000 = (input: string): string => {
-    let parse = split(input)
-
-    parse = parse
+    return split(input)
         .reverse()
-        .map((part: string, index: number): string => {
-            if (part === '000') {
-                return part
+        .map((part: number, index: number): string => {
+            const words = lowerThan1000(part)
+            let name = list[index - 1]
+
+            if (part === 0) {
+                return ''
             }
             if (index === 0) {
-                if (Number(part) < 100 || Number(part) % 100 === 0) {
-                    return `e ${part}`
+                if (part < 100 || part % 100) {
+                    return `e ${words}`
                 }
-                return part
+                return words
             }
-            let name = list[index - 1]
-            if (part === '1') {
+
+            if (part === 1) {
                 if (name === 'mil') {
-                    return 'mil'
+                    return name
                 }
             } else {
                 name = name.replace('ão', 'ões')
@@ -31,14 +32,8 @@ const greaterThan1000 = (input: string): string => {
             return `${part} ${name},`
         })
         .reverse()
-        .filter((part: string): boolean => part !== '000')
-        .map((part: string) => {
-            return part.replace(/^(\d+)/, (integer: string): string => {
-                return lowerThan1000(Number(integer))
-            })
-        })
-    
-    return parse.join(' ')
+        .filter((part: string): boolean => !!part)
+        .join(' ')
 }
 
 export default greaterThan1000
