@@ -9,9 +9,9 @@
 //   t.deepEqual(addComma([ '1 milhão', 'mil', '420' ]), [ '1 milhão,', 'mil', '420' ])
 // })
 
-// /**
-//  * Função: addConjunction
-//  */
+/**
+ * Função: addConjunction
+ */
 // test('Deve adicionar "e" no final de algumas partes', (t) => {
 //   t.deepEqual(addConjunction([ 'mil', '4' ], '1004'), [ 'mil e', '4' ])
 //   t.deepEqual(addConjunction([ 'mil', '42' ], '1042'), [ 'mil e', '42' ])
