@@ -1,4 +1,4 @@
-import currencies, { Currency } from "./lists/currencies";
+import currencies, { Currency } from "./lists/list-currencies";
 import { Currencies } from "../enums/options.enum"
 import writeAll from "./write-all"
 
