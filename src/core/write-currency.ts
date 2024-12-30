@@ -4,7 +4,7 @@ import writeAll from "./write-all"
 
 const ONE_MILION = 1000000
 
-const writeUnit = (unit: string, currency: Currency, scale: Scales = Scales.SHORT) => {
+export const writeUnit = (unit: string, currency: Currency, scale: Scales = Scales.SHORT) => {
     const text = writeAll(unit, scale)
 
     if (Number(unit) === 1) {
@@ -16,7 +16,7 @@ const writeUnit = (unit: string, currency: Currency, scale: Scales = Scales.SHOR
     return `${text} ${currency.plural}`
 }
 
-const writeSubunit = (subunit: string, currency: Currency) => {
+export const writeSubunit = (subunit: string, currency: Currency) => {
     const text = writeAll(subunit.slice(0, 2).padEnd(2, '0'))
 
     if (Number(subunit) === 1) {

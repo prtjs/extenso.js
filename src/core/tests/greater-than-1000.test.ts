@@ -1,7 +1,7 @@
 import test from 'ava'
 
-import writeAll from '../write-all'
+import writeDigits from '../write-digits'
 
 test('x', (t) => {
-    t.is(writeAll('10002233445591'), 'um centésimo de bilionésimo')
+    t.is(writeDigits('89272398'), 'um centésimo de bilionésimo')
 })
