@@ -1,12 +1,12 @@
 import split from '../utils/split'
-import lowerThan1000 from './lower-than-1000'
-import list from '../knowledge-base/greater-than-1000'
+import list from './lists/list-from-1000'
+import writeLowerThan1000 from './write-lower-than-1000'
 
-const greaterThan1000 = (input: string): string => {
+const writeGreaterThan1000 = (input: string): string => {
     return split(input)
         .reverse()
         .map((part: number, index: number): string => {
-            const words = lowerThan1000(part)
+            const words = writeLowerThan1000(part)
             let name = list[index - 1]
 
             if (part === 0) {
@@ -27,13 +27,13 @@ const greaterThan1000 = (input: string): string => {
                 name = name.replace('ão', 'ões')
             }
             if (index === 1) {
-                return `${part} ${name}`
+                return `${words} ${name}`
             }
-            return `${part} ${name},`
+            return `${words} ${name},`
         })
         .reverse()
         .filter((part: string): boolean => !!part)
         .join(' ')
 }
 
-export default greaterThan1000
+export default writeGreaterThan1000

@@ -1,7 +1,7 @@
 import { Decimals, Genders } from "./enums/options.enum"
 import pluralize from "./utils/pluralize"
 import Writer from "./writer"
-import decimalsList from './knowledge-base/decimals'
+import decimalsList from './core/lists/decimals'
 
 class WriterNumber extends Writer {
     public gender: Genders = Genders.MASCULINE

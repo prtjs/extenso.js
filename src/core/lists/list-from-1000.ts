@@ -1,4 +1,4 @@
-const list: string[] = [
+const listFrom1000: string[] = [
     'mil',
     'milhão',
     'bilhão',
@@ -14,4 +14,4 @@ const list: string[] = [
     'duodecilhão',
 ]
 
-export default list
+export default listFrom1000

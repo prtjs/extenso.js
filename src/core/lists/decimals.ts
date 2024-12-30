@@ -1,4 +1,4 @@
-const list: string[] = [
+const listDecimals: string[] = [
     'milésimo',
     'milionésimo',
     'bilionésimo',
@@ -14,4 +14,4 @@ const list: string[] = [
     'duodecilionésimo',
 ]
 
-export default list
+export default listDecimals

@@ -1,4 +1,4 @@
-﻿import { Currencies } from "../enums/options.enum"
+﻿import { Currencies } from "../../enums/options.enum"
 
 export interface Currency {
   singular: string

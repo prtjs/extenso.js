@@ -1,4 +1,4 @@
-const list: string[] = [
+const listFrom0To9: string[] = [
     'zero',
     'um',
     'dois',
@@ -11,4 +11,4 @@ const list: string[] = [
     'nove',
 ]
 
-export default list
+export default listFrom0To9
