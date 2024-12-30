@@ -1,5 +1,6 @@
 import split from '../utils/split'
 import list from './lists/list-from-1000'
+import { ONE_THOUSAND } from './lists/list-from-1000'
 import writeLowerThan1000 from './write-lower-than-1000'
 
 const writeGreaterThan1000 = (input: string): string => {
@@ -18,10 +19,9 @@ const writeGreaterThan1000 = (input: string): string => {
                 }
                 return words
             }
-
             if (part === 1) {
-                if (name === 'mil') {
-                    return name
+                if (name === ONE_THOUSAND) {
+                    return ONE_THOUSAND
                 }
             } else {
                 name = name.replace('ão', 'ões')

@@ -1,3 +1,5 @@
+export const ONE_THOUSAND: string = 'mil'
+
 const listFrom1000: string[] = [
     'mil',
     'milhão',
