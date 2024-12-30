@@ -1,4 +1,4 @@
-const listFrom20To90By10: string[] = [
+const listFrom20To90: string[] = [
     'vinte',
     'trinta',
     'quarenta',
@@ -9,4 +9,4 @@ const listFrom20To90By10: string[] = [
     'noventa',
 ]
 
-export default listFrom20To90By10
+export default listFrom20To90

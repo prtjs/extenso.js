@@ -1,4 +1,4 @@
-const listFrom100To999: string[] = [
+const listFrom100To900: string[] = [
     'cento',
     'duzentos',
     'trezentos',
@@ -10,4 +10,4 @@ const listFrom100To999: string[] = [
     'novecentos',
 ]
 
-export default listFrom100To999
+export default listFrom100To900
