@@ -1,3 +1,5 @@
-const extenso = () => {}
+const extenso = () => {
+    
+}
 
 export default extenso

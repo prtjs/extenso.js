@@ -1,3 +1,5 @@
+export const HUNDRED: string = 'cem'
+
 const listFrom100To900: string[] = [
     'cento',
     'duzentos',

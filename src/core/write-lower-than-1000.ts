@@ -1,7 +1,7 @@
 import listFrom0To9 from './lists/list-from-0-to-9'
 import listFrom10To19 from './lists/list-from-10-to-19'
 import listFrom20To90 from './lists/list-from-20-to-90'
-import listFrom100To900 from './lists/list-from-100-to-900'
+import listFrom100To900, { HUNDRED } from './lists/list-from-100-to-900'
 
 const writeLowerThan10 = (input: number): string => {
     return listFrom0To9[input]
@@ -32,7 +32,7 @@ const writeLowerThan1000 = (input: number): string => {
     const name = listFrom100To900[(input - input % 100) / 100 - 1]
     if (input % 100 === 0) {
         if (input === 100) {
-            return 'cem'
+            return HUNDRED
         }
         return name
     }
