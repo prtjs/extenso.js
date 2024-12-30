@@ -20,11 +20,6 @@ export enum Locales {
   PT = 'pt',
 }
 
-export enum Negatives {
-  UNFORMAL = 'informal',
-  FORMAL = 'formal',
-}
-
 export enum Scales {
   SHORT = 'short',
   LONG = 'long',
@@ -33,11 +28,6 @@ export enum Scales {
 export enum Genders {
   MASCULINE = 'm',
   FEMININE = 'f',
-}
-
-export enum Decimals {
-  FORMAL = 'formal',
-  UNFORMAL = 'informal',
 }
 
 export enum DecimalSeparators {
