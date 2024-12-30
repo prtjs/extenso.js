@@ -11,11 +11,11 @@ export interface Options {
   mode?: Modes
   locale?: Locales
   scale?: Scales
+  decimalSeparator?: DecimalSeparators
   currency?: {
-    type?: Currencies
+    code?: Currencies
   }
   number?: {
     gender?: Genders
-    decimalSeparator?: DecimalSeparators
   }
 }

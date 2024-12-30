@@ -1,7 +1,7 @@
-const female = (text: string): string => {
+const toFemale = (text: string): string => {
     return text
         .replace(/\bum\b/g, 'uma')
         .replace(/\bduas\b/g, 'duas')
 }
 
-export default female
+export default toFemale

@@ -11,8 +11,9 @@ export enum Currencies {
 }
 
 export enum Modes {
-  NUMBER = 'number',
   CURRENCY = 'currency',
+  DIGIT = 'digit',
+  NUMBER = 'number',
 }
 
 export enum Locales {
@@ -26,8 +27,8 @@ export enum Scales {
 }
 
 export enum Genders {
-  MASCULINE = 'm',
-  FEMININE = 'f',
+  MALE = 'male',
+  FEMALE = 'female',
 }
 
 export enum DecimalSeparators {

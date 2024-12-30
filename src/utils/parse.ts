@@ -1,6 +1,6 @@
 import { DecimalSeparators } from "../enums/options.enum"
 
-const parse = (input: string, decimalSeparator: DecimalSeparators): {
+const parse = (input: string, decimalSeparator: DecimalSeparators = DecimalSeparators.DOT): {
   integer: string
   decimal: string
 } => {
@@ -26,7 +26,7 @@ const parse = (input: string, decimalSeparator: DecimalSeparators): {
     return {
         integer,
         decimal,
-      }
+    }
 }
 
 export default parse

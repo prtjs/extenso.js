@@ -6,7 +6,7 @@ const toPortugal = (text: string): string => {
         .replace(/\bdezenove\b/g, 'dezanove')
 
     return text
-        .replace(/[^m]ilh(ão|ões)/g, (suffix) => {
+        .replace(/[^m]ilh(ão|ões)/g, (suffix: string): string => {
             return suffix.replace(/h/g, 'i')
         })
 }

@@ -28,7 +28,7 @@ export const writeSubunit = (subunit: string, currency: Currency) => {
 const writeCurrency = (
     unit: string,
     subunit: string,
-    code: Currencies,
+    code: Currencies = Currencies.BRL,
     scale: Scales = Scales.SHORT
 ): string => {
     if (!Object.keys(currencies).includes(code)) {
