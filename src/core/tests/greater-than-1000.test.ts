@@ -1,7 +1,7 @@
 import test from 'ava'
 
-import writeGreaterThan1000 from '../write-decimal'
+import writeAll from '../write-all'
 
 test('x', (t) => {
-    t.is(writeGreaterThan1000('00000000001'), 'um centésimo de bilionésimo')
+    t.is(writeAll('10002233445591'), 'um centésimo de bilionésimo')
 })

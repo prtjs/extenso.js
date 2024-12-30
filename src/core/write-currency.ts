@@ -1,11 +1,11 @@
 import currencies, { Currency } from "./lists/list-currencies";
-import { Currencies } from "../enums/options.enum"
+import { Currencies, Scales } from "../enums/options.enum"
 import writeAll from "./write-all"
 
 const ONE_MILION = 1000000
 
-const writeUnit = (unit: string, currency: Currency) => {
-    const text = writeAll(unit)
+const writeUnit = (unit: string, currency: Currency, scale: Scales = Scales.SHORT) => {
+    const text = writeAll(unit, scale)
 
     if (Number(unit) === 1) {
         return `${text} ${currency.singular}`
@@ -25,12 +25,17 @@ const writeSubunit = (subunit: string, currency: Currency) => {
     return `${text} ${currency.subunit.plural}`
 }
 
-const writeCurrency = (unit: string, subunit: string, currencyCode: Currencies): string => {
-    if (!Object.keys(currencies).includes(currencyCode)) {
+const writeCurrency = (
+    unit: string,
+    subunit: string,
+    code: Currencies,
+    scale: Scales = Scales.SHORT
+): string => {
+    if (!Object.keys(currencies).includes(code)) {
         throw new Error('Invalid currency')
     }
 
-    const currency = currencies[currencyCode]
+    const currency = currencies[code]
     const hasUnit = Number(unit) > 0
     const hasSubunit = Number(subunit) > 0
 
@@ -41,9 +46,9 @@ const writeCurrency = (unit: string, subunit: string, currencyCode: Currencies):
         return writeSubunit(subunit, currency)
     }
     if (!hasSubunit) {
-        return writeUnit(unit, currency)
+        return writeUnit(unit, currency, scale)
     }
-    return `${writeUnit(unit, currency)} e ${writeSubunit(subunit, currency)}`
+    return `${writeUnit(unit, currency, scale)} e ${writeSubunit(subunit, currency)}`
 }
 
 export default writeCurrency

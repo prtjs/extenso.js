@@ -1,23 +1,23 @@
+import { Scales } from '../enums/options.enum'
 import split from '../utils/split'
-import list from './lists/list-from-1000'
-import { ONE_THOUSAND } from './lists/list-from-1000'
+import listFrom1000, { ONE_THOUSAND } from './lists/list-from-1000'
 import writeLowerThan1000 from './write-lower-than-1000'
 
-const writeGreaterThan1000 = (input: string): string => {
+const writeGreaterThan1000 = (input: string, scale: Scales = Scales.SHORT): string => {
     return split(input)
         .reverse()
         .map((part: number, index: number): string => {
-            const words = writeLowerThan1000(part)
-            let name = list[index - 1]
+            const text = writeLowerThan1000(part)
+            let name = listFrom1000[scale][index]
 
             if (part === 0) {
                 return ''
             }
             if (index === 0) {
                 if (part < 100 || part % 100) {
-                    return `e ${words}`
+                    return `e ${text}`
                 }
-                return words
+                return text
             }
             if (part === 1) {
                 if (name === ONE_THOUSAND) {
@@ -27,9 +27,9 @@ const writeGreaterThan1000 = (input: string): string => {
                 name = name.replace('ão', 'ões')
             }
             if (index === 1) {
-                return `${words} ${name}`
+                return `${text} ${name}`
             }
-            return `${words} ${name},`
+            return `${text} ${name},`
         })
         .reverse()
         .filter((part: string): boolean => !!part)
