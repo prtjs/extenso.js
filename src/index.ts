@@ -5,7 +5,7 @@ import normalize from './utils/normalize'
 import writeCurrency from './core/write-currency'
 import writeDigit from './core/write-digit'
 import writeNumber from './core/write-number'
-import toPortugal from './post/to-portugal'
+import translateToPT from './locale/translate-to-pt'
 import toFemale from './post/to-female'
 import toNegative from './post/to-negative'
 
@@ -28,7 +28,7 @@ const extenso = (input: number | string | bigint, options: Options = {}) => {
         text = toNegative(text)
     }
     if (options?.locale === Locales.PT) {
-        text = toPortugal(text)
+        text = translateToPT(text)
     }
     if (options?.number?.gender === Genders.FEMALE) {
         text = toFemale(text)

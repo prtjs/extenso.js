@@ -1,4 +1,4 @@
-const toPortugal = (text: string): string => {
+const translateToPT = (text: string): string => {
     text = text
         .replace(/\bquatorze\b/g, 'catorze')
         .replace(/\bdezesseis\b/g, 'dezasseis')
@@ -11,4 +11,4 @@ const toPortugal = (text: string): string => {
         })
 }
 
-export default toPortugal
+export default translateToPT
