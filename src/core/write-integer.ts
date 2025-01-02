@@ -1,4 +1,4 @@
-import { Scales } from "../enums/options.enum"
+import Scales from '../ts/scales.enum'
 import writeGreaterThan1000 from "./integer/write-greater-than-1000"
 import writeLowerThan1000 from "./integer/write-lower-than-1000"
 
