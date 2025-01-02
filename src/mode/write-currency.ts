@@ -19,7 +19,7 @@ export const writeUnit = (unit: string, currency: Currency, scale: Scales = Scal
 }
 
 export const writeSubunit = (subunit: string, currency: Currency) => {
-    const text = writeInteger(subunit.slice(0, 2).padEnd(2, '0'))
+    const text = writeInteger(subunit.slice(0, 2))
 
     if (Number(subunit) === 1) {
         return `${text} ${currency.subunit.singular}`
@@ -29,10 +29,12 @@ export const writeSubunit = (subunit: string, currency: Currency) => {
 
 const writeCurrency = (
     unit: string,
-    subunit: string,
+    subunit: string = '0',
     code: Currencies = Currencies.BRL,
     scale: Scales = Scales.SHORT,
 ): string => {
+    subunit = subunit.padEnd(2, '0')
+
     if (!Object.keys(listCurrencies).includes(code)) {
         throw new Error('Invalid currency')
     }
