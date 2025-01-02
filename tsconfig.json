@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "module": "NodeNext",         // Use ES Modules
-    "target": "esnext",         // Set the ECMAScript target to ESNext (or ES6)
-    "esModuleInterop": true,    // Allows for compatibility between CommonJS and ES Modules
-    "skipLibCheck": true,       // Skip type checking of declaration files (optional)
-    "outDir": "./build",        // Output directory for compiled JS files
-    "rootDir": "./",         // Root directory of your TypeScript files
-    "strict": true,             // Enable all strict type checking options
+    "module": "NodeNext",     // Use ES Modules
+    "target": "esnext",       // Set the ECMAScript target to ESNext (or ES6)
+    "esModuleInterop": true,  // Allows for compatibility between CommonJS and ES Modules
+    "skipLibCheck": true,     // Skip type checking of declaration files (optional)
+    "outDir": "./build",      // Output directory for compiled JS files
+    "rootDir": "./",          // Root directory of your TypeScript files
+    "strict": true,           // Enable all strict type checking options
     "moduleResolution": "nodenext"
   },
 }
