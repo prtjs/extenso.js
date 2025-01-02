@@ -6,7 +6,7 @@ export default tseslint.config(
     rules: {
       'comma-dangle': ['error', 'always-multiline'],
       'func-style': ['error', 'expression'],
-      'indent': ['error', 2],
+      'indent': ['error', 4],
       'keyword-spacing': ['error', { before: true, after: true }],
       'max-lines': ['error', { 'max': 300, 'skipBlankLines': true, 'skipComments': true }],
       'no-implicit-globals': 'error',
