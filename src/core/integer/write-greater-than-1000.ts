@@ -8,13 +8,13 @@ const writeGreaterThan1000 = (input: string, scale: Scales = Scales.SHORT): stri
         .reverse()
         .map((part: number, index: number): string => {
             const text = writeLowerThan1000(part)
-            let name = listFrom1000[scale][index]
+            let name = listFrom1000[scale][index - 1]
 
             if (part === 0) {
                 return ''
             }
             if (index === 0) {
-                if (part < 100 || part % 100) {
+                if (part < 100 || part % 100 === 0) {
                     return `e ${text}`
                 }
                 return text
@@ -26,13 +26,18 @@ const writeGreaterThan1000 = (input: string, scale: Scales = Scales.SHORT): stri
             } else {
                 name = name.replace('ão', 'ões')
             }
-            if (index === 1) {
-                return `${text} ${name}`
-            }
-            return `${text} ${name},`
+            return `${text} ${name}`
         })
         .reverse()
-        .filter((part: string): boolean => !!part)
+        .filter((part: string): boolean => {
+            return !!part
+        })
+        .map((part: string, index: number, parts: string[]): string => {
+            if (index < parts.length - 2) {
+                return `${part},`
+            }
+            return part
+        })
         .join(' ')
 }
 
