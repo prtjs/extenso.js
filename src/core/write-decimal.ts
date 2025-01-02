@@ -13,7 +13,7 @@ const writeDecimal = (input: string): string => {
         return `${text} ${pluralize('centésimo', count)}`
     }
 
-    const name = pluralize(listDecimals[Math.floor(input.length / 3) - 1], count)
+    const name = listDecimals[Math.floor(input.length / 3) - 1]
 
     switch (input.length % 3) {
     case 1:
@@ -22,7 +22,7 @@ const writeDecimal = (input: string): string => {
         return `${text} ${pluralize('centésimo', count)} de ${name}`
     case 0:
     default:
-        return `${text} ${name}`
+        return `${text} ${pluralize(name, count)}`
     }
 }
 
