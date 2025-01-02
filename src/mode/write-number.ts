@@ -1,8 +1,8 @@
 import Genders from '../ts/genders.enum'
 import Scales from '../ts/scales.enum'
-import pluralize from "../utils/pluralize"
-import writeInteger from "../core/write-integer"
-import writeDecimal from "../core/write-decimal"
+import pluralize from '../utils/pluralize'
+import writeInteger from '../core/write-integer'
+import writeDecimal from '../core/write-decimal'
 
 const writeNumber = (
     integer: string,
@@ -27,7 +27,7 @@ const writeNumber = (
     default:
         break
     }
-    
+
     return text
 }
 

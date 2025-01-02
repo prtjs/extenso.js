@@ -1,8 +1,8 @@
-import Scales from "../ts/scales.enum"
+import Scales from '../ts/scales.enum'
 
-export const ONE_THOUSAND: string = 'mil'
+export const ONE_THOUSAND = 'mil'
 
-const listFrom1000: { [key in Scales]: string[] } = {
+const listFrom1000: Record<Scales, string[]> = {
     [Scales.SHORT]: [
         'mil',
         'milhão',
@@ -43,7 +43,7 @@ const listFrom1000: { [key in Scales]: string[] } = {
         'undecilhão',
         'mil undecilhão',
         'duodecilhão',
-    ]
+    ],
 }
 
 export default listFrom1000

@@ -1,8 +1,8 @@
-import DecimalSeparators from "../ts/decimal-separators.enum"
+import DecimalSeparators from '../ts/decimal-separators.enum'
 
 const parse = (input: string, decimalSeparator: DecimalSeparators = DecimalSeparators.DOT): {
-  integer: string
-  decimal: string
+    integer: string
+    decimal: string
 } => {
     input = input.trim()
 

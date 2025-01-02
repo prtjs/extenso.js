@@ -1,11 +1,11 @@
-import pluralize from "../utils/pluralize"
-import writeInteger from "./write-integer"
-import listDecimals from "../lists/list-decimals"
+import pluralize from '../utils/pluralize'
+import writeInteger from './write-integer'
+import listDecimals from '../lists/list-decimals'
 
 const writeDecimal = (input: string): string => {
     const text = writeInteger(input)
     const count = Number(input)
-    
+
     if (input.length === 1) {
         return `${text} ${pluralize('décimo', count)}`
     }

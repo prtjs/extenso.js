@@ -1,4 +1,4 @@
-export const HUNDRED: string = 'cem'
+export const HUNDRED = 'cem'
 
 const listFrom100To900: string[] = [
     'cento',

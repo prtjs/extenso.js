@@ -1,8 +1,8 @@
 import Currency from '../ts/currency.interface'
-import Currencies from "../ts/currencies.enum"
-import listCurrencies from "../lists/list-currencies"
-import Scales from "../ts/scales.enum"
-import writeInteger from "../core/write-integer"
+import Currencies from '../ts/currencies.enum'
+import listCurrencies from '../lists/list-currencies'
+import Scales from '../ts/scales.enum'
+import writeInteger from '../core/write-integer'
 
 const ONE_MILION = 1000000
 
@@ -31,7 +31,7 @@ const writeCurrency = (
     unit: string,
     subunit: string,
     code: Currencies = Currencies.BRL,
-    scale: Scales = Scales.SHORT
+    scale: Scales = Scales.SHORT,
 ): string => {
     if (!Object.keys(listCurrencies).includes(code)) {
         throw new Error('Invalid currency')
