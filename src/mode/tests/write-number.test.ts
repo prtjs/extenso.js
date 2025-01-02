@@ -1,7 +1,9 @@
 import test from 'ava'
 import writeNumber from '../write-number'
+import Scales from '../../ts/scales.enum'
+import Genders from '../../ts/genders.enum'
 
-test('writeNumber(): integer', (t) => {
+test('writeNumber(): integer (male)', (t) => {
     t.is(writeNumber('0'), 'zero')
     t.is(writeNumber('1'), 'um')
     t.is(writeNumber('2'), 'dois')
@@ -13,6 +15,13 @@ test('writeNumber(): integer', (t) => {
     t.is(writeNumber('101'), 'cento e um')
     t.is(writeNumber('110'), 'cento e dez')
     t.is(writeNumber('135'), 'cento e trinta e cinco')
+})
+
+test('writeNumber(): integer (female)', (t) => {
+    t.is(writeNumber('1', '0', Scales.SHORT, Genders.FEMALE), 'uma')
+    t.is(writeNumber('2', '0', Scales.SHORT, Genders.FEMALE), 'duas')
+    t.is(writeNumber('22', '0', Scales.SHORT, Genders.FEMALE), 'vinte e duas')
+    t.is(writeNumber('42002', '0', Scales.SHORT, Genders.FEMALE), 'quarenta e duas mil e duas')
 })
 
 test('writeNumber(): decimal', (t) => {

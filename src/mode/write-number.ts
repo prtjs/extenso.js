@@ -28,7 +28,7 @@ const writeNumber = (
     case Genders.FEMALE:
         text = text
             .replace(/\bum\b/g, 'uma')
-            .replace(/\bduas\b/g, 'duas')
+            .replace(/\bdois\b/g, 'duas')
         break
     case Genders.MALE:
     default:
