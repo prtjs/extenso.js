@@ -1,5 +1,12 @@
 const split = (input: string): number[] => {
-    return (input.match(/\d{1,3}(?=(\d{3})*$)/g) ?? []).map(Number)
+    const result = [];
+
+    for (let i = input.length; i > 0; i -= 3) {
+        const start = Math.max(0, i - 3);
+        result.unshift(input.slice(start, i));
+    }
+
+    return result.map(Number);
 }
 
 export default split
