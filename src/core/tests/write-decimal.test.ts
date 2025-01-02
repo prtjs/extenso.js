@@ -1,5 +1,4 @@
 import test from 'ava'
-
 import writeDecimal from '../write-decimal'
 
 test('writeDecimal(): singular', (t) => {
