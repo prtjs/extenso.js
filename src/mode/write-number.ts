@@ -6,10 +6,17 @@ import writeDecimal from '../core/write-decimal'
 
 const writeNumber = (
     integer: string,
-    decimal: string,
+    decimal: string = '0',
     scale: Scales = Scales.SHORT,
     gender: Genders = Genders.MALE,
 ): string => {
+    if (integer === '0' && decimal === '0') {
+        return 'zero'
+    }
+    if (integer === '0') {
+        return writeDecimal(decimal)
+    }
+
     let text
     if (decimal === '0') {
         text = writeInteger(integer, scale)
