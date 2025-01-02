@@ -3,9 +3,9 @@ import Options from './ts/options.interface'
 import normalize from './utils/normalize'
 import parse from './utils/parse'
 import translate from './utils/translate'
-import writeCurrency from './modes/write-currency'
-import writeDigit from './modes/write-digit'
-import writeNumber from './modes/write-number'
+import writeCurrency from './mode/write-currency'
+import writeDigit from './mode/write-digit'
+import writeNumber from './mode/write-number'
 
 const extenso = (input: number | string | bigint, options: Options = {}): string => {
     input = normalize(input)
