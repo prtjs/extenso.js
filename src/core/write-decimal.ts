@@ -1,9 +1,9 @@
 import pluralize from "../utils/pluralize"
-import writeAll from "./write-all"
-import listDecimals from "./lists/list-decimals"
+import writeInteger from "./write-integer"
+import listDecimals from "../lists/list-decimals"
 
 const writeDecimal = (input: string): string => {
-    const text = writeAll(input)
+    const text = writeInteger(input)
     const count = Number(input)
     
     if (input.length === 1) {

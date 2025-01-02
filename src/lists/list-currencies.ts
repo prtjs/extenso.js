@@ -1,13 +1,5 @@
-﻿import { Currencies } from "../../enums/options.enum"
-
-export interface Currency {
-  singular: string
-  plural: string
-  subunit: {
-    singular: string
-    plural: string
-  }
-}
+﻿import Currencies from "../ts/currencies.enum"
+import Currency from "../ts/currency.interface"
 
 const currencies: { [key in Currencies]: Currency } = {
   [Currencies.AOA]: {

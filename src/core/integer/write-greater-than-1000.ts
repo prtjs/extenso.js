@@ -1,6 +1,6 @@
-import { Scales } from '../enums/options.enum'
-import split from '../utils/split'
-import listFrom1000, { ONE_THOUSAND } from './lists/list-from-1000'
+import Scales from '../../ts/scales.enum'
+import split from '../../utils/split'
+import listFrom1000, { ONE_THOUSAND } from '../../lists/list-from-1000'
 import writeLowerThan1000 from './write-lower-than-1000'
 
 const writeGreaterThan1000 = (input: string, scale: Scales = Scales.SHORT): string => {

@@ -1,4 +1,4 @@
-import { DecimalSeparators } from "../enums/options.enum"
+import DecimalSeparators from "../ts/decimal-separators.enum"
 
 const parse = (input: string, decimalSeparator: DecimalSeparators = DecimalSeparators.DOT): {
   integer: string

@@ -1,4 +1,4 @@
-import { writeLowerThan10 } from "./write-lower-than-1000"
+import { writeLowerThan10 } from "../core/integer/write-lower-than-1000"
 
 const writeDigit = (input: string): string => {
     return input

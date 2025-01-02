@@ -1,11 +1,13 @@
-import currencies, { Currency } from "./lists/list-currencies";
-import { Currencies, Scales } from "../enums/options.enum"
-import writeAll from "./write-all"
+import Currency from '../ts/currency.interface'
+import Currencies from "../ts/currencies.enum"
+import listCurrencies from "../lists/list-currencies"
+import Scales from "../ts/scales.enum"
+import writeInteger from "../core/write-integer"
 
 const ONE_MILION = 1000000
 
 export const writeUnit = (unit: string, currency: Currency, scale: Scales = Scales.SHORT) => {
-    const text = writeAll(unit, scale)
+    const text = writeInteger(unit, scale)
 
     if (Number(unit) === 1) {
         return `${text} ${currency.singular}`
@@ -17,7 +19,7 @@ export const writeUnit = (unit: string, currency: Currency, scale: Scales = Scal
 }
 
 export const writeSubunit = (subunit: string, currency: Currency) => {
-    const text = writeAll(subunit.slice(0, 2).padEnd(2, '0'))
+    const text = writeInteger(subunit.slice(0, 2).padEnd(2, '0'))
 
     if (Number(subunit) === 1) {
         return `${text} ${currency.subunit.singular}`
@@ -31,11 +33,11 @@ const writeCurrency = (
     code: Currencies = Currencies.BRL,
     scale: Scales = Scales.SHORT
 ): string => {
-    if (!Object.keys(currencies).includes(code)) {
+    if (!Object.keys(listCurrencies).includes(code)) {
         throw new Error('Invalid currency')
     }
 
-    const currency = currencies[code]
+    const currency = listCurrencies[code]
     const hasUnit = Number(unit) > 0
     const hasSubunit = Number(subunit) > 0
 
