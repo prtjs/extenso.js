@@ -29,7 +29,7 @@ export const writeSubunit = (subunit: string, currency: Currency) => {
 
 const writeCurrency = (
     unit: string,
-    subunit: string = '0',
+    subunit = '0',
     code: Currencies = Currencies.BRL,
     scale: Scales = Scales.SHORT,
 ): string => {
