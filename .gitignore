@@ -4,3 +4,4 @@ build/
 out/
 tsconfig.tsbuildinfo
 extenso-*.tgz
+.DS_Store
