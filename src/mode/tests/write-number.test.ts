@@ -1,7 +1,7 @@
 import test from 'ava'
 import writeNumber from '../write-number'
-import Scales from '../../ts/scales.enum'
-import Genders from '../../ts/genders.enum'
+import Scales from '../../ts/enum/scales.enum'
+import Genders from '../../ts/enum/genders.enum'
 
 test('writeNumber(): integer (male)', (t) => {
     t.is(writeNumber('0'), 'zero')

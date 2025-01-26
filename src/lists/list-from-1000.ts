@@ -1,4 +1,4 @@
-import Scales from '../ts/scales.enum'
+import Scales from '../ts/enum/scales.enum'
 
 export const ONE_THOUSAND = 'mil'
 

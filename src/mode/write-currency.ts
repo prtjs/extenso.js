@@ -1,7 +1,7 @@
-import Currency from '../ts/currency.interface'
-import Currencies from '../ts/currencies.enum'
+import Currency from '../ts/interface/currency.interface'
+import Currencies from '../ts/enum/currencies.enum'
 import listCurrencies from '../lists/list-currencies'
-import Scales from '../ts/scales.enum'
+import Scales from '../ts/enum/scales.enum'
 import writeInteger from '../core/write-integer'
 
 const ONE_MILION = 1000000

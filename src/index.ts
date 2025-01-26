@@ -1,5 +1,5 @@
-import Modes from './ts/modes.enum'
-import Options from './ts/options.interface'
+import Modes from './ts/enum/modes.enum'
+import Options from './ts/interface/options.interface'
 import normalize from './utils/normalize'
 import parse from './utils/parse'
 import translate from './utils/translate'

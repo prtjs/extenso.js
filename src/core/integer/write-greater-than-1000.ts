@@ -1,4 +1,4 @@
-import Scales from '../../ts/scales.enum'
+import Scales from '../../ts/enum/scales.enum'
 import split from '../../utils/split'
 import listFrom1000, { ONE_THOUSAND } from '../../lists/list-from-1000'
 import writeLowerThan1000 from './write-lower-than-1000'

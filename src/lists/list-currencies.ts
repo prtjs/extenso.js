@@ -1,5 +1,5 @@
-﻿import Currencies from '../ts/currencies.enum'
-import Currency from '../ts/currency.interface'
+﻿import Currencies from '../ts/enum/currencies.enum'
+import Currency from '../ts/interface/currency.interface'
 
 const currencies: Record<Currencies, Currency> = {
     [Currencies.AOA]: {

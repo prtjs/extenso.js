@@ -1,5 +1,5 @@
 import test from 'ava'
-import Scales from '../../../ts/scales.enum'
+import Scales from '../../../ts/enum/scales.enum'
 import writeGreaterThan1000 from '../write-greater-than-1000'
 
 test('writeGreaterThan1000(): short scale', (t) => {

@@ -1,4 +1,4 @@
-import Locales from '../ts/locales.enum'
+import Locales from '../ts/enum/locales.enum'
 
 const translate = (text: string, locale: Locales = Locales.BR): string => {
     switch (locale) {

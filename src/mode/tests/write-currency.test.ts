@@ -1,7 +1,7 @@
 import test from 'ava'
 import writeCurrency from '../write-currency'
-import Currencies from '../../ts/currencies.enum'
-import Scales from '../../ts/scales.enum'
+import Currencies from '../../ts/enum/currencies.enum'
+import Scales from '../../ts/enum/scales.enum'
 
 test('writeCurrency(): BRL', (t) => {
     t.is(writeCurrency('1'), 'um real')

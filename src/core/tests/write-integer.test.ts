@@ -1,5 +1,5 @@
 import test from 'ava'
-import Scales from '../../ts/scales.enum'
+import Scales from '../../ts/enum/scales.enum'
 import writeInteger from '../write-integer'
 
 test('writeInteger(): lower than 1000', (t) => {
