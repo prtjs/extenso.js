@@ -2,7 +2,7 @@ import test from 'ava'
 import Scales from '../../../ts/enum/scales.enum'
 import writeGreaterThan1000 from '../write-greater-than-1000'
 
-test('writeGreaterThan1000(): short scale', (t) => {
+test('writeGreaterThan1000(): short scale 1', (t) => {
     t.is(writeGreaterThan1000('1000'), 'mil')
     t.is(writeGreaterThan1000('1001'), 'mil e um')
     t.is(writeGreaterThan1000('2000'), 'dois mil')
@@ -20,7 +20,7 @@ test('writeGreaterThan1000(): short scale', (t) => {
     t.is(writeGreaterThan1000('2000000000002'), 'dois trilhões e dois')
 })
 
-test('writeGreaterThan1000(): long scale', (t) => {
+test('writeGreaterThan1000(): long scale 1', (t) => {
     t.is(writeGreaterThan1000('1000', Scales.LONG), 'mil')
     t.is(writeGreaterThan1000('1001', Scales.LONG), 'mil e um')
     t.is(writeGreaterThan1000('2000', Scales.LONG), 'dois mil')

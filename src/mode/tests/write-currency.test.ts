@@ -8,10 +8,12 @@ test('writeCurrency(): BRL', (t) => {
     t.is(writeCurrency('2'), 'dois reais')
     t.is(writeCurrency('1', '50'), 'um real e cinquenta centavos')
     t.is(writeCurrency('2', '5'), 'dois reais e cinquenta centavos')
+    t.is(writeCurrency('0', '0'), 'zero reais')
     t.is(writeCurrency('0', '1'), 'dez centavos')
     t.is(writeCurrency('0', '5'), 'cinquenta centavos')
     t.is(writeCurrency('0', '05'), 'cinco centavos')
     t.is(writeCurrency('0', '25'), 'vinte e cinco centavos')
+    t.is(writeCurrency('5', '01'), 'cinco reais e um centavo')
     t.is(writeCurrency('1000000'), 'um milhão de reais')
     t.is(writeCurrency('1000011'), 'um milhão e onze reais')
     t.is(writeCurrency('2000000', '50'), 'dois milhões de reais e cinquenta centavos')
@@ -37,4 +39,9 @@ test('writeCurrency(): BRL (long scale)', (t) => {
     t.is(writeCurrency('1000000000000', '5', Currencies.BRL, Scales.LONG), 'um bilhão de reais e cinquenta centavos')
     t.is(writeCurrency('1000000000001', '5', Currencies.BRL, Scales.LONG), 'um bilhão e um reais e cinquenta centavos')
     t.is(writeCurrency('2000000000002', '5', Currencies.BRL, Scales.LONG), 'dois bilhões e dois reais e cinquenta centavos')
+})
+
+test('writeCurrency(): invalid currency', (t) => {
+    const error = t.throws(() => writeCurrency('1', '0', 'INVALID' as Currencies))
+    t.is(error?.message, 'Invalid currency')
 })
