@@ -17,7 +17,8 @@
     }
   },
   "scripts": {
-    "test": "rm -rf build && c8 --check-coverage --functions 100 --lines 100 --statements 100 ava --colors",
+    "test": "rm -rf build && ava --colors",
+    "test:coverage": "rm -rf build && c8 --check-coverage --functions 100 --lines 100 --statements 100 ava --colors",
     "lint": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*'",
     "lint:fix": "eslint . --ignore-pattern 'dist/*' --ignore-pattern 'build/*' --fix",
     "build": "node esbuild.config.mjs"
