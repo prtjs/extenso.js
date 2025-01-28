@@ -10,18 +10,29 @@ const parse = (input: string, decimalSeparator: DecimalSeparators = DecimalSepar
         decimal: decimalSeparator === DecimalSeparators.DOT ? '.' : ',',
         thousands: decimalSeparator === DecimalSeparators.DOT ? ',' : '.',
     }
-    const number = input.replace(RegExp(`(-|\\${separatorFor.thousands})`, 'g'), '')
 
-    if (!number.includes(separatorFor.decimal)) {
-        return {
-            integer: number,
-            decimal: '0',
-        }
+    if (input === '' || input.split(separatorFor.decimal)?.length > 2) {
+        throw new Error('Invalid number')
     }
 
-    const [integer, decimal] = number
+    let [integer, decimal] = input
+        .replace(RegExp(`(^-|\\${separatorFor.thousands})`, 'g'), '')
+        .trim()
         .split(separatorFor.decimal)
         .map((number) => number.replace(/^0+$/, '0'))
+
+    if (!integer) {
+        integer = '0'
+    }
+    if (!decimal) {
+        decimal = '0'
+    }
+    if (!/^\d+$/.test(integer)) {
+        throw new Error('Invalid integer number')
+    }
+    if (!/^\d+$/.test(decimal)) {
+        throw new Error('Invalid decimal number')
+    }
 
     return {
         integer,
