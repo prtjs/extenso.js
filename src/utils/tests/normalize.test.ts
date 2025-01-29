@@ -28,12 +28,12 @@ test('normalize(): should handle bigint', (t) => {
 })
 
 test('normalize(): should throw on invalid type', (t) => {
-    // @ts-ignore
+    // @ts-expect-error - this is expected to throw
     t.throws(() => normalize(null))
-    // @ts-ignore
+    // @ts-expect-error - this is expected to throw
     t.throws(() => normalize(undefined))
-    // @ts-ignore
+    // @ts-expect-error - this is expected to throw
     t.throws(() => normalize({}))
-    // @ts-ignore
+    // @ts-expect-error - this is expected to throw
     t.throws(() => normalize([]))
 })
