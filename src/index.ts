@@ -7,6 +7,8 @@ import writeCurrency from './mode/write-currency'
 import writeDigit from './mode/write-digit'
 import writeNumber from './mode/write-number'
 
+const NEGATIVE_SIGN = '-'
+
 const extenso = (input: number | string | bigint, options: Options = {}): string => {
     input = normalize(input)
     const { integer, decimal } = parse(input, options?.decimalSeparator)
@@ -27,7 +29,7 @@ const extenso = (input: number | string | bigint, options: Options = {}): string
 
     text = translate(text, options?.locale)
 
-    if (input.startsWith('-')) {
+    if (input.startsWith(NEGATIVE_SIGN)) {
         text = `menos ${text}`
     }
 
