@@ -7,6 +7,7 @@
     "outDir": "./build",      // Output directory for compiled JS files
     "rootDir": "./",          // Root directory of your TypeScript files
     "strict": true,           // Enable all strict type checking options
-    "moduleResolution": "nodenext"
+    "moduleResolution": "nodenext",
+    "sourceMap": true,
   },
 }
