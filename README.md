@@ -5,15 +5,15 @@
 
 ## Funcionalidades
 
-- ✅ Suporte de até duodecilhões (10³⁹ ou 10⁷²)
-- ✅ Números negativos e decimais
-- ✅ Múltiplas moedas (BRL, EUR, USD e mais)
-- ✅ Escala curta e longa de números
-- ✅ Suporte a diferentes dialetos (Brasil e Portugal)
-- ✅ Personalização de gênero gramatical
-- ✅ Compatível com `BigInt` para números extremamente grandes
-- ✅ Formatação flexível (vírgula ou ponto como separador decimal)
-- ✅ Zero dependências
+- [x] Suporte de até duodecilhões (10³⁹ ou 10⁷²)
+- [x] Números negativos e decimais
+- [x] Múltiplas moedas (BRL, EUR, USD e mais)
+- [x] Escala curta e longa de números
+- [x] Suporte a diferentes dialetos (Brasil e Portugal)
+- [x] Personalização de gênero gramatical
+- [x] Compatível com `BigInt` para números extremamente grandes
+- [x] Formatação flexível (vírgula ou ponto como separador decimal)
+- [x] Zero dependências
 
 > **NOTA**: Observe que 10³⁹ é o limite para a escala curta enquanto que 10⁷² é o limite para a escala longa.
 
