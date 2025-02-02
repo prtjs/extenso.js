@@ -1,20 +1,21 @@
 declare module 'extenso' {
   /**
-   * Convert number to a extenze format
-   * @param number the number to convert in extenze text
-   * @param options setup writing configuration
+   * An advanced library for writing numbers in words (in Portuguese). 
+   * @param number The number to convert to written text
+   * @param options Optional configuration for customizing the output format
    */
   export default function (
-    number: string | number,
+    number: string | number | bigint,
     options?: {
-      mode?: 'number' | 'currency'
+      mode?: 'number' | 'currency' | 'digit'
       locale?: 'pt' | 'br'
-      negative?: 'formal' | 'informal'
-      currency?: { type?: 'BRL' | 'EUR' | 'CVE' | 'MZN' | string }
+      scale?: 'short' | 'long'
+      decimalSeparator?: 'comma' | 'dot'
+      currency?: {
+        code?: 'AOA' | 'CVE' | 'BRL' | 'XOF' | 'MZN' | 'EUR' | 'STN' | 'USD' | 'MOP'
+      }
       number?: {
-        gender?: 'm' | 'f'
-        decimal?: 'formal' | 'informal'
-        decimalSeparator?: 'comma' | 'dot'
+        gender?: 'male' | 'female'
       }
     }
   ): string
