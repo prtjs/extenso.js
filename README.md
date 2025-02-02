@@ -1,16 +1,21 @@
-# Extenso.js
+<div align="center">
+  <h1>Extenso.js</h1>
+  <i> An advanced library for writing numbers in words (in Portuguese).</i>
+</div>
 
-> Uma biblioteca avançada para escrever números por extenso (em português).
+## Funcionalidades
 
-## Features
+- ✅ Suporte de até duodecilhões (10³⁹ ou 10⁷²)
+- ✅ Números negativos e decimais
+- ✅ Múltiplas moedas (BRL, EUR, USD e mais)
+- ✅ Escala curta e longa de números
+- ✅ Suporte a diferentes dialetos (Brasil e Portugal)
+- ✅ Personalização de gênero gramatical
+- ✅ Compatível com `BigInt` para números extremamente grandes
+- ✅ Formatação flexível (vírgula ou ponto como separador decimal)
+- ✅ Zero dependências
 
-- [x] Números até duodecilhões.
-- [x] Números negativos.
-- [x] Números decimais.
-- [x] Valores monetários (BRL, EUR e mais).
-- [x] Escala curta e longa.
-- [x] Preferências de dialetos (Brasil, Portugal e mais).
-- [x] Preferências de gênero.
+> **NOTA**: Observe que 10³⁹ é o limite para a escala curta enquanto que 10⁷² é o limite para a escala longa.
 
 ## Instalação
 
