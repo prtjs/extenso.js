@@ -23,7 +23,7 @@ Nossa ambição com o Extenso.js é tornar esta biblioteca uma referência para 
 - [x] Formatação flexível (vírgula ou ponto como separador decimal)
 - [x] Zero dependências
 
-> **NOTA**: Observe que 10³⁹ é o limite para a escala curta enquanto que 10⁷² é o limite para a escala longa.
+_**NOTA**: Observe que 10³⁹ é o limite para a escala curta enquanto que 10⁷² é o limite para a escala longa._
 
 ## Instalação
 
